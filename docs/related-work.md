@@ -97,6 +97,30 @@ that no overlapping work exists. No empirical novelty or benefit is established.
     must not be presented as our method's novelty. Our controlled comparison
     instead isolates canonical semantic-pair regularization and transfer.
 
+11. **The Illusion of Equivalency: Statistical Characterization of Quantization
+    Effects in LLMs**, Rababah et al., arXiv:2607.08734v2 (21 August 2026).
+    https://arxiv.org/html/2607.08734v2
+    Added during the final adversarial search before public release. Read the
+    abstract, introduction, sections III-D and IV, and experimental setup.
+    Correctness Agreement measures the intersection of correct decisions of
+    the original and quantized model on the same input. Thus neither the
+    observation that equal accuracy hides changed decisions nor measuring
+    joint correctness is new. Here the two members of a pair are distinct,
+    explicitly mapped presentations scored by the same model. The retrieved
+    method does not fit a semantic-pair calibration loss or evaluate transfer
+    to held-out transformation compositions.
+
+12. **Unsupervised Data Augmentation for Consistency Training**, Xie et al.,
+    NeurIPS 2020, https://arxiv.org/abs/1904.12848 . The original abstract
+    explicitly covers invariant predictions under augmented inputs in language
+    and vision. **AugMix: A Simple Data Processing Method to Improve Robustness
+    and Uncertainty**, Hendrycks et al., arXiv:1912.02781v2,
+    https://arxiv.org/html/1912.02781v2 , uses JS consistency between original
+    and augmented predictions (section 3 and algorithm read). Thus neither
+    invariance training nor the JS regularizer is novel. The contribution is
+    assessed as a controlled application/evaluation in quantized LLMs, with
+    exact answer transport and matched inputs, rather than a new loss family.
+
 ## Searches and candidate claim
 
 Web searches covered quantization + semantic equivariance, paired consistency,
@@ -119,7 +143,10 @@ an independent failure mechanism proved merely by a consistency score.
 
 No direct same-objective/same-evaluation match was found in the retrieved
 sources. This supports investigating the question, not claiming priority or
-superiority. Recheck related work before public manuscript finalization.
+superiority. A final targeted Exa search and the original Rababah et al.
+paper were checked before public manuscript finalization; this added a
+further relevant behavioral-evaluation citation without establishing a
+direct objective/evaluation match.
 
 The additional KernelQuant result narrows the claim further: combine exact
 semantic correspondence with a matched calibration/evaluation contract, rather
