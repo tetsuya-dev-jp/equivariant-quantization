@@ -15,7 +15,7 @@ from typing import Any
 import numpy as np
 
 from eq_quant.data.oracles import canonical_answer
-from eq_quant.data.schema import TRANSFORMS, TRANSFORM_AVAILABILITY
+from eq_quant.data.schema import TRANSFORMS, available_transforms
 
 TRANSFORM_GROUPS = ("all", *TRANSFORMS)
 BOOTSTRAP_METRICS = (
@@ -559,10 +559,11 @@ def _group_summaries(
 
 
 def _availability_for_group(base_summaries: list[dict[str, Any]]) -> set[str]:
-    families = {summary["task_family"] for summary in base_summaries}
     available: set[str] = set()
-    for family in families:
-        available.update(TRANSFORM_AVAILABILITY[family])
+    for summary in base_summaries:
+        available.update(
+            available_transforms(summary["split"], summary["task_family"])
+        )
     return available
 
 

@@ -9,8 +9,10 @@ from typing import Any
 from .oracles import arithmetic_value, boolean_value, canonical_answer, graph_distances
 from .render import render_prompt
 from .schema import (
+    BASE_TRANSFORM_AVAILABILITY,
+    COMPOSED_SPLITS,
+    COMPOSED_TRANSFORM_AVAILABILITY,
     OPTION_LABELS,
-    TRANSFORM_AVAILABILITY,
     BaseInstance,
     Record,
 )
@@ -406,7 +408,7 @@ def build_records(base: BaseInstance) -> list[Record]:
         base.task_family, base.structure, base.canonical_options
     )
 
-    for transform in TRANSFORM_AVAILABILITY[base.task_family]:
+    for transform in BASE_TRANSFORM_AVAILABILITY[base.task_family]:
         rng = random.Random(derive_seed(base.base_id, transform))
         rename: dict[str, Any] | None = None
         order: dict[str, Any] | None = None
@@ -444,6 +446,50 @@ def build_records(base: BaseInstance) -> list[Record]:
                 prompt=prompt,
                 option_order=option_order,
                 correct_option_index=correct_option_index,
+                rename=rename,
+                order=order,
+            )
+        )
+
+    if base.split not in COMPOSED_SPLITS:
+        return records
+
+    # Composition reuses the exact component metadata; it never redraws maps.
+    by_transform = {record.transform: record for record in records}
+    option_record = by_transform["option_permutation"]
+    rename_record = by_transform["entity_rename"]
+    order_record = by_transform.get("order_permutation")
+
+    for transform in COMPOSED_TRANSFORM_AVAILABILITY[base.task_family]:
+        option_order = option_record.option_order
+        rename = rename_record.rename
+        order = (
+            order_record.order
+            if "order_permutation" in transform and order_record is not None
+            else None
+        )
+        prompt = render_prompt(
+            base.task_family,
+            base.structure,
+            base.canonical_options,
+            option_order,
+            rename,
+            order,
+        )
+        records.append(
+            Record(
+                record_id=f"{base.base_id}__{transform}",
+                base_id=base.base_id,
+                split=base.split,
+                task_family=base.task_family,
+                transform=transform,
+                semantic={
+                    "structure": base.structure,
+                    "canonical_options": base.canonical_options,
+                },
+                prompt=prompt,
+                option_order=option_order,
+                correct_option_index=option_order.index(semantic_correct),
                 rename=rename,
                 order=order,
             )

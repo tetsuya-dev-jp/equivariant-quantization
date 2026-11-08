@@ -7,12 +7,15 @@ from typing import Any
 
 from .generate import build_records, derive_seed, generate_base
 from .schema import (
+    BASE_TRANSFORM_AVAILABILITY,
+    COMPOSED_SPLITS,
+    COMPOSED_TRANSFORM_AVAILABILITY,
     DEFAULT_SPLIT_SPECS,
     FAMILIES,
     SPLIT_ORDER,
-    TRANSFORM_AVAILABILITY,
     BaseInstance,
     Record,
+    available_transforms,
 )
 
 
@@ -150,7 +153,7 @@ def build_dataset(
 
                 if split not in selected_set:
                     full_per_split[split]["records"] += len(
-                        TRANSFORM_AVAILABILITY[family]
+                        available_transforms(split, family)
                     )
                     continue
 
@@ -168,8 +171,14 @@ def build_dataset(
         },
         "families": list(families),
         "transform_availability": {
-            family: list(TRANSFORM_AVAILABILITY[family]) for family in families
+            family: list(BASE_TRANSFORM_AVAILABILITY[family])
+            for family in families
         },
+        "composed_transform_availability": {
+            family: list(COMPOSED_TRANSFORM_AVAILABILITY[family])
+            for family in families
+        },
+        "composed_splits": list(COMPOSED_SPLITS),
         "counts": {
             "bases": len(bases),
             "records": len(records),

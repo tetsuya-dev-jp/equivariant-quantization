@@ -10,7 +10,9 @@ The pilot is development evidence, not a final test of the method.
 Use W4, group size 128, the same signed RTN codes as the pilot. Freeze codes,
 biases, embeddings, output head, and all pretrained parameters. Learn positive
 per-output-row/per-input-group scales, parameterized by their logarithms and
-initialized to RTN scales. Keep all-zero groups identically zero. Reconstruct
+initialized to RTN scales. Numerically, use s = s_RTN exp(delta) with delta
+initialized to exact zero, so the initial reconstruction equals RTN without
+an exp(log(s_RTN)) round trip. Keep all-zero groups identically zero. Reconstruct
 BF16 weights during forward passes; retain FP32 scale parameters and losses.
 Do not add low-rank updates or alter integer codes. Report the trainable count.
 
@@ -65,6 +67,12 @@ Compare optimization time for equal updates; if paired overhead exceeds 10%,
 add an augmented-KD run with extra updates matching its measured time.
 
 ## Final data and scope
+
+Before final evaluation, add a fixed displayed-A negative control. The Smol
+W3 pilot selected displayed A on all 704 records, so this control distinguishes
+transformation agreement achievable by a constant letter from task correctness.
+It is a descriptive, untrained control and does not replace the paired versus
+augmented-KD comparison or select any final setting.
 
 Add option+rename and, where available, option+rename+order compositions only
 to final and structural holdout. Reuse each component's exact saved map;

@@ -13,15 +13,23 @@ SPLIT_ORDER = (
 
 FAMILIES = ("arithmetic", "boolean", "graph")
 
-TRANSFORMS = (
+BASE_TRANSFORMS = (
     "original",
     "option_permutation",
     "entity_rename",
     "order_permutation",
 )
 
+COMPOSED_TRANSFORMS = (
+    "option_permutation+entity_rename",
+    "option_permutation+entity_rename+order_permutation",
+)
+
+# Analysis enumerates every defined transform, including compositions.
+TRANSFORMS = (*BASE_TRANSFORMS, *COMPOSED_TRANSFORMS)
+
 # Unsupported family/transform pairs are absent, never represented as identity.
-TRANSFORM_AVAILABILITY = {
+BASE_TRANSFORM_AVAILABILITY = {
     "arithmetic": ("original", "option_permutation", "entity_rename"),
     "boolean": (
         "original",
@@ -36,6 +44,35 @@ TRANSFORM_AVAILABILITY = {
         "order_permutation",
     ),
 }
+
+# Compositions are evaluation-only and gated to the final evaluation splits.
+COMPOSED_SPLITS = ("final", "structural_holdout")
+
+COMPOSED_TRANSFORM_AVAILABILITY = {
+    "arithmetic": ("option_permutation+entity_rename",),
+    "boolean": COMPOSED_TRANSFORMS,
+    "graph": COMPOSED_TRANSFORMS,
+}
+
+# Family-level union used by analysis enumeration; generation applies the
+# split gate through available_transforms.
+TRANSFORM_AVAILABILITY = {
+    family: (
+        *BASE_TRANSFORM_AVAILABILITY[family],
+        *COMPOSED_TRANSFORM_AVAILABILITY[family],
+    )
+    for family in FAMILIES
+}
+
+
+def available_transforms(split: str, family: str) -> tuple[str, ...]:
+    """Return the transforms generated for one split and family."""
+    if split in COMPOSED_SPLITS:
+        return (
+            *BASE_TRANSFORM_AVAILABILITY[family],
+            *COMPOSED_TRANSFORM_AVAILABILITY[family],
+        )
+    return BASE_TRANSFORM_AVAILABILITY[family]
 
 OPTION_LABELS = ("A", "B", "C", "D")
 

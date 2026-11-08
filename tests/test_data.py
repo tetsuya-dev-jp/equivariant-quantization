@@ -11,7 +11,26 @@ from eq_quant.data.build import (
 from eq_quant.data.generate import semantic_key
 from eq_quant.data.oracles import boolean_value, canonical_answer
 from eq_quant.data.render import render_prompt
-from eq_quant.data.schema import TRANSFORM_AVAILABILITY, BaseInstance
+from eq_quant.data.schema import (
+    BASE_TRANSFORMS,
+    BASE_TRANSFORM_AVAILABILITY,
+    COMPOSED_SPLITS,
+    COMPOSED_TRANSFORMS,
+    COMPOSED_TRANSFORM_AVAILABILITY,
+    TRANSFORM_AVAILABILITY,
+    BaseInstance,
+    available_transforms,
+)
+
+OPTION_PERMUTED_TRANSFORMS = {
+    "option_permutation",
+    "option_permutation+entity_rename",
+    "option_permutation+entity_rename+order_permutation",
+}
+COMPOSED_OPTION_RENAME = "option_permutation+entity_rename"
+COMPOSED_OPTION_RENAME_ORDER = (
+    "option_permutation+entity_rename+order_permutation"
+)
 
 
 def option_lines(prompt: str) -> dict[str, str]:
@@ -88,7 +107,7 @@ class DataTests(unittest.TestCase):
             self.assertEqual(
                 record.correct_option_index, record.option_order.index(correct)
             )
-            if record.transform == "option_permutation":
+            if record.transform in OPTION_PERMUTED_TRANSFORMS:
                 self.assertNotEqual(record.option_order, [0, 1, 2, 3])
             else:
                 self.assertEqual(record.option_order, [0, 1, 2, 3])
@@ -134,7 +153,7 @@ class DataTests(unittest.TestCase):
             records = self.records_by_base[base.base_id]
             self.assertEqual(
                 tuple(record.transform for record in records),
-                TRANSFORM_AVAILABILITY[base.task_family],
+                available_transforms(base.split, base.task_family),
             )
             semantic_structures = {
                 repr(record.semantic["structure"]) for record in records
@@ -159,7 +178,7 @@ class DataTests(unittest.TestCase):
                 )
 
             for record in records:
-                if record.transform == "entity_rename":
+                if record.rename is not None:
                     rename = record.rename["canonical_to_display"]
                     self.assertEqual(len(rename), len(set(rename.values())))
                     for old_name, new_name in rename.items():
@@ -180,15 +199,21 @@ class DataTests(unittest.TestCase):
                         self.assertIn(
                             rename[base.structure["source"]], record.prompt
                         )
-                elif record.transform == "order_permutation":
+                if record.order is not None:
                     order_values = list(record.order.values())[0]
                     self.assertGreater(len(order_values), 1)
                     self.assertNotEqual(
                         order_values, list(range(len(order_values)))
                     )
-                else:
+                if record.transform in ("original", "option_permutation"):
                     self.assertIsNone(record.rename)
                     self.assertIsNone(record.order)
+                if record.transform == COMPOSED_OPTION_RENAME:
+                    self.assertIsNotNone(record.rename)
+                    self.assertIsNone(record.order)
+                if record.transform == COMPOSED_OPTION_RENAME_ORDER:
+                    self.assertIsNotNone(record.rename)
+                    self.assertIsNotNone(record.order)
 
     def test_split_disjointness_and_determinism(self) -> None:
         keys = defaultdict(set)
@@ -258,21 +283,38 @@ class DataTests(unittest.TestCase):
 
     def test_subset_generation_matches_full_generation(self) -> None:
         full = build_dataset(self.config)
-        pilot_only = build_dataset(self.config, split_names=["pilot"])
-        full_pilot_bases = [
-            base.to_dict() for base in full.bases if base.split == "pilot"
-        ]
-        full_pilot_records = [
-            record.to_dict() for record in full.records if record.split == "pilot"
-        ]
-        self.assertEqual(
-            [base.to_dict() for base in pilot_only.bases],
-            full_pilot_bases,
+        splits = (
+            "calibration",
+            "development",
+            "pilot",
+            "final",
+            "structural_holdout",
         )
+        for split in splits:
+            subset = build_dataset(self.config, split_names=[split])
+            self.assertEqual(
+                [base.to_dict() for base in subset.bases],
+                [
+                    base.to_dict()
+                    for base in full.bases
+                    if base.split == split
+                ],
+            )
+            self.assertEqual(
+                [record.to_dict() for record in subset.records],
+                [
+                    record.to_dict()
+                    for record in full.records
+                    if record.split == split
+                ],
+            )
+
+        default = build_dataset(self.config)
         self.assertEqual(
-            [record.to_dict() for record in pilot_only.records],
-            full_pilot_records,
+            [record.to_dict() for record in default.records],
+            [record.to_dict() for record in full.records],
         )
+        self.assertEqual(default.manifest, full.manifest)
 
     def test_full_default_build(self) -> None:
         config = json.loads(
@@ -280,13 +322,189 @@ class DataTests(unittest.TestCase):
         )
         dataset = build_dataset(config)
         self.assertEqual(len(dataset.bases), 2112)
-        self.assertEqual(len(dataset.records), 7744)
+        self.assertEqual(len(dataset.records), 9664)
         self.assertEqual(
             len({base.semantic_key for base in dataset.bases}), 2112
         )
         self.assertEqual(
             dataset.manifest["counts"]["per_split"]["pilot"]["bases"], 192
         )
+        composed = [
+            record
+            for record in dataset.records
+            if record.transform in COMPOSED_TRANSFORMS
+        ]
+        self.assertEqual(len(composed), 1920)
+        self.assertTrue(
+            all(
+                record.split in COMPOSED_SPLITS
+                for record in composed
+            )
+        )
+        self.assertEqual(
+            sum(
+                1
+                for record in dataset.records
+                if record.transform in BASE_TRANSFORMS
+            ),
+            7744,
+        )
+
+        rebuilt = build_dataset(config)
+        self.assertEqual(
+            [record.to_dict() for record in rebuilt.records],
+            [record.to_dict() for record in dataset.records],
+        )
+        self.assertEqual(rebuilt.manifest, dataset.manifest)
+
+    def test_composed_records_only_in_final_and_structural_holdout(self) -> None:
+        dataset = build_dataset(self.config)
+        records_by_base = defaultdict(list)
+        for record in dataset.records:
+            records_by_base[record.base_id].append(record)
+
+        for base in dataset.bases:
+            self.assertEqual(
+                tuple(
+                    record.transform
+                    for record in records_by_base[base.base_id]
+                ),
+                available_transforms(base.split, base.task_family),
+            )
+
+        composed = [
+            record
+            for record in dataset.records
+            if record.transform in COMPOSED_TRANSFORMS
+        ]
+        self.assertTrue(composed)
+        for record in composed:
+            self.assertIn(record.split, COMPOSED_SPLITS)
+        for record in dataset.records:
+            if record.transform not in COMPOSED_TRANSFORMS:
+                self.assertIn(record.transform, BASE_TRANSFORMS)
+            if record.split not in COMPOSED_SPLITS:
+                self.assertNotIn(record.transform, COMPOSED_TRANSFORMS)
+
+    def test_composed_option_correspondence_and_component_reuse(self) -> None:
+        dataset = build_dataset(self.config)
+        records_by_base = defaultdict(dict)
+        for record in dataset.records:
+            records_by_base[record.base_id][record.transform] = record
+
+        non_self_inverse = []
+        for base in dataset.bases:
+            if base.split not in COMPOSED_SPLITS:
+                continue
+            components = records_by_base[base.base_id]
+            correct = canonical_answer(
+                base.task_family, base.structure, base.canonical_options
+            )
+            expected_semantic = {
+                "structure": base.structure,
+                "canonical_options": base.canonical_options,
+            }
+            for transform in COMPOSED_TRANSFORM_AVAILABILITY[base.task_family]:
+                record = components[transform]
+                option_record = components["option_permutation"]
+                rename_record = components["entity_rename"]
+
+                self.assertEqual(
+                    record.option_order, option_record.option_order
+                )
+                self.assertEqual(record.rename, rename_record.rename)
+                if transform == COMPOSED_OPTION_RENAME:
+                    self.assertIsNone(record.order)
+                else:
+                    order_record = components["order_permutation"]
+                    self.assertEqual(record.order, order_record.order)
+
+                self.assertEqual(record.semantic, expected_semantic)
+                self.assertEqual(
+                    record.correct_option_index,
+                    record.option_order.index(correct),
+                )
+                self.assertEqual(
+                    record.prompt,
+                    render_prompt(
+                        base.task_family,
+                        base.structure,
+                        base.canonical_options,
+                        record.option_order,
+                        record.rename,
+                        record.order,
+                    ),
+                )
+
+                permutation = record.option_order
+                twice = [
+                    permutation[permutation[index]]
+                    for index in range(len(permutation))
+                ]
+                if twice != list(range(len(permutation))):
+                    non_self_inverse.append(record)
+
+        # The correspondence must hold for permutations that are not
+        # self-inverse, not only for swaps.
+        self.assertTrue(non_self_inverse)
+        for record in non_self_inverse:
+            self.assertNotEqual(record.option_order, [0, 1, 2, 3])
+            correct = canonical_answer(
+                record.task_family,
+                record.semantic["structure"],
+                record.semantic["canonical_options"],
+            )
+            self.assertEqual(
+                record.correct_option_index,
+                record.option_order.index(correct),
+            )
+
+    def test_arithmetic_option_rename_order_composition_unavailable(self) -> None:
+        self.assertNotIn(
+            COMPOSED_OPTION_RENAME_ORDER,
+            COMPOSED_TRANSFORM_AVAILABILITY["arithmetic"],
+        )
+        self.assertNotIn(
+            COMPOSED_OPTION_RENAME_ORDER,
+            TRANSFORM_AVAILABILITY["arithmetic"],
+        )
+        for split in COMPOSED_SPLITS:
+            self.assertNotIn(
+                COMPOSED_OPTION_RENAME_ORDER,
+                available_transforms(split, "arithmetic"),
+            )
+            self.assertIn(
+                COMPOSED_OPTION_RENAME,
+                available_transforms(split, "arithmetic"),
+            )
+
+        dataset = build_dataset(self.config)
+        for record in dataset.records:
+            if record.task_family == "arithmetic":
+                self.assertNotEqual(
+                    record.transform, COMPOSED_OPTION_RENAME_ORDER
+                )
+
+    def test_non_composed_records_unchanged(self) -> None:
+        dataset = build_dataset(self.config)
+        old_splits = ("calibration", "development", "pilot")
+        unchanged = [
+            record.to_dict()
+            for record in dataset.records
+            if record.split in old_splits
+        ]
+        rebuilt = build_dataset(self.config, split_names=list(old_splits))
+        self.assertEqual(
+            [record.to_dict() for record in rebuilt.records], unchanged
+        )
+        for record in rebuilt.records:
+            self.assertIn(record.transform, BASE_TRANSFORMS)
+        expected = sum(
+            len(BASE_TRANSFORM_AVAILABILITY[base.task_family])
+            for base in dataset.bases
+            if base.split in old_splits
+        )
+        self.assertEqual(len(unchanged), expected)
 
     def test_structural_holdout_conditions(self) -> None:
         normal_graph_sizes = set()

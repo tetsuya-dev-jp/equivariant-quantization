@@ -120,6 +120,35 @@ def reference_predictions() -> list[dict]:
     return predictions
 
 
+def split_composition_predictions() -> list[dict]:
+    arithmetic = arithmetic_base()
+    pilot = {
+        **arithmetic,
+        "base_id": "arithmetic-pilot-0000",
+        "split": "pilot",
+        "transforms": ("original", "option_permutation", "entity_rename"),
+    }
+    final = {
+        **arithmetic,
+        "base_id": "arithmetic-final-0000",
+        "split": "final",
+        "transforms": (
+            "original",
+            "option_permutation",
+            "entity_rename",
+            "option_permutation+entity_rename",
+        ),
+    }
+    predictions = []
+    for base in (pilot, final):
+        for condition in ("fp", "w4"):
+            for transform in base["transforms"]:
+                predictions.append(
+                    make_prediction(base, transform, condition, 0)
+                )
+    return predictions
+
+
 def write_predictions(predictions: list[dict], path: Path) -> None:
     with path.open("w", encoding="utf-8") as handle:
         for entry in predictions:
@@ -298,6 +327,104 @@ class AnalyzeTests(unittest.TestCase):
             )
             self.assertEqual(comparison["broken_consistent_pairs"], 1)
             self.assertEqual(comparison["consistent_but_wrong_pairs"], 1)
+
+    def test_availability_honors_split_and_family_support(self) -> None:
+        predictions = split_composition_predictions()
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            predictions_path = temp_path / "predictions.jsonl"
+            write_predictions(predictions, predictions_path)
+            result = analyze_predictions(
+                predictions_path,
+                temp_path / "analysis",
+                n_boot=5,
+                seed=2,
+            )
+
+            summary = {
+                (
+                    row["split"],
+                    row["task_family"],
+                    row["condition"],
+                    row["transform"],
+                ): row
+                for row in result["summary"]
+            }
+            comparisons = {
+                (
+                    row["split"],
+                    row["task_family"],
+                    row["condition"],
+                    row["transform"],
+                ): row
+                for row in result["comparisons"]
+            }
+
+            pilot_composition = summary[
+                (
+                    "pilot",
+                    "arithmetic",
+                    "fp",
+                    "option_permutation+entity_rename",
+                )
+            ]
+            self.assertFalse(pilot_composition["available"])
+            self.assertEqual(pilot_composition["n_bases"], 0)
+            self.assertIsNone(pilot_composition["accuracy_macro"])
+            self.assertFalse(
+                comparisons[
+                    (
+                        "pilot",
+                        "arithmetic",
+                        "w4",
+                        "option_permutation+entity_rename",
+                    )
+                ]["available"]
+            )
+
+            final_composition = summary[
+                (
+                    "final",
+                    "arithmetic",
+                    "fp",
+                    "option_permutation+entity_rename",
+                )
+            ]
+            self.assertTrue(final_composition["available"])
+            self.assertEqual(final_composition["n_bases"], 1)
+            self.assertAlmostEqual(final_composition["accuracy_macro"], 1.0)
+            self.assertTrue(
+                comparisons[
+                    (
+                        "final",
+                        "arithmetic",
+                        "w4",
+                        "option_permutation+entity_rename",
+                    )
+                ]["available"]
+            )
+
+            final_triple = summary[
+                (
+                    "final",
+                    "arithmetic",
+                    "fp",
+                    "option_permutation+entity_rename+order_permutation",
+                )
+            ]
+            self.assertFalse(final_triple["available"])
+            self.assertEqual(final_triple["n_bases"], 0)
+
+            pooled_composition = summary[
+                (
+                    "all",
+                    "arithmetic",
+                    "fp",
+                    "option_permutation+entity_rename",
+                )
+            ]
+            self.assertTrue(pooled_composition["available"])
+            self.assertEqual(pooled_composition["n_bases"], 1)
 
     def test_custom_reference_comparison_and_bootstrap(self) -> None:
         predictions = reference_predictions()

@@ -88,14 +88,41 @@ Both models use BF16 arithmetic and dequantized RTN weights, not packed kernels.
 
 ## Active bounded implementation
 
-- Calibration API/CLI: DeepSeek session `ses_e46bbfb84ffe7EN1UyGBhV9tt7`,
-  exec handle 9266, events `local/delegation/04-events.jsonl`.
+- Calibration API/CLI: initial DeepSeek session `ses_e46bbfb84ffe7EN1UyGBhV9tt7`,
+  handle 9266, was interrupted after 13 tiny tests passed to redirect it to
+  confirmed review findings. Correction session `ses_e46b21163ffed6Z17d01HhvDgk`,
+  handle 77795, is active; task `local/delegation/04-review.txt`, events
+  `09-events.jsonl`. Correct checkpointing activation, stable RTN-relative log
+  scales, finite JS gradients, direct cache input matching without hashes,
+  strict calibration boundary, and native tiny HF integration before running.
 - Final-only exact compositions: session `ses_e46bbf6c4ffexx242Sxy0GFstE`,
-  handle 29166, events `05-events.jsonl`.
+  handle 29166, completed, events `05-events.jsonl`. Split-aware analysis
+  availability follow-up (handle 77100, session `ses_e46b4ef58ffeHGZrur0CB3Hrtb`)
+  completed; 20 direct data+analysis tests passed. Full dataset is now 9,664
+  records: original 7,744 plus 1,920 final-only compositions. Existing records
+  are unchanged.
 - Explicit analysis reference: session `ses_e46bbbf00ffeFRaamtsPYoKZTN`,
   handle 10293, completed; five direct analysis tests passed. Changes reviewed,
   not committed yet. Events `06-events.jsonl`.
+- Endpoint/selection helper: session `ses_e46b37f54ffePj9HFL6OEzpiyE`, handle
+  61520, completed; 13 direct tests passed, events `08-events.jsonl`. Review
+  found comparison currently intersects missing support rather than requiring
+  exact support as requested; correct this before final comparisons.
+- Pilot plots: session `ses_e46b0c1f5ffebwCXnw89BMC0lS`, handle 46727,
+  completed; `scripts/plot_pilot.py`, five exports in `figures/pilot`. Both
+  PNGs visually inspected and table values checked against saved analyses.
+  Curated pilot data/results exist at `data/pilot` and `results/pilot`, still
+  unpublished. English report `docs/pilot-results.md` references both figures.
+- Phased study runner: handle 6029, events `11-events.jsonl`, active; owned
+  files `eq_quant/study.py` and `tests/test_study.py`. It must complete develop
+  selection before final, and report the >10% time-control requirement.
 Independent workers have disjoint file ownership; check state before resuming.
+
+The Smol W3 pilot selected displayed A on all 704 records. Added a prospective
+fixed-displayed-A final negative control in calibration-plan.md. Ensure the
+study runner/report implements it; it was not in the original runner prompt.
+No actual calibration/teacher-cache execution has happened yet. No public
+GitHub repository has been created yet.
 
 ## Remaining
 

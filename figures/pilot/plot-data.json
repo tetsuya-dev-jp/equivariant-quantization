@@ -1,0 +1,214 @@
+{
+  "figure1": {
+    "metric_labels": {
+      "delta_accuracy_macro": "Accuracy",
+      "delta_consistency_macro": "Consistency"
+    },
+    "panels": {
+      "qwen": {
+        "differences_pp": {
+          "w3": {
+            "delta_accuracy_macro": {
+              "ci_high": -19.530164930555557,
+              "ci_low": -32.76909722222222,
+              "estimate": -26.258680555555554,
+              "n_boot": 1000,
+              "seed": 4108
+            },
+            "delta_consistency_macro": {
+              "ci_high": -13.450520833333341,
+              "ci_low": -25.527343749999996,
+              "estimate": -19.444444444444446,
+              "n_boot": 1000,
+              "seed": 4108
+            }
+          },
+          "w4": {
+            "delta_accuracy_macro": {
+              "ci_high": 1.7795138888888888,
+              "ci_low": -6.294487847222221,
+              "estimate": -2.34375,
+              "n_boot": 1000,
+              "seed": 4108
+            },
+            "delta_consistency_macro": {
+              "ci_high": 4.513888888888888,
+              "ci_low": -5.384114583333333,
+              "estimate": -0.3472222222222224,
+              "n_boot": 1000,
+              "seed": 4108
+            }
+          },
+          "w8": {
+            "delta_accuracy_macro": {
+              "ci_high": 0.43402777777777773,
+              "ci_low": -1.4767795138888886,
+              "estimate": -0.4774305555555555,
+              "n_boot": 1000,
+              "seed": 4108
+            },
+            "delta_consistency_macro": {
+              "ci_high": 3.298611111111111,
+              "ci_low": -0.4340277777777778,
+              "estimate": 1.3020833333333335,
+              "n_boot": 1000,
+              "seed": 4108
+            }
+          }
+        },
+        "model": "Qwen2.5-1.5B"
+      },
+      "smol": {
+        "differences_pp": {
+          "w3": {
+            "delta_accuracy_macro": {
+              "ci_high": -9.198133680555559,
+              "ci_low": -25.52191840277778,
+              "estimate": -17.057291666666664,
+              "n_boot": 1000,
+              "seed": 4108
+            },
+            "delta_consistency_macro": {
+              "ci_high": 14.756944444444445,
+              "ci_low": 5.642361111111111,
+              "estimate": 10.15625,
+              "n_boot": 1000,
+              "seed": 4108
+            }
+          },
+          "w4": {
+            "delta_accuracy_macro": {
+              "ci_high": -9.06901041666667,
+              "ci_low": -18.057725694444443,
+              "estimate": -13.49826388888889,
+              "n_boot": 1000,
+              "seed": 4108
+            },
+            "delta_consistency_macro": {
+              "ci_high": 13.28125,
+              "ci_low": 4.340277777777777,
+              "estimate": 8.59375,
+              "n_boot": 1000,
+              "seed": 4108
+            }
+          },
+          "w8": {
+            "delta_accuracy_macro": {
+              "ci_high": 1.1284722222222223,
+              "ci_low": -1.345486111111111,
+              "estimate": -0.21701388888888887,
+              "n_boot": 1000,
+              "seed": 4108
+            },
+            "delta_consistency_macro": {
+              "ci_high": 1.302083333333333,
+              "ci_low": -4.079861111111112,
+              "estimate": -1.215277777777778,
+              "n_boot": 1000,
+              "seed": 4108
+            }
+          }
+        },
+        "model": "SmolLM2-1.7B"
+      }
+    }
+  },
+  "figure2": {
+    "categories": {
+      "consistently_wrong_pairs": "Consistently wrong",
+      "inconsistent_pairs": "Inconsistent",
+      "jointly_correct_pairs": "Jointly correct"
+    },
+    "panels": {
+      "qwen": {
+        "counts": {
+          "fp": {
+            "consistently_wrong_pairs": 138,
+            "inconsistent_pairs": 167,
+            "jointly_correct_pairs": 207,
+            "n_pairs": 512
+          },
+          "w3": {
+            "consistently_wrong_pairs": 198,
+            "inconsistent_pairs": 263,
+            "jointly_correct_pairs": 51,
+            "n_pairs": 512
+          },
+          "w4": {
+            "consistently_wrong_pairs": 144,
+            "inconsistent_pairs": 168,
+            "jointly_correct_pairs": 200,
+            "n_pairs": 512
+          },
+          "w8": {
+            "consistently_wrong_pairs": 142,
+            "inconsistent_pairs": 160,
+            "jointly_correct_pairs": 210,
+            "n_pairs": 512
+          }
+        },
+        "model": "Qwen2.5-1.5B"
+      },
+      "smol": {
+        "counts": {
+          "fp": {
+            "consistently_wrong_pairs": 162,
+            "inconsistent_pairs": 203,
+            "jointly_correct_pairs": 147,
+            "n_pairs": 512
+          },
+          "w3": {
+            "consistently_wrong_pairs": 285,
+            "inconsistent_pairs": 148,
+            "jointly_correct_pairs": 79,
+            "n_pairs": 512
+          },
+          "w4": {
+            "consistently_wrong_pairs": 265,
+            "inconsistent_pairs": 154,
+            "jointly_correct_pairs": 93,
+            "n_pairs": 512
+          },
+          "w8": {
+            "consistently_wrong_pairs": 153,
+            "inconsistent_pairs": 210,
+            "jointly_correct_pairs": 149,
+            "n_pairs": 512
+          }
+        },
+        "model": "SmolLM2-1.7B"
+      }
+    }
+  },
+  "provenance": {
+    "bootstrap": {
+      "qwen": {
+        "estimator": "base_macro",
+        "samples": 1000,
+        "seed": 4108,
+        "unit": "base_id"
+      },
+      "smol": {
+        "estimator": "base_macro",
+        "samples": 1000,
+        "seed": 4108,
+        "unit": "base_id"
+      }
+    },
+    "figure2_scope": "raw pair counts, n = 512 per model; not base-macro rates",
+    "inputs": {
+      "qwen": "results/pilot/qwen/analysis/analysis.json",
+      "smol": "results/pilot/smol/analysis/analysis.json"
+    },
+    "selection": {
+      "reference": "fp",
+      "split": "all",
+      "task_family": "all",
+      "transform": "all"
+    },
+    "units": {
+      "figure1": "percentage points relative to BF16 reference",
+      "figure2": "original-variant pairs (count)"
+    }
+  }
+}
