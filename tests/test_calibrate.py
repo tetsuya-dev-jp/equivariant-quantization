@@ -28,7 +28,11 @@ from eq_quant.calibrate.records import (
     select_calibration_pairs,
     validate_calibration_records,
 )
-from eq_quant.calibrate.teacher import _teacher_batch, load_teacher_cache
+from eq_quant.calibrate.teacher import (
+    _teacher_batch,
+    cache_teacher,
+    load_teacher_cache,
+)
 from eq_quant.calibrate.train import (
     activate_calibration_mode,
     run_calibration,
@@ -482,6 +486,105 @@ class RecordSelectionTests(unittest.TestCase):
                     "option_labels": ["A", "B", "C", "D"],
                 },
             )
+
+
+class TeacherCacheTests(unittest.TestCase):
+    def _held_out_record(
+        self, record_id: str, base_id: str, transform: str
+    ) -> dict:
+        record = arithmetic_record(record_id, base_id, [0, 1, 2, 3])
+        record["transform"] = transform
+        record["prompt"] = f"Held-out {transform}: {record_id}"
+        return record
+
+    def test_cache_matches_selected_pairs_for_shuffled_mixed_transform_input(
+        self,
+    ) -> None:
+        supplied = calibration_records()
+        supplied.append(
+            self._held_out_record("base0__rename", "base0", "entity_rename")
+        )
+        supplied.append(
+            self._held_out_record("base1__order", "base1", "order_permutation")
+        )
+        shuffled = [supplied[index] for index in (4, 1, 5, 0, 3, 2)]
+
+        tokenizer = TinyTokenizer()
+        model = TinyCausalModel()
+        config = tiny_config()
+        config["scoring"]["batch_size"] = 2
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            records_path = temp_path / "records.jsonl"
+            write_records(records_path, shuffled)
+            output_dir = temp_path / "cache"
+
+            with mock.patch(
+                "eq_quant.calibrate.teacher.load_model",
+                return_value=(model, tokenizer, torch.device("cpu")),
+            ):
+                manifest = cache_teacher(
+                    config=config,
+                    records_path=records_path,
+                    output_dir=output_dir,
+                )
+
+            pairs = select_calibration_pairs(shuffled)
+            ordered = [
+                record for pair in pairs for record in pair.ordered_records()
+            ]
+            expected_metadata = [record_metadata(record) for record in ordered]
+            expected_ids = [record["record_id"] for record in ordered]
+
+            payload = torch.load(
+                output_dir / "teacher_cache.pt", map_location="cpu"
+            )
+            self.assertEqual(payload["records"], expected_metadata)
+            self.assertEqual(payload["record_ids"], expected_ids)
+            self.assertEqual(manifest["records"]["count"], len(ordered))
+            self.assertEqual(manifest["records"]["bases"], len(pairs))
+            self.assertEqual(payload["logits"].shape[0], len(ordered))
+            self.assertEqual(payload["hidden"].shape[0], len(ordered))
+            self.assertEqual(payload["token_counts"].shape[0], len(ordered))
+
+            tokenizer.padding_side = "left"
+            for index, record in enumerate(ordered):
+                text = build_chat_prompt(tokenizer, record["prompt"])
+                encoded = encode_prompts(tokenizer, [text], max_seq_len=128)
+                row_logits, row_hidden = _teacher_batch(
+                    model, encoded["input_ids"], encoded["attention_mask"]
+                )
+                self.assertTrue(
+                    torch.allclose(payload["logits"][index], row_logits[0])
+                )
+                self.assertTrue(
+                    torch.allclose(payload["hidden"][index], row_hidden[0])
+                )
+                self.assertEqual(
+                    int(payload["token_counts"][index]),
+                    int(encoded["attention_mask"].sum(dim=1)[0]),
+                )
+
+    def test_mixed_split_input_is_rejected(self) -> None:
+        records = calibration_records()
+        records[1] = dict(records[1], split="final")
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            records_path = temp_path / "records.jsonl"
+            write_records(records_path, records)
+
+            with mock.patch(
+                "eq_quant.calibrate.teacher.load_model",
+                side_effect=AssertionError("model must not be loaded"),
+            ):
+                with self.assertRaises(ValueError):
+                    cache_teacher(
+                        config=tiny_config(),
+                        records_path=records_path,
+                        output_dir=temp_path / "cache",
+                    )
 
 
 class CalibrationRunTests(unittest.TestCase):

@@ -79,13 +79,12 @@ def cache_teacher(
     _require_calibration_config(config)
     split = CALIBRATION_SPLIT
     all_records = load_records(records_path)
-    # The cache stores calibration prompts only, even if the input file also
-    # contains other splits.
-    records = [
-        record for record in all_records if record.get("split") == split
+    # Refuse a mixed-split file rather than silently dropping held-out rows.
+    validate_calibration_records(all_records, split)
+    pairs = select_calibration_pairs(all_records, split)
+    ordered_records = [
+        record for pair in pairs for record in pair.ordered_records()
     ]
-    validate_calibration_records(records, split)
-    pairs = select_calibration_pairs(records, split)
     metadata = ordered_record_metadata(pairs)
     record_ids = [entry["record_id"] for entry in metadata]
 
@@ -106,7 +105,7 @@ def cache_teacher(
         },
         "records": {
             "path": str(records_path),
-            "count": len(records),
+            "count": len(ordered_records),
             "bases": len(pairs),
             "transforms": ["original", "option_permutation"],
         },
@@ -145,13 +144,13 @@ def cache_teacher(
         max_seq_len = int(config["scoring"]["max_seq_len"])
         prompt_texts = [
             build_chat_prompt(tokenizer, record["prompt"])
-            for record in records
+            for record in ordered_records
         ]
 
         logits_rows: list[torch.Tensor] = []
         hidden_rows: list[torch.Tensor] = []
         token_counts: list[int] = []
-        for start in range(0, len(records), batch_size):
+        for start in range(0, len(ordered_records), batch_size):
             batch_texts = prompt_texts[start : start + batch_size]
             encoded = encode_prompts(tokenizer, batch_texts, max_seq_len)
             batch_logits, batch_hidden = _teacher_batch(
