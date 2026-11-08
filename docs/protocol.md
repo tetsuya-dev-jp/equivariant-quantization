@@ -108,3 +108,17 @@ figures, an evidence-grounded English manuscript draft, limitations and
 third-party attribution, and a public GitHub repository. Do not redistribute
 upstream weights or secrets. Publication is authorized by the user; arXiv
 submission, paid compute purchases, and claims of positive results are not.
+
+## Prospective amendment 1: unique candidate generation
+
+Before model evaluation, a full-default generator check failed because the
+Boolean sampler produced duplicate base questions within calibration.
+Replace unconditional one-candidate-per-item generation with deterministic
+candidate rejection until the predeclared number of unique base structures
+is obtained. Save candidate/rejection counts and reasons. A duplicate in the
+completed stored dataset remains an error. Exclude distractor options from
+structural identity so new distractors cannot evade split disjointness.
+The identity boundary is exact normalized problem structure, not arbitrary
+Boolean logical equivalence or graph isomorphism. Generating a split alone
+must reproduce its instances from full generation. Counts, seeds, task support
+and scoring are unchanged. This amendment precedes all research endpoints.
