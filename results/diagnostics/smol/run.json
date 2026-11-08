@@ -1,0 +1,5455 @@
+{
+  "completed_conditions": [
+    "fp",
+    "w4"
+  ],
+  "conditions": [
+    {
+      "bits": null,
+      "condition": "fp",
+      "elapsed_seconds": 7.37935307295993,
+      "group_size": null,
+      "module_inventory": [
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.0.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.0.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.0.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.0.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.0.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.0.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.0.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.1.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.1.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.1.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.1.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.1.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.1.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.1.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.2.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.2.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.2.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.2.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.2.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.2.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.2.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.3.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.3.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.3.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.3.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.3.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.3.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.3.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.4.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.4.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.4.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.4.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.4.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.4.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.4.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.5.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.5.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.5.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.5.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.5.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.5.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.5.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.6.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.6.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.6.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.6.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.6.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.6.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.6.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.7.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.7.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.7.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.7.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.7.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.7.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.7.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.8.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.8.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.8.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.8.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.8.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.8.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.8.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.9.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.9.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.9.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.9.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.9.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.9.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.9.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.10.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.10.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.10.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.10.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.10.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.10.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.10.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.11.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.11.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.11.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.11.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.11.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.11.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.11.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.12.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.12.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.12.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.12.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.12.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.12.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.12.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.13.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.13.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.13.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.13.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.13.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.13.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.13.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.14.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.14.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.14.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.14.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.14.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.14.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.14.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.15.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.15.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.15.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.15.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.15.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.15.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.15.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.16.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.16.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.16.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.16.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.16.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.16.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.16.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.17.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.17.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.17.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.17.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.17.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.17.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.17.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.18.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.18.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.18.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.18.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.18.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.18.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.18.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.19.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.19.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.19.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.19.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.19.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.19.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.19.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.20.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.20.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.20.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.20.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.20.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.20.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.20.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.21.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.21.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.21.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.21.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.21.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.21.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.21.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.22.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.22.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.22.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.22.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.22.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.22.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.22.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.23.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.23.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.23.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.23.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.23.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.23.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        },
+        {
+          "bits": null,
+          "code_max": null,
+          "code_min": null,
+          "group_size": null,
+          "groups": null,
+          "name": "model.layers.23.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": null,
+          "simulation_scale_bytes_float32": null,
+          "zero_groups": null
+        }
+      ],
+      "peak_gpu_allocated_bytes": 6808100864
+    },
+    {
+      "bits": 4,
+      "condition": "w4",
+      "elapsed_seconds": 5.807035536970943,
+      "group_size": 128,
+      "module_inventory": [
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.0.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.0.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.0.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.0.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.0.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.0.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.0.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.1.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.1.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.1.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.1.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.1.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.1.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.1.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.2.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.2.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.2.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.2.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.2.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.2.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.2.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.3.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.3.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.3.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.3.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.3.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.3.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.3.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.4.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.4.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.4.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.4.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.4.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.4.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.4.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.5.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.5.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.5.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.5.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.5.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.5.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.5.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.6.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.6.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.6.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.6.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.6.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.6.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.6.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.7.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.7.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.7.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.7.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.7.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.7.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.7.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.8.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.8.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.8.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.8.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.8.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.8.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.8.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.9.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.9.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.9.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.9.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.9.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.9.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.9.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.10.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.10.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.10.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.10.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.10.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.10.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.10.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.11.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.11.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.11.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.11.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.11.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.11.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.11.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.12.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.12.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.12.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.12.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.12.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.12.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.12.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.13.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.13.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.13.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.13.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.13.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.13.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.13.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.14.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.14.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.14.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.14.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.14.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.14.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.14.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.15.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.15.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.15.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.15.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.15.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.15.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.15.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.16.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.16.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.16.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.16.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.16.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.16.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.16.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.17.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.17.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.17.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.17.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.17.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.17.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.17.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.18.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.18.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.18.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.18.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.18.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.18.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.18.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.19.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.19.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.19.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.19.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.19.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.19.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.19.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.20.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.20.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.20.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.20.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.20.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.20.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.20.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.21.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.21.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.21.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.21.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.21.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.21.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.21.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.22.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.22.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.22.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.22.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.22.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.22.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.22.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.23.self_attn.q_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.23.self_attn.k_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.23.self_attn.v_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.23.self_attn.o_proj",
+          "numel": 4194304,
+          "shape": [
+            2048,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 2097152,
+          "simulation_scale_bytes_float32": 131072,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.23.mlp.gate_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 16,
+          "name": "model.layers.23.mlp.up_proj",
+          "numel": 16777216,
+          "shape": [
+            8192,
+            2048
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        },
+        {
+          "bits": 4,
+          "code_max": 7,
+          "code_min": -7,
+          "group_size": 128,
+          "groups": 64,
+          "name": "model.layers.23.mlp.down_proj",
+          "numel": 16777216,
+          "shape": [
+            2048,
+            8192
+          ],
+          "simulation_code_bytes_lower_bound": 8388608,
+          "simulation_scale_bytes_float32": 524288,
+          "zero_groups": 0
+        }
+      ],
+      "peak_gpu_allocated_bytes": 7044665856
+    }
+  ],
+  "error": null,
+  "hardware": {
+    "device": "cuda",
+    "device_name": "AMD Radeon RX 9070 XT",
+    "total_memory_bytes": 17095983104
+  },
+  "model": {
+    "dtype": "bfloat16",
+    "id": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "resolved_commit_hash": "31b70e2e869a7173562077fd711b654946d38674",
+    "revision": "31b70e2e869a7173562077fd711b654946d38674"
+  },
+  "quantization": {
+    "arithmetic": "dequantized weights used for BF16/FP16 arithmetic",
+    "bits": [
+      4
+    ],
+    "claim_limit": "Numerical weight-only simulation; no packed-integer storage, deployment parity, or inference speed claim.",
+    "excluded": [
+      "lm_head",
+      "embeddings"
+    ],
+    "group_size": 128,
+    "method": "rtn_symmetric_signed_dequantized_weight_simulation"
+  },
+  "records": 768,
+  "scoring": {
+    "add_generation_prompt": true,
+    "batch_size": 8,
+    "chat_template": "official tokenizer.apply_chat_template",
+    "max_seq_len": 1024,
+    "option_labels": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "option_token_ids": [
+      49,
+      50,
+      51,
+      52
+    ],
+    "padding_side": "left"
+  },
+  "software": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+    "processor": "",
+    "python": "3.12.15",
+    "torch": "2.12.0+rocm7.14.0",
+    "transformers": "4.57.1"
+  },
+  "state": "completed"
+}

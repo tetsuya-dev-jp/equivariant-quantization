@@ -1,0 +1,3512 @@
+{
+  "batch_order": [
+    {
+      "base_ids": [
+        "arithmetic-calibration-0104",
+        "boolean-calibration-0033",
+        "arithmetic-calibration-0010",
+        "boolean-calibration-0008"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0104__original",
+        "arithmetic-calibration-0104__original",
+        "boolean-calibration-0033__original",
+        "boolean-calibration-0033__original",
+        "arithmetic-calibration-0010__original",
+        "arithmetic-calibration-0010__original",
+        "boolean-calibration-0008__original",
+        "boolean-calibration-0008__original"
+      ],
+      "update": 0
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0058",
+        "graph-calibration-0051",
+        "boolean-calibration-0053",
+        "arithmetic-calibration-0092"
+      ],
+      "record_ids": [
+        "graph-calibration-0058__original",
+        "graph-calibration-0058__original",
+        "graph-calibration-0051__original",
+        "graph-calibration-0051__original",
+        "boolean-calibration-0053__original",
+        "boolean-calibration-0053__original",
+        "arithmetic-calibration-0092__original",
+        "arithmetic-calibration-0092__original"
+      ],
+      "update": 1
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0028",
+        "boolean-calibration-0030",
+        "arithmetic-calibration-0115",
+        "arithmetic-calibration-0072"
+      ],
+      "record_ids": [
+        "graph-calibration-0028__original",
+        "graph-calibration-0028__original",
+        "boolean-calibration-0030__original",
+        "boolean-calibration-0030__original",
+        "arithmetic-calibration-0115__original",
+        "arithmetic-calibration-0115__original",
+        "arithmetic-calibration-0072__original",
+        "arithmetic-calibration-0072__original"
+      ],
+      "update": 2
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0034",
+        "boolean-calibration-0086",
+        "graph-calibration-0022",
+        "graph-calibration-0097"
+      ],
+      "record_ids": [
+        "boolean-calibration-0034__original",
+        "boolean-calibration-0034__original",
+        "boolean-calibration-0086__original",
+        "boolean-calibration-0086__original",
+        "graph-calibration-0022__original",
+        "graph-calibration-0022__original",
+        "graph-calibration-0097__original",
+        "graph-calibration-0097__original"
+      ],
+      "update": 3
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0120",
+        "arithmetic-calibration-0040",
+        "arithmetic-calibration-0074",
+        "boolean-calibration-0111"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0120__original",
+        "arithmetic-calibration-0120__original",
+        "arithmetic-calibration-0040__original",
+        "arithmetic-calibration-0040__original",
+        "arithmetic-calibration-0074__original",
+        "arithmetic-calibration-0074__original",
+        "boolean-calibration-0111__original",
+        "boolean-calibration-0111__original"
+      ],
+      "update": 4
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0012",
+        "arithmetic-calibration-0007",
+        "boolean-calibration-0038",
+        "graph-calibration-0105"
+      ],
+      "record_ids": [
+        "graph-calibration-0012__original",
+        "graph-calibration-0012__original",
+        "arithmetic-calibration-0007__original",
+        "arithmetic-calibration-0007__original",
+        "boolean-calibration-0038__original",
+        "boolean-calibration-0038__original",
+        "graph-calibration-0105__original",
+        "graph-calibration-0105__original"
+      ],
+      "update": 5
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0087",
+        "arithmetic-calibration-0071",
+        "arithmetic-calibration-0097",
+        "arithmetic-calibration-0014"
+      ],
+      "record_ids": [
+        "boolean-calibration-0087__original",
+        "boolean-calibration-0087__original",
+        "arithmetic-calibration-0071__original",
+        "arithmetic-calibration-0071__original",
+        "arithmetic-calibration-0097__original",
+        "arithmetic-calibration-0097__original",
+        "arithmetic-calibration-0014__original",
+        "arithmetic-calibration-0014__original"
+      ],
+      "update": 6
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0013",
+        "graph-calibration-0015",
+        "boolean-calibration-0058",
+        "boolean-calibration-0054"
+      ],
+      "record_ids": [
+        "boolean-calibration-0013__original",
+        "boolean-calibration-0013__original",
+        "graph-calibration-0015__original",
+        "graph-calibration-0015__original",
+        "boolean-calibration-0058__original",
+        "boolean-calibration-0058__original",
+        "boolean-calibration-0054__original",
+        "boolean-calibration-0054__original"
+      ],
+      "update": 7
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0079",
+        "graph-calibration-0108",
+        "arithmetic-calibration-0077",
+        "arithmetic-calibration-0045"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0079__original",
+        "arithmetic-calibration-0079__original",
+        "graph-calibration-0108__original",
+        "graph-calibration-0108__original",
+        "arithmetic-calibration-0077__original",
+        "arithmetic-calibration-0077__original",
+        "arithmetic-calibration-0045__original",
+        "arithmetic-calibration-0045__original"
+      ],
+      "update": 8
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0020",
+        "boolean-calibration-0006",
+        "arithmetic-calibration-0125",
+        "boolean-calibration-0095"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0020__original",
+        "arithmetic-calibration-0020__original",
+        "boolean-calibration-0006__original",
+        "boolean-calibration-0006__original",
+        "arithmetic-calibration-0125__original",
+        "arithmetic-calibration-0125__original",
+        "boolean-calibration-0095__original",
+        "boolean-calibration-0095__original"
+      ],
+      "update": 9
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0048",
+        "arithmetic-calibration-0103",
+        "arithmetic-calibration-0061",
+        "arithmetic-calibration-0000"
+      ],
+      "record_ids": [
+        "graph-calibration-0048__original",
+        "graph-calibration-0048__original",
+        "arithmetic-calibration-0103__original",
+        "arithmetic-calibration-0103__original",
+        "arithmetic-calibration-0061__original",
+        "arithmetic-calibration-0061__original",
+        "arithmetic-calibration-0000__original",
+        "arithmetic-calibration-0000__original"
+      ],
+      "update": 10
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0123",
+        "boolean-calibration-0063",
+        "graph-calibration-0114",
+        "arithmetic-calibration-0126"
+      ],
+      "record_ids": [
+        "boolean-calibration-0123__original",
+        "boolean-calibration-0123__original",
+        "boolean-calibration-0063__original",
+        "boolean-calibration-0063__original",
+        "graph-calibration-0114__original",
+        "graph-calibration-0114__original",
+        "arithmetic-calibration-0126__original",
+        "arithmetic-calibration-0126__original"
+      ],
+      "update": 11
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0102",
+        "boolean-calibration-0071",
+        "boolean-calibration-0065",
+        "boolean-calibration-0043"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0102__original",
+        "arithmetic-calibration-0102__original",
+        "boolean-calibration-0071__original",
+        "boolean-calibration-0071__original",
+        "boolean-calibration-0065__original",
+        "boolean-calibration-0065__original",
+        "boolean-calibration-0043__original",
+        "boolean-calibration-0043__original"
+      ],
+      "update": 12
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0005",
+        "graph-calibration-0019",
+        "boolean-calibration-0102",
+        "arithmetic-calibration-0083"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0005__original",
+        "arithmetic-calibration-0005__original",
+        "graph-calibration-0019__original",
+        "graph-calibration-0019__original",
+        "boolean-calibration-0102__original",
+        "boolean-calibration-0102__original",
+        "arithmetic-calibration-0083__original",
+        "arithmetic-calibration-0083__original"
+      ],
+      "update": 13
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0077",
+        "graph-calibration-0045",
+        "arithmetic-calibration-0070",
+        "graph-calibration-0111"
+      ],
+      "record_ids": [
+        "boolean-calibration-0077__original",
+        "boolean-calibration-0077__original",
+        "graph-calibration-0045__original",
+        "graph-calibration-0045__original",
+        "arithmetic-calibration-0070__original",
+        "arithmetic-calibration-0070__original",
+        "graph-calibration-0111__original",
+        "graph-calibration-0111__original"
+      ],
+      "update": 14
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0004",
+        "graph-calibration-0075",
+        "arithmetic-calibration-0112",
+        "boolean-calibration-0066"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0004__original",
+        "arithmetic-calibration-0004__original",
+        "graph-calibration-0075__original",
+        "graph-calibration-0075__original",
+        "arithmetic-calibration-0112__original",
+        "arithmetic-calibration-0112__original",
+        "boolean-calibration-0066__original",
+        "boolean-calibration-0066__original"
+      ],
+      "update": 15
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0091",
+        "boolean-calibration-0074",
+        "graph-calibration-0088",
+        "graph-calibration-0056"
+      ],
+      "record_ids": [
+        "boolean-calibration-0091__original",
+        "boolean-calibration-0091__original",
+        "boolean-calibration-0074__original",
+        "boolean-calibration-0074__original",
+        "graph-calibration-0088__original",
+        "graph-calibration-0088__original",
+        "graph-calibration-0056__original",
+        "graph-calibration-0056__original"
+      ],
+      "update": 16
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0123",
+        "boolean-calibration-0022",
+        "boolean-calibration-0032",
+        "boolean-calibration-0021"
+      ],
+      "record_ids": [
+        "graph-calibration-0123__original",
+        "graph-calibration-0123__original",
+        "boolean-calibration-0022__original",
+        "boolean-calibration-0022__original",
+        "boolean-calibration-0032__original",
+        "boolean-calibration-0032__original",
+        "boolean-calibration-0021__original",
+        "boolean-calibration-0021__original"
+      ],
+      "update": 17
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0106",
+        "graph-calibration-0027",
+        "boolean-calibration-0015",
+        "arithmetic-calibration-0012"
+      ],
+      "record_ids": [
+        "graph-calibration-0106__original",
+        "graph-calibration-0106__original",
+        "graph-calibration-0027__original",
+        "graph-calibration-0027__original",
+        "boolean-calibration-0015__original",
+        "boolean-calibration-0015__original",
+        "arithmetic-calibration-0012__original",
+        "arithmetic-calibration-0012__original"
+      ],
+      "update": 18
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0107",
+        "arithmetic-calibration-0094",
+        "boolean-calibration-0040",
+        "boolean-calibration-0072"
+      ],
+      "record_ids": [
+        "boolean-calibration-0107__original",
+        "boolean-calibration-0107__original",
+        "arithmetic-calibration-0094__original",
+        "arithmetic-calibration-0094__original",
+        "boolean-calibration-0040__original",
+        "boolean-calibration-0040__original",
+        "boolean-calibration-0072__original",
+        "boolean-calibration-0072__original"
+      ],
+      "update": 19
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0009",
+        "boolean-calibration-0007",
+        "arithmetic-calibration-0046",
+        "graph-calibration-0126"
+      ],
+      "record_ids": [
+        "graph-calibration-0009__original",
+        "graph-calibration-0009__original",
+        "boolean-calibration-0007__original",
+        "boolean-calibration-0007__original",
+        "arithmetic-calibration-0046__original",
+        "arithmetic-calibration-0046__original",
+        "graph-calibration-0126__original",
+        "graph-calibration-0126__original"
+      ],
+      "update": 20
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0013",
+        "graph-calibration-0121",
+        "graph-calibration-0025",
+        "graph-calibration-0077"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0013__original",
+        "arithmetic-calibration-0013__original",
+        "graph-calibration-0121__original",
+        "graph-calibration-0121__original",
+        "graph-calibration-0025__original",
+        "graph-calibration-0025__original",
+        "graph-calibration-0077__original",
+        "graph-calibration-0077__original"
+      ],
+      "update": 21
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0099",
+        "graph-calibration-0118",
+        "boolean-calibration-0097",
+        "graph-calibration-0047"
+      ],
+      "record_ids": [
+        "graph-calibration-0099__original",
+        "graph-calibration-0099__original",
+        "graph-calibration-0118__original",
+        "graph-calibration-0118__original",
+        "boolean-calibration-0097__original",
+        "boolean-calibration-0097__original",
+        "graph-calibration-0047__original",
+        "graph-calibration-0047__original"
+      ],
+      "update": 22
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0103",
+        "boolean-calibration-0003",
+        "graph-calibration-0029",
+        "arithmetic-calibration-0110"
+      ],
+      "record_ids": [
+        "boolean-calibration-0103__original",
+        "boolean-calibration-0103__original",
+        "boolean-calibration-0003__original",
+        "boolean-calibration-0003__original",
+        "graph-calibration-0029__original",
+        "graph-calibration-0029__original",
+        "arithmetic-calibration-0110__original",
+        "arithmetic-calibration-0110__original"
+      ],
+      "update": 23
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0101",
+        "boolean-calibration-0100",
+        "graph-calibration-0052",
+        "graph-calibration-0085"
+      ],
+      "record_ids": [
+        "boolean-calibration-0101__original",
+        "boolean-calibration-0101__original",
+        "boolean-calibration-0100__original",
+        "boolean-calibration-0100__original",
+        "graph-calibration-0052__original",
+        "graph-calibration-0052__original",
+        "graph-calibration-0085__original",
+        "graph-calibration-0085__original"
+      ],
+      "update": 24
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0001",
+        "graph-calibration-0034",
+        "graph-calibration-0093",
+        "graph-calibration-0021"
+      ],
+      "record_ids": [
+        "graph-calibration-0001__original",
+        "graph-calibration-0001__original",
+        "graph-calibration-0034__original",
+        "graph-calibration-0034__original",
+        "graph-calibration-0093__original",
+        "graph-calibration-0093__original",
+        "graph-calibration-0021__original",
+        "graph-calibration-0021__original"
+      ],
+      "update": 25
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0066",
+        "arithmetic-calibration-0116",
+        "boolean-calibration-0026",
+        "boolean-calibration-0059"
+      ],
+      "record_ids": [
+        "graph-calibration-0066__original",
+        "graph-calibration-0066__original",
+        "arithmetic-calibration-0116__original",
+        "arithmetic-calibration-0116__original",
+        "boolean-calibration-0026__original",
+        "boolean-calibration-0026__original",
+        "boolean-calibration-0059__original",
+        "boolean-calibration-0059__original"
+      ],
+      "update": 26
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0070",
+        "arithmetic-calibration-0037",
+        "graph-calibration-0033",
+        "graph-calibration-0060"
+      ],
+      "record_ids": [
+        "graph-calibration-0070__original",
+        "graph-calibration-0070__original",
+        "arithmetic-calibration-0037__original",
+        "arithmetic-calibration-0037__original",
+        "graph-calibration-0033__original",
+        "graph-calibration-0033__original",
+        "graph-calibration-0060__original",
+        "graph-calibration-0060__original"
+      ],
+      "update": 27
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0002",
+        "boolean-calibration-0124",
+        "boolean-calibration-0045",
+        "graph-calibration-0013"
+      ],
+      "record_ids": [
+        "graph-calibration-0002__original",
+        "graph-calibration-0002__original",
+        "boolean-calibration-0124__original",
+        "boolean-calibration-0124__original",
+        "boolean-calibration-0045__original",
+        "boolean-calibration-0045__original",
+        "graph-calibration-0013__original",
+        "graph-calibration-0013__original"
+      ],
+      "update": 28
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0110",
+        "graph-calibration-0080",
+        "boolean-calibration-0047",
+        "arithmetic-calibration-0030"
+      ],
+      "record_ids": [
+        "graph-calibration-0110__original",
+        "graph-calibration-0110__original",
+        "graph-calibration-0080__original",
+        "graph-calibration-0080__original",
+        "boolean-calibration-0047__original",
+        "boolean-calibration-0047__original",
+        "arithmetic-calibration-0030__original",
+        "arithmetic-calibration-0030__original"
+      ],
+      "update": 29
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0092",
+        "arithmetic-calibration-0101",
+        "boolean-calibration-0014",
+        "boolean-calibration-0027"
+      ],
+      "record_ids": [
+        "graph-calibration-0092__original",
+        "graph-calibration-0092__original",
+        "arithmetic-calibration-0101__original",
+        "arithmetic-calibration-0101__original",
+        "boolean-calibration-0014__original",
+        "boolean-calibration-0014__original",
+        "boolean-calibration-0027__original",
+        "boolean-calibration-0027__original"
+      ],
+      "update": 30
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0076",
+        "boolean-calibration-0050",
+        "arithmetic-calibration-0089",
+        "boolean-calibration-0120"
+      ],
+      "record_ids": [
+        "graph-calibration-0076__original",
+        "graph-calibration-0076__original",
+        "boolean-calibration-0050__original",
+        "boolean-calibration-0050__original",
+        "arithmetic-calibration-0089__original",
+        "arithmetic-calibration-0089__original",
+        "boolean-calibration-0120__original",
+        "boolean-calibration-0120__original"
+      ],
+      "update": 31
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0061",
+        "graph-calibration-0089",
+        "graph-calibration-0065",
+        "graph-calibration-0005"
+      ],
+      "record_ids": [
+        "graph-calibration-0061__original",
+        "graph-calibration-0061__original",
+        "graph-calibration-0089__original",
+        "graph-calibration-0089__original",
+        "graph-calibration-0065__original",
+        "graph-calibration-0065__original",
+        "graph-calibration-0005__original",
+        "graph-calibration-0005__original"
+      ],
+      "update": 32
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0098",
+        "boolean-calibration-0076",
+        "arithmetic-calibration-0035",
+        "arithmetic-calibration-0127"
+      ],
+      "record_ids": [
+        "graph-calibration-0098__original",
+        "graph-calibration-0098__original",
+        "boolean-calibration-0076__original",
+        "boolean-calibration-0076__original",
+        "arithmetic-calibration-0035__original",
+        "arithmetic-calibration-0035__original",
+        "arithmetic-calibration-0127__original",
+        "arithmetic-calibration-0127__original"
+      ],
+      "update": 33
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0122",
+        "graph-calibration-0010",
+        "boolean-calibration-0117",
+        "arithmetic-calibration-0087"
+      ],
+      "record_ids": [
+        "graph-calibration-0122__original",
+        "graph-calibration-0122__original",
+        "graph-calibration-0010__original",
+        "graph-calibration-0010__original",
+        "boolean-calibration-0117__original",
+        "boolean-calibration-0117__original",
+        "arithmetic-calibration-0087__original",
+        "arithmetic-calibration-0087__original"
+      ],
+      "update": 34
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0016",
+        "graph-calibration-0068",
+        "arithmetic-calibration-0107",
+        "arithmetic-calibration-0118"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0016__original",
+        "arithmetic-calibration-0016__original",
+        "graph-calibration-0068__original",
+        "graph-calibration-0068__original",
+        "arithmetic-calibration-0107__original",
+        "arithmetic-calibration-0107__original",
+        "arithmetic-calibration-0118__original",
+        "arithmetic-calibration-0118__original"
+      ],
+      "update": 35
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0036",
+        "arithmetic-calibration-0043",
+        "graph-calibration-0074",
+        "boolean-calibration-0115"
+      ],
+      "record_ids": [
+        "boolean-calibration-0036__original",
+        "boolean-calibration-0036__original",
+        "arithmetic-calibration-0043__original",
+        "arithmetic-calibration-0043__original",
+        "graph-calibration-0074__original",
+        "graph-calibration-0074__original",
+        "boolean-calibration-0115__original",
+        "boolean-calibration-0115__original"
+      ],
+      "update": 36
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0085",
+        "arithmetic-calibration-0050",
+        "boolean-calibration-0126",
+        "arithmetic-calibration-0059"
+      ],
+      "record_ids": [
+        "boolean-calibration-0085__original",
+        "boolean-calibration-0085__original",
+        "arithmetic-calibration-0050__original",
+        "arithmetic-calibration-0050__original",
+        "boolean-calibration-0126__original",
+        "boolean-calibration-0126__original",
+        "arithmetic-calibration-0059__original",
+        "arithmetic-calibration-0059__original"
+      ],
+      "update": 37
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0022",
+        "boolean-calibration-0080",
+        "boolean-calibration-0112",
+        "graph-calibration-0112"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0022__original",
+        "arithmetic-calibration-0022__original",
+        "boolean-calibration-0080__original",
+        "boolean-calibration-0080__original",
+        "boolean-calibration-0112__original",
+        "boolean-calibration-0112__original",
+        "graph-calibration-0112__original",
+        "graph-calibration-0112__original"
+      ],
+      "update": 38
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0031",
+        "boolean-calibration-0056",
+        "graph-calibration-0020",
+        "graph-calibration-0023"
+      ],
+      "record_ids": [
+        "graph-calibration-0031__original",
+        "graph-calibration-0031__original",
+        "boolean-calibration-0056__original",
+        "boolean-calibration-0056__original",
+        "graph-calibration-0020__original",
+        "graph-calibration-0020__original",
+        "graph-calibration-0023__original",
+        "graph-calibration-0023__original"
+      ],
+      "update": 39
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0111",
+        "arithmetic-calibration-0109",
+        "boolean-calibration-0109",
+        "graph-calibration-0117"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0111__original",
+        "arithmetic-calibration-0111__original",
+        "arithmetic-calibration-0109__original",
+        "arithmetic-calibration-0109__original",
+        "boolean-calibration-0109__original",
+        "boolean-calibration-0109__original",
+        "graph-calibration-0117__original",
+        "graph-calibration-0117__original"
+      ],
+      "update": 40
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0124",
+        "graph-calibration-0079",
+        "graph-calibration-0041",
+        "boolean-calibration-0042"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0124__original",
+        "arithmetic-calibration-0124__original",
+        "graph-calibration-0079__original",
+        "graph-calibration-0079__original",
+        "graph-calibration-0041__original",
+        "graph-calibration-0041__original",
+        "boolean-calibration-0042__original",
+        "boolean-calibration-0042__original"
+      ],
+      "update": 41
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0044",
+        "arithmetic-calibration-0076",
+        "graph-calibration-0000",
+        "boolean-calibration-0017"
+      ],
+      "record_ids": [
+        "graph-calibration-0044__original",
+        "graph-calibration-0044__original",
+        "arithmetic-calibration-0076__original",
+        "arithmetic-calibration-0076__original",
+        "graph-calibration-0000__original",
+        "graph-calibration-0000__original",
+        "boolean-calibration-0017__original",
+        "boolean-calibration-0017__original"
+      ],
+      "update": 42
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0124",
+        "boolean-calibration-0068",
+        "graph-calibration-0071",
+        "arithmetic-calibration-0121"
+      ],
+      "record_ids": [
+        "graph-calibration-0124__original",
+        "graph-calibration-0124__original",
+        "boolean-calibration-0068__original",
+        "boolean-calibration-0068__original",
+        "graph-calibration-0071__original",
+        "graph-calibration-0071__original",
+        "arithmetic-calibration-0121__original",
+        "arithmetic-calibration-0121__original"
+      ],
+      "update": 43
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0053",
+        "arithmetic-calibration-0002",
+        "boolean-calibration-0119",
+        "arithmetic-calibration-0081"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0053__original",
+        "arithmetic-calibration-0053__original",
+        "arithmetic-calibration-0002__original",
+        "arithmetic-calibration-0002__original",
+        "boolean-calibration-0119__original",
+        "boolean-calibration-0119__original",
+        "arithmetic-calibration-0081__original",
+        "arithmetic-calibration-0081__original"
+      ],
+      "update": 44
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0115",
+        "arithmetic-calibration-0086",
+        "boolean-calibration-0052",
+        "arithmetic-calibration-0123"
+      ],
+      "record_ids": [
+        "graph-calibration-0115__original",
+        "graph-calibration-0115__original",
+        "arithmetic-calibration-0086__original",
+        "arithmetic-calibration-0086__original",
+        "boolean-calibration-0052__original",
+        "boolean-calibration-0052__original",
+        "arithmetic-calibration-0123__original",
+        "arithmetic-calibration-0123__original"
+      ],
+      "update": 45
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0018",
+        "boolean-calibration-0037",
+        "arithmetic-calibration-0069",
+        "graph-calibration-0036"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0018__original",
+        "arithmetic-calibration-0018__original",
+        "boolean-calibration-0037__original",
+        "boolean-calibration-0037__original",
+        "arithmetic-calibration-0069__original",
+        "arithmetic-calibration-0069__original",
+        "graph-calibration-0036__original",
+        "graph-calibration-0036__original"
+      ],
+      "update": 46
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0122",
+        "arithmetic-calibration-0068",
+        "arithmetic-calibration-0023",
+        "arithmetic-calibration-0011"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0122__original",
+        "arithmetic-calibration-0122__original",
+        "arithmetic-calibration-0068__original",
+        "arithmetic-calibration-0068__original",
+        "arithmetic-calibration-0023__original",
+        "arithmetic-calibration-0023__original",
+        "arithmetic-calibration-0011__original",
+        "arithmetic-calibration-0011__original"
+      ],
+      "update": 47
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0054",
+        "boolean-calibration-0083",
+        "arithmetic-calibration-0062",
+        "graph-calibration-0008"
+      ],
+      "record_ids": [
+        "graph-calibration-0054__original",
+        "graph-calibration-0054__original",
+        "boolean-calibration-0083__original",
+        "boolean-calibration-0083__original",
+        "arithmetic-calibration-0062__original",
+        "arithmetic-calibration-0062__original",
+        "graph-calibration-0008__original",
+        "graph-calibration-0008__original"
+      ],
+      "update": 48
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0038",
+        "boolean-calibration-0019",
+        "boolean-calibration-0010",
+        "arithmetic-calibration-0034"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0038__original",
+        "arithmetic-calibration-0038__original",
+        "boolean-calibration-0019__original",
+        "boolean-calibration-0019__original",
+        "boolean-calibration-0010__original",
+        "boolean-calibration-0010__original",
+        "arithmetic-calibration-0034__original",
+        "arithmetic-calibration-0034__original"
+      ],
+      "update": 49
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0059",
+        "arithmetic-calibration-0066",
+        "arithmetic-calibration-0080",
+        "graph-calibration-0081"
+      ],
+      "record_ids": [
+        "graph-calibration-0059__original",
+        "graph-calibration-0059__original",
+        "arithmetic-calibration-0066__original",
+        "arithmetic-calibration-0066__original",
+        "arithmetic-calibration-0080__original",
+        "arithmetic-calibration-0080__original",
+        "graph-calibration-0081__original",
+        "graph-calibration-0081__original"
+      ],
+      "update": 50
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0104",
+        "boolean-calibration-0121",
+        "graph-calibration-0017",
+        "arithmetic-calibration-0003"
+      ],
+      "record_ids": [
+        "graph-calibration-0104__original",
+        "graph-calibration-0104__original",
+        "boolean-calibration-0121__original",
+        "boolean-calibration-0121__original",
+        "graph-calibration-0017__original",
+        "graph-calibration-0017__original",
+        "arithmetic-calibration-0003__original",
+        "arithmetic-calibration-0003__original"
+      ],
+      "update": 51
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0090",
+        "arithmetic-calibration-0108",
+        "graph-calibration-0004",
+        "arithmetic-calibration-0051"
+      ],
+      "record_ids": [
+        "boolean-calibration-0090__original",
+        "boolean-calibration-0090__original",
+        "arithmetic-calibration-0108__original",
+        "arithmetic-calibration-0108__original",
+        "graph-calibration-0004__original",
+        "graph-calibration-0004__original",
+        "arithmetic-calibration-0051__original",
+        "arithmetic-calibration-0051__original"
+      ],
+      "update": 52
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0106",
+        "boolean-calibration-0031",
+        "boolean-calibration-0016",
+        "graph-calibration-0073"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0106__original",
+        "arithmetic-calibration-0106__original",
+        "boolean-calibration-0031__original",
+        "boolean-calibration-0031__original",
+        "boolean-calibration-0016__original",
+        "boolean-calibration-0016__original",
+        "graph-calibration-0073__original",
+        "graph-calibration-0073__original"
+      ],
+      "update": 53
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0035",
+        "boolean-calibration-0051",
+        "arithmetic-calibration-0027",
+        "graph-calibration-0032"
+      ],
+      "record_ids": [
+        "graph-calibration-0035__original",
+        "graph-calibration-0035__original",
+        "boolean-calibration-0051__original",
+        "boolean-calibration-0051__original",
+        "arithmetic-calibration-0027__original",
+        "arithmetic-calibration-0027__original",
+        "graph-calibration-0032__original",
+        "graph-calibration-0032__original"
+      ],
+      "update": 54
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0030",
+        "graph-calibration-0078",
+        "arithmetic-calibration-0100",
+        "boolean-calibration-0067"
+      ],
+      "record_ids": [
+        "graph-calibration-0030__original",
+        "graph-calibration-0030__original",
+        "graph-calibration-0078__original",
+        "graph-calibration-0078__original",
+        "arithmetic-calibration-0100__original",
+        "arithmetic-calibration-0100__original",
+        "boolean-calibration-0067__original",
+        "boolean-calibration-0067__original"
+      ],
+      "update": 55
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0114",
+        "arithmetic-calibration-0033",
+        "arithmetic-calibration-0056",
+        "arithmetic-calibration-0067"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0114__original",
+        "arithmetic-calibration-0114__original",
+        "arithmetic-calibration-0033__original",
+        "arithmetic-calibration-0033__original",
+        "arithmetic-calibration-0056__original",
+        "arithmetic-calibration-0056__original",
+        "arithmetic-calibration-0067__original",
+        "arithmetic-calibration-0067__original"
+      ],
+      "update": 56
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0088",
+        "boolean-calibration-0020",
+        "arithmetic-calibration-0028",
+        "boolean-calibration-0001"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0088__original",
+        "arithmetic-calibration-0088__original",
+        "boolean-calibration-0020__original",
+        "boolean-calibration-0020__original",
+        "arithmetic-calibration-0028__original",
+        "arithmetic-calibration-0028__original",
+        "boolean-calibration-0001__original",
+        "boolean-calibration-0001__original"
+      ],
+      "update": 57
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0110",
+        "boolean-calibration-0116",
+        "boolean-calibration-0099",
+        "boolean-calibration-0002"
+      ],
+      "record_ids": [
+        "boolean-calibration-0110__original",
+        "boolean-calibration-0110__original",
+        "boolean-calibration-0116__original",
+        "boolean-calibration-0116__original",
+        "boolean-calibration-0099__original",
+        "boolean-calibration-0099__original",
+        "boolean-calibration-0002__original",
+        "boolean-calibration-0002__original"
+      ],
+      "update": 58
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0088",
+        "boolean-calibration-0028",
+        "boolean-calibration-0092",
+        "graph-calibration-0091"
+      ],
+      "record_ids": [
+        "boolean-calibration-0088__original",
+        "boolean-calibration-0088__original",
+        "boolean-calibration-0028__original",
+        "boolean-calibration-0028__original",
+        "boolean-calibration-0092__original",
+        "boolean-calibration-0092__original",
+        "graph-calibration-0091__original",
+        "graph-calibration-0091__original"
+      ],
+      "update": 59
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0113",
+        "arithmetic-calibration-0006",
+        "arithmetic-calibration-0024",
+        "boolean-calibration-0118"
+      ],
+      "record_ids": [
+        "boolean-calibration-0113__original",
+        "boolean-calibration-0113__original",
+        "arithmetic-calibration-0006__original",
+        "arithmetic-calibration-0006__original",
+        "arithmetic-calibration-0024__original",
+        "arithmetic-calibration-0024__original",
+        "boolean-calibration-0118__original",
+        "boolean-calibration-0118__original"
+      ],
+      "update": 60
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0000",
+        "arithmetic-calibration-0117",
+        "arithmetic-calibration-0015",
+        "arithmetic-calibration-0057"
+      ],
+      "record_ids": [
+        "boolean-calibration-0000__original",
+        "boolean-calibration-0000__original",
+        "arithmetic-calibration-0117__original",
+        "arithmetic-calibration-0117__original",
+        "arithmetic-calibration-0015__original",
+        "arithmetic-calibration-0015__original",
+        "arithmetic-calibration-0057__original",
+        "arithmetic-calibration-0057__original"
+      ],
+      "update": 61
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0067",
+        "boolean-calibration-0082",
+        "arithmetic-calibration-0098",
+        "boolean-calibration-0122"
+      ],
+      "record_ids": [
+        "graph-calibration-0067__original",
+        "graph-calibration-0067__original",
+        "boolean-calibration-0082__original",
+        "boolean-calibration-0082__original",
+        "arithmetic-calibration-0098__original",
+        "arithmetic-calibration-0098__original",
+        "boolean-calibration-0122__original",
+        "boolean-calibration-0122__original"
+      ],
+      "update": 62
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0090",
+        "graph-calibration-0094",
+        "graph-calibration-0072",
+        "boolean-calibration-0048"
+      ],
+      "record_ids": [
+        "graph-calibration-0090__original",
+        "graph-calibration-0090__original",
+        "graph-calibration-0094__original",
+        "graph-calibration-0094__original",
+        "graph-calibration-0072__original",
+        "graph-calibration-0072__original",
+        "boolean-calibration-0048__original",
+        "boolean-calibration-0048__original"
+      ],
+      "update": 63
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0113",
+        "boolean-calibration-0025",
+        "arithmetic-calibration-0119",
+        "graph-calibration-0113"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0113__original",
+        "arithmetic-calibration-0113__original",
+        "boolean-calibration-0025__original",
+        "boolean-calibration-0025__original",
+        "arithmetic-calibration-0119__original",
+        "arithmetic-calibration-0119__original",
+        "graph-calibration-0113__original",
+        "graph-calibration-0113__original"
+      ],
+      "update": 64
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0096",
+        "arithmetic-calibration-0091",
+        "graph-calibration-0057",
+        "arithmetic-calibration-0026"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0096__original",
+        "arithmetic-calibration-0096__original",
+        "arithmetic-calibration-0091__original",
+        "arithmetic-calibration-0091__original",
+        "graph-calibration-0057__original",
+        "graph-calibration-0057__original",
+        "arithmetic-calibration-0026__original",
+        "arithmetic-calibration-0026__original"
+      ],
+      "update": 65
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0049",
+        "boolean-calibration-0075",
+        "boolean-calibration-0039",
+        "boolean-calibration-0081"
+      ],
+      "record_ids": [
+        "boolean-calibration-0049__original",
+        "boolean-calibration-0049__original",
+        "boolean-calibration-0075__original",
+        "boolean-calibration-0075__original",
+        "boolean-calibration-0039__original",
+        "boolean-calibration-0039__original",
+        "boolean-calibration-0081__original",
+        "boolean-calibration-0081__original"
+      ],
+      "update": 66
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0005",
+        "boolean-calibration-0078",
+        "arithmetic-calibration-0099",
+        "boolean-calibration-0079"
+      ],
+      "record_ids": [
+        "boolean-calibration-0005__original",
+        "boolean-calibration-0005__original",
+        "boolean-calibration-0078__original",
+        "boolean-calibration-0078__original",
+        "arithmetic-calibration-0099__original",
+        "arithmetic-calibration-0099__original",
+        "boolean-calibration-0079__original",
+        "boolean-calibration-0079__original"
+      ],
+      "update": 67
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0105",
+        "arithmetic-calibration-0047",
+        "arithmetic-calibration-0017",
+        "graph-calibration-0042"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0105__original",
+        "arithmetic-calibration-0105__original",
+        "arithmetic-calibration-0047__original",
+        "arithmetic-calibration-0047__original",
+        "arithmetic-calibration-0017__original",
+        "arithmetic-calibration-0017__original",
+        "graph-calibration-0042__original",
+        "graph-calibration-0042__original"
+      ],
+      "update": 68
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0069",
+        "boolean-calibration-0046",
+        "boolean-calibration-0105",
+        "boolean-calibration-0004"
+      ],
+      "record_ids": [
+        "boolean-calibration-0069__original",
+        "boolean-calibration-0069__original",
+        "boolean-calibration-0046__original",
+        "boolean-calibration-0046__original",
+        "boolean-calibration-0105__original",
+        "boolean-calibration-0105__original",
+        "boolean-calibration-0004__original",
+        "boolean-calibration-0004__original"
+      ],
+      "update": 69
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0116",
+        "graph-calibration-0016",
+        "arithmetic-calibration-0060",
+        "boolean-calibration-0044"
+      ],
+      "record_ids": [
+        "graph-calibration-0116__original",
+        "graph-calibration-0116__original",
+        "graph-calibration-0016__original",
+        "graph-calibration-0016__original",
+        "arithmetic-calibration-0060__original",
+        "arithmetic-calibration-0060__original",
+        "boolean-calibration-0044__original",
+        "boolean-calibration-0044__original"
+      ],
+      "update": 70
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0008",
+        "graph-calibration-0064",
+        "graph-calibration-0102",
+        "graph-calibration-0103"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0008__original",
+        "arithmetic-calibration-0008__original",
+        "graph-calibration-0064__original",
+        "graph-calibration-0064__original",
+        "graph-calibration-0102__original",
+        "graph-calibration-0102__original",
+        "graph-calibration-0103__original",
+        "graph-calibration-0103__original"
+      ],
+      "update": 71
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0001",
+        "arithmetic-calibration-0075",
+        "graph-calibration-0127",
+        "boolean-calibration-0098"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0001__original",
+        "arithmetic-calibration-0001__original",
+        "arithmetic-calibration-0075__original",
+        "arithmetic-calibration-0075__original",
+        "graph-calibration-0127__original",
+        "graph-calibration-0127__original",
+        "boolean-calibration-0098__original",
+        "boolean-calibration-0098__original"
+      ],
+      "update": 72
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0089",
+        "graph-calibration-0018",
+        "arithmetic-calibration-0055",
+        "boolean-calibration-0029"
+      ],
+      "record_ids": [
+        "boolean-calibration-0089__original",
+        "boolean-calibration-0089__original",
+        "graph-calibration-0018__original",
+        "graph-calibration-0018__original",
+        "arithmetic-calibration-0055__original",
+        "arithmetic-calibration-0055__original",
+        "boolean-calibration-0029__original",
+        "boolean-calibration-0029__original"
+      ],
+      "update": 73
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0037",
+        "graph-calibration-0125",
+        "arithmetic-calibration-0044",
+        "graph-calibration-0095"
+      ],
+      "record_ids": [
+        "graph-calibration-0037__original",
+        "graph-calibration-0037__original",
+        "graph-calibration-0125__original",
+        "graph-calibration-0125__original",
+        "arithmetic-calibration-0044__original",
+        "arithmetic-calibration-0044__original",
+        "graph-calibration-0095__original",
+        "graph-calibration-0095__original"
+      ],
+      "update": 74
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0055",
+        "arithmetic-calibration-0042",
+        "boolean-calibration-0084",
+        "boolean-calibration-0114"
+      ],
+      "record_ids": [
+        "boolean-calibration-0055__original",
+        "boolean-calibration-0055__original",
+        "arithmetic-calibration-0042__original",
+        "arithmetic-calibration-0042__original",
+        "boolean-calibration-0084__original",
+        "boolean-calibration-0084__original",
+        "boolean-calibration-0114__original",
+        "boolean-calibration-0114__original"
+      ],
+      "update": 75
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0021",
+        "graph-calibration-0107",
+        "boolean-calibration-0057",
+        "graph-calibration-0096"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0021__original",
+        "arithmetic-calibration-0021__original",
+        "graph-calibration-0107__original",
+        "graph-calibration-0107__original",
+        "boolean-calibration-0057__original",
+        "boolean-calibration-0057__original",
+        "graph-calibration-0096__original",
+        "graph-calibration-0096__original"
+      ],
+      "update": 76
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0024",
+        "arithmetic-calibration-0058",
+        "graph-calibration-0026",
+        "arithmetic-calibration-0036"
+      ],
+      "record_ids": [
+        "boolean-calibration-0024__original",
+        "boolean-calibration-0024__original",
+        "arithmetic-calibration-0058__original",
+        "arithmetic-calibration-0058__original",
+        "graph-calibration-0026__original",
+        "graph-calibration-0026__original",
+        "arithmetic-calibration-0036__original",
+        "arithmetic-calibration-0036__original"
+      ],
+      "update": 77
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0053",
+        "graph-calibration-0083",
+        "boolean-calibration-0060",
+        "boolean-calibration-0009"
+      ],
+      "record_ids": [
+        "graph-calibration-0053__original",
+        "graph-calibration-0053__original",
+        "graph-calibration-0083__original",
+        "graph-calibration-0083__original",
+        "boolean-calibration-0060__original",
+        "boolean-calibration-0060__original",
+        "boolean-calibration-0009__original",
+        "boolean-calibration-0009__original"
+      ],
+      "update": 78
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0046",
+        "graph-calibration-0086",
+        "boolean-calibration-0035",
+        "arithmetic-calibration-0041"
+      ],
+      "record_ids": [
+        "graph-calibration-0046__original",
+        "graph-calibration-0046__original",
+        "graph-calibration-0086__original",
+        "graph-calibration-0086__original",
+        "boolean-calibration-0035__original",
+        "boolean-calibration-0035__original",
+        "arithmetic-calibration-0041__original",
+        "arithmetic-calibration-0041__original"
+      ],
+      "update": 79
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0064",
+        "arithmetic-calibration-0085",
+        "boolean-calibration-0096",
+        "graph-calibration-0014"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0064__original",
+        "arithmetic-calibration-0064__original",
+        "arithmetic-calibration-0085__original",
+        "arithmetic-calibration-0085__original",
+        "boolean-calibration-0096__original",
+        "boolean-calibration-0096__original",
+        "graph-calibration-0014__original",
+        "graph-calibration-0014__original"
+      ],
+      "update": 80
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0069",
+        "boolean-calibration-0041",
+        "boolean-calibration-0106",
+        "graph-calibration-0062"
+      ],
+      "record_ids": [
+        "graph-calibration-0069__original",
+        "graph-calibration-0069__original",
+        "boolean-calibration-0041__original",
+        "boolean-calibration-0041__original",
+        "boolean-calibration-0106__original",
+        "boolean-calibration-0106__original",
+        "graph-calibration-0062__original",
+        "graph-calibration-0062__original"
+      ],
+      "update": 81
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0048",
+        "graph-calibration-0082",
+        "graph-calibration-0043",
+        "arithmetic-calibration-0052"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0048__original",
+        "arithmetic-calibration-0048__original",
+        "graph-calibration-0082__original",
+        "graph-calibration-0082__original",
+        "graph-calibration-0043__original",
+        "graph-calibration-0043__original",
+        "arithmetic-calibration-0052__original",
+        "arithmetic-calibration-0052__original"
+      ],
+      "update": 82
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0109",
+        "graph-calibration-0011",
+        "arithmetic-calibration-0039",
+        "boolean-calibration-0012"
+      ],
+      "record_ids": [
+        "graph-calibration-0109__original",
+        "graph-calibration-0109__original",
+        "graph-calibration-0011__original",
+        "graph-calibration-0011__original",
+        "arithmetic-calibration-0039__original",
+        "arithmetic-calibration-0039__original",
+        "boolean-calibration-0012__original",
+        "boolean-calibration-0012__original"
+      ],
+      "update": 83
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0023",
+        "arithmetic-calibration-0084",
+        "graph-calibration-0084",
+        "arithmetic-calibration-0095"
+      ],
+      "record_ids": [
+        "boolean-calibration-0023__original",
+        "boolean-calibration-0023__original",
+        "arithmetic-calibration-0084__original",
+        "arithmetic-calibration-0084__original",
+        "graph-calibration-0084__original",
+        "graph-calibration-0084__original",
+        "arithmetic-calibration-0095__original",
+        "arithmetic-calibration-0095__original"
+      ],
+      "update": 84
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0031",
+        "graph-calibration-0040",
+        "arithmetic-calibration-0025",
+        "arithmetic-calibration-0032"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0031__original",
+        "arithmetic-calibration-0031__original",
+        "graph-calibration-0040__original",
+        "graph-calibration-0040__original",
+        "arithmetic-calibration-0025__original",
+        "arithmetic-calibration-0025__original",
+        "arithmetic-calibration-0032__original",
+        "arithmetic-calibration-0032__original"
+      ],
+      "update": 85
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0120",
+        "arithmetic-calibration-0093",
+        "graph-calibration-0038",
+        "boolean-calibration-0011"
+      ],
+      "record_ids": [
+        "graph-calibration-0120__original",
+        "graph-calibration-0120__original",
+        "arithmetic-calibration-0093__original",
+        "arithmetic-calibration-0093__original",
+        "graph-calibration-0038__original",
+        "graph-calibration-0038__original",
+        "boolean-calibration-0011__original",
+        "boolean-calibration-0011__original"
+      ],
+      "update": 86
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0003",
+        "graph-calibration-0049",
+        "boolean-calibration-0070",
+        "arithmetic-calibration-0065"
+      ],
+      "record_ids": [
+        "graph-calibration-0003__original",
+        "graph-calibration-0003__original",
+        "graph-calibration-0049__original",
+        "graph-calibration-0049__original",
+        "boolean-calibration-0070__original",
+        "boolean-calibration-0070__original",
+        "arithmetic-calibration-0065__original",
+        "arithmetic-calibration-0065__original"
+      ],
+      "update": 87
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0125",
+        "graph-calibration-0006",
+        "arithmetic-calibration-0082",
+        "graph-calibration-0119"
+      ],
+      "record_ids": [
+        "boolean-calibration-0125__original",
+        "boolean-calibration-0125__original",
+        "graph-calibration-0006__original",
+        "graph-calibration-0006__original",
+        "arithmetic-calibration-0082__original",
+        "arithmetic-calibration-0082__original",
+        "graph-calibration-0119__original",
+        "graph-calibration-0119__original"
+      ],
+      "update": 88
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0078",
+        "boolean-calibration-0064",
+        "arithmetic-calibration-0063",
+        "arithmetic-calibration-0054"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0078__original",
+        "arithmetic-calibration-0078__original",
+        "boolean-calibration-0064__original",
+        "boolean-calibration-0064__original",
+        "arithmetic-calibration-0063__original",
+        "arithmetic-calibration-0063__original",
+        "arithmetic-calibration-0054__original",
+        "arithmetic-calibration-0054__original"
+      ],
+      "update": 89
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0029",
+        "arithmetic-calibration-0090",
+        "boolean-calibration-0073",
+        "boolean-calibration-0094"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0029__original",
+        "arithmetic-calibration-0029__original",
+        "arithmetic-calibration-0090__original",
+        "arithmetic-calibration-0090__original",
+        "boolean-calibration-0073__original",
+        "boolean-calibration-0073__original",
+        "boolean-calibration-0094__original",
+        "boolean-calibration-0094__original"
+      ],
+      "update": 90
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0024",
+        "graph-calibration-0063",
+        "boolean-calibration-0062",
+        "graph-calibration-0039"
+      ],
+      "record_ids": [
+        "graph-calibration-0024__original",
+        "graph-calibration-0024__original",
+        "graph-calibration-0063__original",
+        "graph-calibration-0063__original",
+        "boolean-calibration-0062__original",
+        "boolean-calibration-0062__original",
+        "graph-calibration-0039__original",
+        "graph-calibration-0039__original"
+      ],
+      "update": 91
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0093",
+        "graph-calibration-0007",
+        "arithmetic-calibration-0009",
+        "graph-calibration-0055"
+      ],
+      "record_ids": [
+        "boolean-calibration-0093__original",
+        "boolean-calibration-0093__original",
+        "graph-calibration-0007__original",
+        "graph-calibration-0007__original",
+        "arithmetic-calibration-0009__original",
+        "arithmetic-calibration-0009__original",
+        "graph-calibration-0055__original",
+        "graph-calibration-0055__original"
+      ],
+      "update": 92
+    },
+    {
+      "base_ids": [
+        "boolean-calibration-0127",
+        "graph-calibration-0050",
+        "boolean-calibration-0104",
+        "arithmetic-calibration-0049"
+      ],
+      "record_ids": [
+        "boolean-calibration-0127__original",
+        "boolean-calibration-0127__original",
+        "graph-calibration-0050__original",
+        "graph-calibration-0050__original",
+        "boolean-calibration-0104__original",
+        "boolean-calibration-0104__original",
+        "arithmetic-calibration-0049__original",
+        "arithmetic-calibration-0049__original"
+      ],
+      "update": 93
+    },
+    {
+      "base_ids": [
+        "graph-calibration-0101",
+        "graph-calibration-0087",
+        "boolean-calibration-0061",
+        "boolean-calibration-0108"
+      ],
+      "record_ids": [
+        "graph-calibration-0101__original",
+        "graph-calibration-0101__original",
+        "graph-calibration-0087__original",
+        "graph-calibration-0087__original",
+        "boolean-calibration-0061__original",
+        "boolean-calibration-0061__original",
+        "boolean-calibration-0108__original",
+        "boolean-calibration-0108__original"
+      ],
+      "update": 94
+    },
+    {
+      "base_ids": [
+        "arithmetic-calibration-0073",
+        "graph-calibration-0100",
+        "boolean-calibration-0018",
+        "arithmetic-calibration-0019"
+      ],
+      "record_ids": [
+        "arithmetic-calibration-0073__original",
+        "arithmetic-calibration-0073__original",
+        "graph-calibration-0100__original",
+        "graph-calibration-0100__original",
+        "boolean-calibration-0018__original",
+        "boolean-calibration-0018__original",
+        "arithmetic-calibration-0019__original",
+        "arithmetic-calibration-0019__original"
+      ],
+      "update": 95
+    }
+  ],
+  "config": {
+    "analysis": {
+      "bootstrap_samples": 1000,
+      "seed": 4108
+    },
+    "calibration": {
+      "bases_per_batch": 4,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "bits": 4,
+      "cpu_threads": 6,
+      "fit_seeds": [
+        17,
+        29,
+        43
+      ],
+      "gradient_checkpointing": true,
+      "gradient_clip_norm": 1.0,
+      "group_size": 128,
+      "lambda_candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "learning_rate": 0.001,
+      "prompts_per_batch": 8,
+      "split": "calibration",
+      "temperature": 1.0,
+      "total_updates": 96,
+      "weight_decay": 0.0
+    },
+    "data": {
+      "families": [
+        "arithmetic",
+        "boolean",
+        "graph"
+      ],
+      "splits": {
+        "calibration": {
+          "count": 128,
+          "seed": 1108
+        },
+        "development": {
+          "count": 128,
+          "seed": 2108
+        },
+        "final": {
+          "count": 256,
+          "seed": 4108
+        },
+        "pilot": {
+          "count": 64,
+          "seed": 3108
+        },
+        "structural_holdout": {
+          "count": 128,
+          "seed": 5108
+        }
+      }
+    },
+    "generation": {
+      "max_new_tokens": 8,
+      "subset_size": 0
+    },
+    "model": {
+      "dtype": "bfloat16",
+      "id": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+      "revision": "31b70e2e869a7173562077fd711b654946d38674"
+    },
+    "quantization": {
+      "bits": [
+        8,
+        4,
+        3
+      ],
+      "group_size": 128
+    },
+    "scoring": {
+      "batch_size": 8,
+      "cpu_threads": 6,
+      "max_seq_len": 1024,
+      "option_labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  },
+  "elapsed_seconds": 43.81913505902048,
+  "error": null,
+  "fit_seed": 43,
+  "hardware": {
+    "device": "cuda",
+    "device_name": "AMD Radeon RX 9070 XT",
+    "total_memory_bytes": 17095983104
+  },
+  "lambda": null,
+  "model": {
+    "dtype": "bfloat16",
+    "id": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "resolved_commit_hash": "31b70e2e869a7173562077fd711b654946d38674",
+    "revision": "31b70e2e869a7173562077fd711b654946d38674"
+  },
+  "objective": "original_kd",
+  "optimization": {
+    "bases_per_batch": 4,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "dropout": 0.0,
+    "epochs": 1,
+    "gradient_checkpointing": true,
+    "gradient_checkpointing_reentrant": false,
+    "gradient_clip_norm": 1.0,
+    "initialization": "delta=0; effective scale = fixed FP32 RTN scale * exp(delta)",
+    "learning_rate": 0.001,
+    "optimizer": "AdamW",
+    "prompts_per_batch": 8,
+    "rtn_scales_dtype": "float32",
+    "scale_delta_initialized_zero": true,
+    "temperature": 1.0,
+    "total_updates": 96,
+    "weight_decay": 0.0
+  },
+  "optimization_elapsed_seconds": 41.724210082087666,
+  "peak_memory_bytes": 2992747008,
+  "pinned_code_counts": {
+    "codes": 1610612736,
+    "scales": 12582912,
+    "zero_groups": 0
+  },
+  "quantization": {
+    "biases_embeddings_head_frozen": true,
+    "bits": 4,
+    "codes_frozen": true,
+    "forward_weight_dtype": "bfloat16",
+    "group_size": 128,
+    "method": "frozen_symmetric_signed_rtn_codes",
+    "trainable": "per-output-row/per-input-group relative log scale deltas; effective scale = fixed FP32 RTN scale * exp(delta)",
+    "zero_groups_remain_zero": true
+  },
+  "records": {
+    "bases": 384,
+    "path": "/home/tetsuya/dev/equivariant-quantization/local/study/smol/data/calibration/records.jsonl",
+    "prompts": 768
+  },
+  "software": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+    "processor": "",
+    "python": "3.12.15",
+    "torch": "2.12.0+rocm7.14.0",
+    "transformers": "4.57.1"
+  },
+  "state": "completed",
+  "steps": [
+    {
+      "gradient_norm": 4.269632339477539,
+      "kd_loss": 0.5746924877166748,
+      "nonpadding_tokens": 896,
+      "padded_tokens": 1088,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.5746924877166748,
+      "update": 0
+    },
+    {
+      "gradient_norm": 0.8878852725028992,
+      "kd_loss": 0.3130522668361664,
+      "nonpadding_tokens": 842,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.3130522668361664,
+      "update": 1
+    },
+    {
+      "gradient_norm": 0.7052609324455261,
+      "kd_loss": 0.24450457096099854,
+      "nonpadding_tokens": 804,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.24450457096099854,
+      "update": 2
+    },
+    {
+      "gradient_norm": 0.41565605998039246,
+      "kd_loss": 0.12482814490795135,
+      "nonpadding_tokens": 944,
+      "padded_tokens": 1192,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.12482814490795135,
+      "update": 3
+    },
+    {
+      "gradient_norm": 0.3774830102920532,
+      "kd_loss": 0.10797508805990219,
+      "nonpadding_tokens": 836,
+      "padded_tokens": 1232,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.10797508805990219,
+      "update": 4
+    },
+    {
+      "gradient_norm": 0.27609625458717346,
+      "kd_loss": 0.08176098763942719,
+      "nonpadding_tokens": 852,
+      "padded_tokens": 1192,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.08176098763942719,
+      "update": 5
+    },
+    {
+      "gradient_norm": 0.5296541452407837,
+      "kd_loss": 0.0859389379620552,
+      "nonpadding_tokens": 826,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.0859389379620552,
+      "update": 6
+    },
+    {
+      "gradient_norm": 0.5376439690589905,
+      "kd_loss": 0.08407376706600189,
+      "nonpadding_tokens": 1016,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.08407376706600189,
+      "update": 7
+    },
+    {
+      "gradient_norm": 1.109689474105835,
+      "kd_loss": 0.1581631302833557,
+      "nonpadding_tokens": 698,
+      "padded_tokens": 760,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.1581631302833557,
+      "update": 8
+    },
+    {
+      "gradient_norm": 0.36853113770484924,
+      "kd_loss": 0.04932191222906113,
+      "nonpadding_tokens": 878,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04932191222906113,
+      "update": 9
+    },
+    {
+      "gradient_norm": 0.5851929783821106,
+      "kd_loss": 0.07976820319890976,
+      "nonpadding_tokens": 786,
+      "padded_tokens": 1040,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.07976820319890976,
+      "update": 10
+    },
+    {
+      "gradient_norm": 0.8475115895271301,
+      "kd_loss": 0.1265951693058014,
+      "nonpadding_tokens": 930,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.1265951693058014,
+      "update": 11
+    },
+    {
+      "gradient_norm": 0.44615438580513,
+      "kd_loss": 0.05839842930436134,
+      "nonpadding_tokens": 1058,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.05839842930436134,
+      "update": 12
+    },
+    {
+      "gradient_norm": 0.22259120643138885,
+      "kd_loss": 0.05695146694779396,
+      "nonpadding_tokens": 804,
+      "padded_tokens": 1072,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.05695146694779396,
+      "update": 13
+    },
+    {
+      "gradient_norm": 0.22274981439113617,
+      "kd_loss": 0.0359366238117218,
+      "nonpadding_tokens": 874,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.0359366238117218,
+      "update": 14
+    },
+    {
+      "gradient_norm": 0.6554493308067322,
+      "kd_loss": 0.1182543933391571,
+      "nonpadding_tokens": 850,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.1182543933391571,
+      "update": 15
+    },
+    {
+      "gradient_norm": 0.4748876988887787,
+      "kd_loss": 0.0822281613945961,
+      "nonpadding_tokens": 944,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.0822281613945961,
+      "update": 16
+    },
+    {
+      "gradient_norm": 0.36085978150367737,
+      "kd_loss": 0.06360805779695511,
+      "nonpadding_tokens": 1058,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.06360805779695511,
+      "update": 17
+    },
+    {
+      "gradient_norm": 0.2705167531967163,
+      "kd_loss": 0.05155955255031586,
+      "nonpadding_tokens": 866,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.05155955255031586,
+      "update": 18
+    },
+    {
+      "gradient_norm": 0.29000911116600037,
+      "kd_loss": 0.03740505874156952,
+      "nonpadding_tokens": 1058,
+      "padded_tokens": 1224,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.03740505874156952,
+      "update": 19
+    },
+    {
+      "gradient_norm": 0.37682783603668213,
+      "kd_loss": 0.07320278137922287,
+      "nonpadding_tokens": 906,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.07320278137922287,
+      "update": 20
+    },
+    {
+      "gradient_norm": 0.5470551252365112,
+      "kd_loss": 0.10617834329605103,
+      "nonpadding_tokens": 782,
+      "padded_tokens": 856,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.10617834329605103,
+      "update": 21
+    },
+    {
+      "gradient_norm": 0.3910444378852844,
+      "kd_loss": 0.07907351106405258,
+      "nonpadding_tokens": 928,
+      "padded_tokens": 1232,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.07907351106405258,
+      "update": 22
+    },
+    {
+      "gradient_norm": 0.11152021586894989,
+      "kd_loss": 0.026599548757076263,
+      "nonpadding_tokens": 904,
+      "padded_tokens": 1072,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.026599548757076263,
+      "update": 23
+    },
+    {
+      "gradient_norm": 0.24313783645629883,
+      "kd_loss": 0.03851001709699631,
+      "nonpadding_tokens": 1004,
+      "padded_tokens": 1232,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.03851001709699631,
+      "update": 24
+    },
+    {
+      "gradient_norm": 0.12830889225006104,
+      "kd_loss": 0.029687602072954178,
+      "nonpadding_tokens": 826,
+      "padded_tokens": 976,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.029687602072954178,
+      "update": 25
+    },
+    {
+      "gradient_norm": 0.3149544894695282,
+      "kd_loss": 0.05733378604054451,
+      "nonpadding_tokens": 932,
+      "padded_tokens": 1072,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.05733378604054451,
+      "update": 26
+    },
+    {
+      "gradient_norm": 0.3437477648258209,
+      "kd_loss": 0.06221349909901619,
+      "nonpadding_tokens": 750,
+      "padded_tokens": 816,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.06221349909901619,
+      "update": 27
+    },
+    {
+      "gradient_norm": 0.36374035477638245,
+      "kd_loss": 0.07231847941875458,
+      "nonpadding_tokens": 1002,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.07231847941875458,
+      "update": 28
+    },
+    {
+      "gradient_norm": 0.19935858249664307,
+      "kd_loss": 0.0366327166557312,
+      "nonpadding_tokens": 854,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.0366327166557312,
+      "update": 29
+    },
+    {
+      "gradient_norm": 0.31634917855262756,
+      "kd_loss": 0.06034877523779869,
+      "nonpadding_tokens": 950,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.06034877523779869,
+      "update": 30
+    },
+    {
+      "gradient_norm": 0.22738082706928253,
+      "kd_loss": 0.02943282574415207,
+      "nonpadding_tokens": 982,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.02943282574415207,
+      "update": 31
+    },
+    {
+      "gradient_norm": 0.36123421788215637,
+      "kd_loss": 0.04943282902240753,
+      "nonpadding_tokens": 804,
+      "padded_tokens": 824,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04943282902240753,
+      "update": 32
+    },
+    {
+      "gradient_norm": 0.3113185167312622,
+      "kd_loss": 0.07805927097797394,
+      "nonpadding_tokens": 852,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.07805927097797394,
+      "update": 33
+    },
+    {
+      "gradient_norm": 0.1347331553697586,
+      "kd_loss": 0.03263409435749054,
+      "nonpadding_tokens": 846,
+      "padded_tokens": 1088,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.03263409435749054,
+      "update": 34
+    },
+    {
+      "gradient_norm": 0.1885436773300171,
+      "kd_loss": 0.04693194478750229,
+      "nonpadding_tokens": 710,
+      "padded_tokens": 784,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04693194478750229,
+      "update": 35
+    },
+    {
+      "gradient_norm": 0.19199931621551514,
+      "kd_loss": 0.0349588543176651,
+      "nonpadding_tokens": 974,
+      "padded_tokens": 1232,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.0349588543176651,
+      "update": 36
+    },
+    {
+      "gradient_norm": 0.15463204681873322,
+      "kd_loss": 0.027292370796203613,
+      "nonpadding_tokens": 946,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.027292370796203613,
+      "update": 37
+    },
+    {
+      "gradient_norm": 0.1951175481081009,
+      "kd_loss": 0.054448604583740234,
+      "nonpadding_tokens": 936,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.054448604583740234,
+      "update": 38
+    },
+    {
+      "gradient_norm": 0.20444618165493011,
+      "kd_loss": 0.054669152945280075,
+      "nonpadding_tokens": 898,
+      "padded_tokens": 1064,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.054669152945280075,
+      "update": 39
+    },
+    {
+      "gradient_norm": 0.35009434819221497,
+      "kd_loss": 0.04330001771450043,
+      "nonpadding_tokens": 836,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04330001771450043,
+      "update": 40
+    },
+    {
+      "gradient_norm": 0.18764512240886688,
+      "kd_loss": 0.03330189362168312,
+      "nonpadding_tokens": 850,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.03330189362168312,
+      "update": 41
+    },
+    {
+      "gradient_norm": 0.2298087328672409,
+      "kd_loss": 0.055324286222457886,
+      "nonpadding_tokens": 886,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.055324286222457886,
+      "update": 42
+    },
+    {
+      "gradient_norm": 0.3277958631515503,
+      "kd_loss": 0.1026739627122879,
+      "nonpadding_tokens": 858,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.1026739627122879,
+      "update": 43
+    },
+    {
+      "gradient_norm": 0.512870728969574,
+      "kd_loss": 0.07981904596090317,
+      "nonpadding_tokens": 766,
+      "padded_tokens": 1088,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.07981904596090317,
+      "update": 44
+    },
+    {
+      "gradient_norm": 0.2004908323287964,
+      "kd_loss": 0.033637940883636475,
+      "nonpadding_tokens": 828,
+      "padded_tokens": 1064,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.033637940883636475,
+      "update": 45
+    },
+    {
+      "gradient_norm": 0.2717593014240265,
+      "kd_loss": 0.041181959211826324,
+      "nonpadding_tokens": 830,
+      "padded_tokens": 1064,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.041181959211826324,
+      "update": 46
+    },
+    {
+      "gradient_norm": 0.25572365522384644,
+      "kd_loss": 0.03522954881191254,
+      "nonpadding_tokens": 696,
+      "padded_tokens": 712,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.03522954881191254,
+      "update": 47
+    },
+    {
+      "gradient_norm": 0.2168622463941574,
+      "kd_loss": 0.029970703646540642,
+      "nonpadding_tokens": 860,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.029970703646540642,
+      "update": 48
+    },
+    {
+      "gradient_norm": 0.15544335544109344,
+      "kd_loss": 0.03037036582827568,
+      "nonpadding_tokens": 912,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.03037036582827568,
+      "update": 49
+    },
+    {
+      "gradient_norm": 0.27025896310806274,
+      "kd_loss": 0.05214306712150574,
+      "nonpadding_tokens": 772,
+      "padded_tokens": 944,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.05214306712150574,
+      "update": 50
+    },
+    {
+      "gradient_norm": 0.2668975293636322,
+      "kd_loss": 0.04403728246688843,
+      "nonpadding_tokens": 848,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04403728246688843,
+      "update": 51
+    },
+    {
+      "gradient_norm": 0.23012682795524597,
+      "kd_loss": 0.032545074820518494,
+      "nonpadding_tokens": 796,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.032545074820518494,
+      "update": 52
+    },
+    {
+      "gradient_norm": 0.19326752424240112,
+      "kd_loss": 0.03465519845485687,
+      "nonpadding_tokens": 968,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.03465519845485687,
+      "update": 53
+    },
+    {
+      "gradient_norm": 0.31579703092575073,
+      "kd_loss": 0.0584021657705307,
+      "nonpadding_tokens": 820,
+      "padded_tokens": 1072,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.0584021657705307,
+      "update": 54
+    },
+    {
+      "gradient_norm": 0.12543068826198578,
+      "kd_loss": 0.013899756595492363,
+      "nonpadding_tokens": 890,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.013899756595492363,
+      "update": 55
+    },
+    {
+      "gradient_norm": 0.5543685555458069,
+      "kd_loss": 0.10294835269451141,
+      "nonpadding_tokens": 702,
+      "padded_tokens": 728,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.10294835269451141,
+      "update": 56
+    },
+    {
+      "gradient_norm": 0.18188095092773438,
+      "kd_loss": 0.04067786782979965,
+      "nonpadding_tokens": 900,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04067786782979965,
+      "update": 57
+    },
+    {
+      "gradient_norm": 0.1588384211063385,
+      "kd_loss": 0.017320478335022926,
+      "nonpadding_tokens": 1114,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.017320478335022926,
+      "update": 58
+    },
+    {
+      "gradient_norm": 0.2359643578529358,
+      "kd_loss": 0.03420589119195938,
+      "nonpadding_tokens": 998,
+      "padded_tokens": 1088,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.03420589119195938,
+      "update": 59
+    },
+    {
+      "gradient_norm": 0.15255117416381836,
+      "kd_loss": 0.02333971858024597,
+      "nonpadding_tokens": 932,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.02333971858024597,
+      "update": 60
+    },
+    {
+      "gradient_norm": 0.2790110409259796,
+      "kd_loss": 0.06876388192176819,
+      "nonpadding_tokens": 796,
+      "padded_tokens": 1192,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.06876388192176819,
+      "update": 61
+    },
+    {
+      "gradient_norm": 0.18030379712581635,
+      "kd_loss": 0.029442360624670982,
+      "nonpadding_tokens": 962,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.029442360624670982,
+      "update": 62
+    },
+    {
+      "gradient_norm": 0.10629653185606003,
+      "kd_loss": 0.02590862289071083,
+      "nonpadding_tokens": 876,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.02590862289071083,
+      "update": 63
+    },
+    {
+      "gradient_norm": 0.09543054550886154,
+      "kd_loss": 0.01998172700405121,
+      "nonpadding_tokens": 848,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.01998172700405121,
+      "update": 64
+    },
+    {
+      "gradient_norm": 0.20081381499767303,
+      "kd_loss": 0.0226018987596035,
+      "nonpadding_tokens": 710,
+      "padded_tokens": 784,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.0226018987596035,
+      "update": 65
+    },
+    {
+      "gradient_norm": 0.22769604623317719,
+      "kd_loss": 0.031489018350839615,
+      "nonpadding_tokens": 1168,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.031489018350839615,
+      "update": 66
+    },
+    {
+      "gradient_norm": 0.2941805422306061,
+      "kd_loss": 0.04201050475239754,
+      "nonpadding_tokens": 1006,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04201050475239754,
+      "update": 67
+    },
+    {
+      "gradient_norm": 0.1255812793970108,
+      "kd_loss": 0.0253460630774498,
+      "nonpadding_tokens": 724,
+      "padded_tokens": 856,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.0253460630774498,
+      "update": 68
+    },
+    {
+      "gradient_norm": 0.13396909832954407,
+      "kd_loss": 0.014609776437282562,
+      "nonpadding_tokens": 1186,
+      "padded_tokens": 1232,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.014609776437282562,
+      "update": 69
+    },
+    {
+      "gradient_norm": 0.10524143278598785,
+      "kd_loss": 0.027132000774145126,
+      "nonpadding_tokens": 904,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.027132000774145126,
+      "update": 70
+    },
+    {
+      "gradient_norm": 0.15546104311943054,
+      "kd_loss": 0.035571951419115067,
+      "nonpadding_tokens": 754,
+      "padded_tokens": 824,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.035571951419115067,
+      "update": 71
+    },
+    {
+      "gradient_norm": 0.1947571039199829,
+      "kd_loss": 0.04096314311027527,
+      "nonpadding_tokens": 834,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04096314311027527,
+      "update": 72
+    },
+    {
+      "gradient_norm": 0.20140959322452545,
+      "kd_loss": 0.030187977477908134,
+      "nonpadding_tokens": 988,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.030187977477908134,
+      "update": 73
+    },
+    {
+      "gradient_norm": 0.24553526937961578,
+      "kd_loss": 0.031503643840551376,
+      "nonpadding_tokens": 832,
+      "padded_tokens": 1008,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.031503643840551376,
+      "update": 74
+    },
+    {
+      "gradient_norm": 0.1425841599702835,
+      "kd_loss": 0.019313696771860123,
+      "nonpadding_tokens": 1042,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.019313696771860123,
+      "update": 75
+    },
+    {
+      "gradient_norm": 0.13914258778095245,
+      "kd_loss": 0.019917204976081848,
+      "nonpadding_tokens": 816,
+      "padded_tokens": 1072,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.019917204976081848,
+      "update": 76
+    },
+    {
+      "gradient_norm": 0.09245727211236954,
+      "kd_loss": 0.022820953279733658,
+      "nonpadding_tokens": 810,
+      "padded_tokens": 1088,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.022820953279733658,
+      "update": 77
+    },
+    {
+      "gradient_norm": 0.06027533859014511,
+      "kd_loss": 0.012096608988940716,
+      "nonpadding_tokens": 970,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.012096608988940716,
+      "update": 78
+    },
+    {
+      "gradient_norm": 0.22620388865470886,
+      "kd_loss": 0.04213831201195717,
+      "nonpadding_tokens": 876,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04213831201195717,
+      "update": 79
+    },
+    {
+      "gradient_norm": 0.3029106855392456,
+      "kd_loss": 0.03949269279837608,
+      "nonpadding_tokens": 812,
+      "padded_tokens": 1072,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.03949269279837608,
+      "update": 80
+    },
+    {
+      "gradient_norm": 0.14709946513175964,
+      "kd_loss": 0.029166709631681442,
+      "nonpadding_tokens": 972,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.029166709631681442,
+      "update": 81
+    },
+    {
+      "gradient_norm": 0.1741746962070465,
+      "kd_loss": 0.027869658544659615,
+      "nonpadding_tokens": 728,
+      "padded_tokens": 784,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.027869658544659615,
+      "update": 82
+    },
+    {
+      "gradient_norm": 0.2024271935224533,
+      "kd_loss": 0.022082440555095673,
+      "nonpadding_tokens": 846,
+      "padded_tokens": 1088,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.022082440555095673,
+      "update": 83
+    },
+    {
+      "gradient_norm": 0.2302863746881485,
+      "kd_loss": 0.032831087708473206,
+      "nonpadding_tokens": 846,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.032831087708473206,
+      "update": 84
+    },
+    {
+      "gradient_norm": 0.13803701102733612,
+      "kd_loss": 0.025800339877605438,
+      "nonpadding_tokens": 738,
+      "padded_tokens": 816,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.025800339877605438,
+      "update": 85
+    },
+    {
+      "gradient_norm": 0.2310105264186859,
+      "kd_loss": 0.038447681814432144,
+      "nonpadding_tokens": 810,
+      "padded_tokens": 1072,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.038447681814432144,
+      "update": 86
+    },
+    {
+      "gradient_norm": 0.20603764057159424,
+      "kd_loss": 0.04023559391498566,
+      "nonpadding_tokens": 846,
+      "padded_tokens": 1064,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.04023559391498566,
+      "update": 87
+    },
+    {
+      "gradient_norm": 0.12501609325408936,
+      "kd_loss": 0.017571914941072464,
+      "nonpadding_tokens": 812,
+      "padded_tokens": 1072,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.017571914941072464,
+      "update": 88
+    },
+    {
+      "gradient_norm": 0.15847980976104736,
+      "kd_loss": 0.0191838089376688,
+      "nonpadding_tokens": 830,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.0191838089376688,
+      "update": 89
+    },
+    {
+      "gradient_norm": 0.07452983409166336,
+      "kd_loss": 0.013341857120394707,
+      "nonpadding_tokens": 938,
+      "padded_tokens": 1216,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.013341857120394707,
+      "update": 90
+    },
+    {
+      "gradient_norm": 0.09339102357625961,
+      "kd_loss": 0.014788463711738586,
+      "nonpadding_tokens": 882,
+      "padded_tokens": 1096,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.014788463711738586,
+      "update": 91
+    },
+    {
+      "gradient_norm": 0.10921559482812881,
+      "kd_loss": 0.024726971983909607,
+      "nonpadding_tokens": 838,
+      "padded_tokens": 1064,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.024726971983909607,
+      "update": 92
+    },
+    {
+      "gradient_norm": 0.1361871361732483,
+      "kd_loss": 0.026879703626036644,
+      "nonpadding_tokens": 930,
+      "padded_tokens": 1208,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.026879703626036644,
+      "update": 93
+    },
+    {
+      "gradient_norm": 0.11223161965608597,
+      "kd_loss": 0.02652541548013687,
+      "nonpadding_tokens": 994,
+      "padded_tokens": 1240,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.02652541548013687,
+      "update": 94
+    },
+    {
+      "gradient_norm": 0.07839509844779968,
+      "kd_loss": 0.027699284255504608,
+      "nonpadding_tokens": 788,
+      "padded_tokens": 1064,
+      "regularizer_loss": 0.0,
+      "total_loss": 0.027699284255504608,
+      "update": 95
+    }
+  ],
+  "teacher_cache": {
+    "path": "/home/tetsuya/dev/equivariant-quantization/local/study/smol/teacher-cache/teacher_cache.pt"
+  },
+  "token_counts": {
+    "nonpadding_total": 84380,
+    "padded_total": 106872,
+    "per_update": [
+      {
+        "nonpadding": 896,
+        "padded": 1088,
+        "update": 0
+      },
+      {
+        "nonpadding": 842,
+        "padded": 1096,
+        "update": 1
+      },
+      {
+        "nonpadding": 804,
+        "padded": 1096,
+        "update": 2
+      },
+      {
+        "nonpadding": 944,
+        "padded": 1192,
+        "update": 3
+      },
+      {
+        "nonpadding": 836,
+        "padded": 1232,
+        "update": 4
+      },
+      {
+        "nonpadding": 852,
+        "padded": 1192,
+        "update": 5
+      },
+      {
+        "nonpadding": 826,
+        "padded": 1208,
+        "update": 6
+      },
+      {
+        "nonpadding": 1016,
+        "padded": 1216,
+        "update": 7
+      },
+      {
+        "nonpadding": 698,
+        "padded": 760,
+        "update": 8
+      },
+      {
+        "nonpadding": 878,
+        "padded": 1096,
+        "update": 9
+      },
+      {
+        "nonpadding": 786,
+        "padded": 1040,
+        "update": 10
+      },
+      {
+        "nonpadding": 930,
+        "padded": 1208,
+        "update": 11
+      },
+      {
+        "nonpadding": 1058,
+        "padded": 1240,
+        "update": 12
+      },
+      {
+        "nonpadding": 804,
+        "padded": 1072,
+        "update": 13
+      },
+      {
+        "nonpadding": 874,
+        "padded": 1208,
+        "update": 14
+      },
+      {
+        "nonpadding": 850,
+        "padded": 1216,
+        "update": 15
+      },
+      {
+        "nonpadding": 944,
+        "padded": 1096,
+        "update": 16
+      },
+      {
+        "nonpadding": 1058,
+        "padded": 1208,
+        "update": 17
+      },
+      {
+        "nonpadding": 866,
+        "padded": 1240,
+        "update": 18
+      },
+      {
+        "nonpadding": 1058,
+        "padded": 1224,
+        "update": 19
+      },
+      {
+        "nonpadding": 906,
+        "padded": 1216,
+        "update": 20
+      },
+      {
+        "nonpadding": 782,
+        "padded": 856,
+        "update": 21
+      },
+      {
+        "nonpadding": 928,
+        "padded": 1232,
+        "update": 22
+      },
+      {
+        "nonpadding": 904,
+        "padded": 1072,
+        "update": 23
+      },
+      {
+        "nonpadding": 1004,
+        "padded": 1232,
+        "update": 24
+      },
+      {
+        "nonpadding": 826,
+        "padded": 976,
+        "update": 25
+      },
+      {
+        "nonpadding": 932,
+        "padded": 1072,
+        "update": 26
+      },
+      {
+        "nonpadding": 750,
+        "padded": 816,
+        "update": 27
+      },
+      {
+        "nonpadding": 1002,
+        "padded": 1240,
+        "update": 28
+      },
+      {
+        "nonpadding": 854,
+        "padded": 1096,
+        "update": 29
+      },
+      {
+        "nonpadding": 950,
+        "padded": 1096,
+        "update": 30
+      },
+      {
+        "nonpadding": 982,
+        "padded": 1216,
+        "update": 31
+      },
+      {
+        "nonpadding": 804,
+        "padded": 824,
+        "update": 32
+      },
+      {
+        "nonpadding": 852,
+        "padded": 1208,
+        "update": 33
+      },
+      {
+        "nonpadding": 846,
+        "padded": 1088,
+        "update": 34
+      },
+      {
+        "nonpadding": 710,
+        "padded": 784,
+        "update": 35
+      },
+      {
+        "nonpadding": 974,
+        "padded": 1232,
+        "update": 36
+      },
+      {
+        "nonpadding": 946,
+        "padded": 1240,
+        "update": 37
+      },
+      {
+        "nonpadding": 936,
+        "padded": 1216,
+        "update": 38
+      },
+      {
+        "nonpadding": 898,
+        "padded": 1064,
+        "update": 39
+      },
+      {
+        "nonpadding": 836,
+        "padded": 1216,
+        "update": 40
+      },
+      {
+        "nonpadding": 850,
+        "padded": 1216,
+        "update": 41
+      },
+      {
+        "nonpadding": 886,
+        "padded": 1208,
+        "update": 42
+      },
+      {
+        "nonpadding": 858,
+        "padded": 1208,
+        "update": 43
+      },
+      {
+        "nonpadding": 766,
+        "padded": 1088,
+        "update": 44
+      },
+      {
+        "nonpadding": 828,
+        "padded": 1064,
+        "update": 45
+      },
+      {
+        "nonpadding": 830,
+        "padded": 1064,
+        "update": 46
+      },
+      {
+        "nonpadding": 696,
+        "padded": 712,
+        "update": 47
+      },
+      {
+        "nonpadding": 860,
+        "padded": 1240,
+        "update": 48
+      },
+      {
+        "nonpadding": 912,
+        "padded": 1208,
+        "update": 49
+      },
+      {
+        "nonpadding": 772,
+        "padded": 944,
+        "update": 50
+      },
+      {
+        "nonpadding": 848,
+        "padded": 1096,
+        "update": 51
+      },
+      {
+        "nonpadding": 796,
+        "padded": 1096,
+        "update": 52
+      },
+      {
+        "nonpadding": 968,
+        "padded": 1216,
+        "update": 53
+      },
+      {
+        "nonpadding": 820,
+        "padded": 1072,
+        "update": 54
+      },
+      {
+        "nonpadding": 890,
+        "padded": 1216,
+        "update": 55
+      },
+      {
+        "nonpadding": 702,
+        "padded": 728,
+        "update": 56
+      },
+      {
+        "nonpadding": 900,
+        "padded": 1096,
+        "update": 57
+      },
+      {
+        "nonpadding": 1114,
+        "padded": 1216,
+        "update": 58
+      },
+      {
+        "nonpadding": 998,
+        "padded": 1088,
+        "update": 59
+      },
+      {
+        "nonpadding": 932,
+        "padded": 1240,
+        "update": 60
+      },
+      {
+        "nonpadding": 796,
+        "padded": 1192,
+        "update": 61
+      },
+      {
+        "nonpadding": 962,
+        "padded": 1216,
+        "update": 62
+      },
+      {
+        "nonpadding": 876,
+        "padded": 1096,
+        "update": 63
+      },
+      {
+        "nonpadding": 848,
+        "padded": 1240,
+        "update": 64
+      },
+      {
+        "nonpadding": 710,
+        "padded": 784,
+        "update": 65
+      },
+      {
+        "nonpadding": 1168,
+        "padded": 1240,
+        "update": 66
+      },
+      {
+        "nonpadding": 1006,
+        "padded": 1208,
+        "update": 67
+      },
+      {
+        "nonpadding": 724,
+        "padded": 856,
+        "update": 68
+      },
+      {
+        "nonpadding": 1186,
+        "padded": 1232,
+        "update": 69
+      },
+      {
+        "nonpadding": 904,
+        "padded": 1216,
+        "update": 70
+      },
+      {
+        "nonpadding": 754,
+        "padded": 824,
+        "update": 71
+      },
+      {
+        "nonpadding": 834,
+        "padded": 1208,
+        "update": 72
+      },
+      {
+        "nonpadding": 988,
+        "padded": 1208,
+        "update": 73
+      },
+      {
+        "nonpadding": 832,
+        "padded": 1008,
+        "update": 74
+      },
+      {
+        "nonpadding": 1042,
+        "padded": 1240,
+        "update": 75
+      },
+      {
+        "nonpadding": 816,
+        "padded": 1072,
+        "update": 76
+      },
+      {
+        "nonpadding": 810,
+        "padded": 1088,
+        "update": 77
+      },
+      {
+        "nonpadding": 970,
+        "padded": 1240,
+        "update": 78
+      },
+      {
+        "nonpadding": 876,
+        "padded": 1240,
+        "update": 79
+      },
+      {
+        "nonpadding": 812,
+        "padded": 1072,
+        "update": 80
+      },
+      {
+        "nonpadding": 972,
+        "padded": 1216,
+        "update": 81
+      },
+      {
+        "nonpadding": 728,
+        "padded": 784,
+        "update": 82
+      },
+      {
+        "nonpadding": 846,
+        "padded": 1088,
+        "update": 83
+      },
+      {
+        "nonpadding": 846,
+        "padded": 1216,
+        "update": 84
+      },
+      {
+        "nonpadding": 738,
+        "padded": 816,
+        "update": 85
+      },
+      {
+        "nonpadding": 810,
+        "padded": 1072,
+        "update": 86
+      },
+      {
+        "nonpadding": 846,
+        "padded": 1064,
+        "update": 87
+      },
+      {
+        "nonpadding": 812,
+        "padded": 1072,
+        "update": 88
+      },
+      {
+        "nonpadding": 830,
+        "padded": 1240,
+        "update": 89
+      },
+      {
+        "nonpadding": 938,
+        "padded": 1216,
+        "update": 90
+      },
+      {
+        "nonpadding": 882,
+        "padded": 1096,
+        "update": 91
+      },
+      {
+        "nonpadding": 838,
+        "padded": 1064,
+        "update": 92
+      },
+      {
+        "nonpadding": 930,
+        "padded": 1208,
+        "update": 93
+      },
+      {
+        "nonpadding": 994,
+        "padded": 1240,
+        "update": 94
+      },
+      {
+        "nonpadding": 788,
+        "padded": 1064,
+        "update": 95
+      }
+    ]
+  },
+  "trainable_parameter_names": [
+    "model.layers.0.self_attn.q_proj.log_scale_deltas",
+    "model.layers.0.self_attn.k_proj.log_scale_deltas",
+    "model.layers.0.self_attn.v_proj.log_scale_deltas",
+    "model.layers.0.self_attn.o_proj.log_scale_deltas",
+    "model.layers.0.mlp.gate_proj.log_scale_deltas",
+    "model.layers.0.mlp.up_proj.log_scale_deltas",
+    "model.layers.0.mlp.down_proj.log_scale_deltas",
+    "model.layers.1.self_attn.q_proj.log_scale_deltas",
+    "model.layers.1.self_attn.k_proj.log_scale_deltas",
+    "model.layers.1.self_attn.v_proj.log_scale_deltas",
+    "model.layers.1.self_attn.o_proj.log_scale_deltas",
+    "model.layers.1.mlp.gate_proj.log_scale_deltas",
+    "model.layers.1.mlp.up_proj.log_scale_deltas",
+    "model.layers.1.mlp.down_proj.log_scale_deltas",
+    "model.layers.2.self_attn.q_proj.log_scale_deltas",
+    "model.layers.2.self_attn.k_proj.log_scale_deltas",
+    "model.layers.2.self_attn.v_proj.log_scale_deltas",
+    "model.layers.2.self_attn.o_proj.log_scale_deltas",
+    "model.layers.2.mlp.gate_proj.log_scale_deltas",
+    "model.layers.2.mlp.up_proj.log_scale_deltas",
+    "model.layers.2.mlp.down_proj.log_scale_deltas",
+    "model.layers.3.self_attn.q_proj.log_scale_deltas",
+    "model.layers.3.self_attn.k_proj.log_scale_deltas",
+    "model.layers.3.self_attn.v_proj.log_scale_deltas",
+    "model.layers.3.self_attn.o_proj.log_scale_deltas",
+    "model.layers.3.mlp.gate_proj.log_scale_deltas",
+    "model.layers.3.mlp.up_proj.log_scale_deltas",
+    "model.layers.3.mlp.down_proj.log_scale_deltas",
+    "model.layers.4.self_attn.q_proj.log_scale_deltas",
+    "model.layers.4.self_attn.k_proj.log_scale_deltas",
+    "model.layers.4.self_attn.v_proj.log_scale_deltas",
+    "model.layers.4.self_attn.o_proj.log_scale_deltas",
+    "model.layers.4.mlp.gate_proj.log_scale_deltas",
+    "model.layers.4.mlp.up_proj.log_scale_deltas",
+    "model.layers.4.mlp.down_proj.log_scale_deltas",
+    "model.layers.5.self_attn.q_proj.log_scale_deltas",
+    "model.layers.5.self_attn.k_proj.log_scale_deltas",
+    "model.layers.5.self_attn.v_proj.log_scale_deltas",
+    "model.layers.5.self_attn.o_proj.log_scale_deltas",
+    "model.layers.5.mlp.gate_proj.log_scale_deltas",
+    "model.layers.5.mlp.up_proj.log_scale_deltas",
+    "model.layers.5.mlp.down_proj.log_scale_deltas",
+    "model.layers.6.self_attn.q_proj.log_scale_deltas",
+    "model.layers.6.self_attn.k_proj.log_scale_deltas",
+    "model.layers.6.self_attn.v_proj.log_scale_deltas",
+    "model.layers.6.self_attn.o_proj.log_scale_deltas",
+    "model.layers.6.mlp.gate_proj.log_scale_deltas",
+    "model.layers.6.mlp.up_proj.log_scale_deltas",
+    "model.layers.6.mlp.down_proj.log_scale_deltas",
+    "model.layers.7.self_attn.q_proj.log_scale_deltas",
+    "model.layers.7.self_attn.k_proj.log_scale_deltas",
+    "model.layers.7.self_attn.v_proj.log_scale_deltas",
+    "model.layers.7.self_attn.o_proj.log_scale_deltas",
+    "model.layers.7.mlp.gate_proj.log_scale_deltas",
+    "model.layers.7.mlp.up_proj.log_scale_deltas",
+    "model.layers.7.mlp.down_proj.log_scale_deltas",
+    "model.layers.8.self_attn.q_proj.log_scale_deltas",
+    "model.layers.8.self_attn.k_proj.log_scale_deltas",
+    "model.layers.8.self_attn.v_proj.log_scale_deltas",
+    "model.layers.8.self_attn.o_proj.log_scale_deltas",
+    "model.layers.8.mlp.gate_proj.log_scale_deltas",
+    "model.layers.8.mlp.up_proj.log_scale_deltas",
+    "model.layers.8.mlp.down_proj.log_scale_deltas",
+    "model.layers.9.self_attn.q_proj.log_scale_deltas",
+    "model.layers.9.self_attn.k_proj.log_scale_deltas",
+    "model.layers.9.self_attn.v_proj.log_scale_deltas",
+    "model.layers.9.self_attn.o_proj.log_scale_deltas",
+    "model.layers.9.mlp.gate_proj.log_scale_deltas",
+    "model.layers.9.mlp.up_proj.log_scale_deltas",
+    "model.layers.9.mlp.down_proj.log_scale_deltas",
+    "model.layers.10.self_attn.q_proj.log_scale_deltas",
+    "model.layers.10.self_attn.k_proj.log_scale_deltas",
+    "model.layers.10.self_attn.v_proj.log_scale_deltas",
+    "model.layers.10.self_attn.o_proj.log_scale_deltas",
+    "model.layers.10.mlp.gate_proj.log_scale_deltas",
+    "model.layers.10.mlp.up_proj.log_scale_deltas",
+    "model.layers.10.mlp.down_proj.log_scale_deltas",
+    "model.layers.11.self_attn.q_proj.log_scale_deltas",
+    "model.layers.11.self_attn.k_proj.log_scale_deltas",
+    "model.layers.11.self_attn.v_proj.log_scale_deltas",
+    "model.layers.11.self_attn.o_proj.log_scale_deltas",
+    "model.layers.11.mlp.gate_proj.log_scale_deltas",
+    "model.layers.11.mlp.up_proj.log_scale_deltas",
+    "model.layers.11.mlp.down_proj.log_scale_deltas",
+    "model.layers.12.self_attn.q_proj.log_scale_deltas",
+    "model.layers.12.self_attn.k_proj.log_scale_deltas",
+    "model.layers.12.self_attn.v_proj.log_scale_deltas",
+    "model.layers.12.self_attn.o_proj.log_scale_deltas",
+    "model.layers.12.mlp.gate_proj.log_scale_deltas",
+    "model.layers.12.mlp.up_proj.log_scale_deltas",
+    "model.layers.12.mlp.down_proj.log_scale_deltas",
+    "model.layers.13.self_attn.q_proj.log_scale_deltas",
+    "model.layers.13.self_attn.k_proj.log_scale_deltas",
+    "model.layers.13.self_attn.v_proj.log_scale_deltas",
+    "model.layers.13.self_attn.o_proj.log_scale_deltas",
+    "model.layers.13.mlp.gate_proj.log_scale_deltas",
+    "model.layers.13.mlp.up_proj.log_scale_deltas",
+    "model.layers.13.mlp.down_proj.log_scale_deltas",
+    "model.layers.14.self_attn.q_proj.log_scale_deltas",
+    "model.layers.14.self_attn.k_proj.log_scale_deltas",
+    "model.layers.14.self_attn.v_proj.log_scale_deltas",
+    "model.layers.14.self_attn.o_proj.log_scale_deltas",
+    "model.layers.14.mlp.gate_proj.log_scale_deltas",
+    "model.layers.14.mlp.up_proj.log_scale_deltas",
+    "model.layers.14.mlp.down_proj.log_scale_deltas",
+    "model.layers.15.self_attn.q_proj.log_scale_deltas",
+    "model.layers.15.self_attn.k_proj.log_scale_deltas",
+    "model.layers.15.self_attn.v_proj.log_scale_deltas",
+    "model.layers.15.self_attn.o_proj.log_scale_deltas",
+    "model.layers.15.mlp.gate_proj.log_scale_deltas",
+    "model.layers.15.mlp.up_proj.log_scale_deltas",
+    "model.layers.15.mlp.down_proj.log_scale_deltas",
+    "model.layers.16.self_attn.q_proj.log_scale_deltas",
+    "model.layers.16.self_attn.k_proj.log_scale_deltas",
+    "model.layers.16.self_attn.v_proj.log_scale_deltas",
+    "model.layers.16.self_attn.o_proj.log_scale_deltas",
+    "model.layers.16.mlp.gate_proj.log_scale_deltas",
+    "model.layers.16.mlp.up_proj.log_scale_deltas",
+    "model.layers.16.mlp.down_proj.log_scale_deltas",
+    "model.layers.17.self_attn.q_proj.log_scale_deltas",
+    "model.layers.17.self_attn.k_proj.log_scale_deltas",
+    "model.layers.17.self_attn.v_proj.log_scale_deltas",
+    "model.layers.17.self_attn.o_proj.log_scale_deltas",
+    "model.layers.17.mlp.gate_proj.log_scale_deltas",
+    "model.layers.17.mlp.up_proj.log_scale_deltas",
+    "model.layers.17.mlp.down_proj.log_scale_deltas",
+    "model.layers.18.self_attn.q_proj.log_scale_deltas",
+    "model.layers.18.self_attn.k_proj.log_scale_deltas",
+    "model.layers.18.self_attn.v_proj.log_scale_deltas",
+    "model.layers.18.self_attn.o_proj.log_scale_deltas",
+    "model.layers.18.mlp.gate_proj.log_scale_deltas",
+    "model.layers.18.mlp.up_proj.log_scale_deltas",
+    "model.layers.18.mlp.down_proj.log_scale_deltas",
+    "model.layers.19.self_attn.q_proj.log_scale_deltas",
+    "model.layers.19.self_attn.k_proj.log_scale_deltas",
+    "model.layers.19.self_attn.v_proj.log_scale_deltas",
+    "model.layers.19.self_attn.o_proj.log_scale_deltas",
+    "model.layers.19.mlp.gate_proj.log_scale_deltas",
+    "model.layers.19.mlp.up_proj.log_scale_deltas",
+    "model.layers.19.mlp.down_proj.log_scale_deltas",
+    "model.layers.20.self_attn.q_proj.log_scale_deltas",
+    "model.layers.20.self_attn.k_proj.log_scale_deltas",
+    "model.layers.20.self_attn.v_proj.log_scale_deltas",
+    "model.layers.20.self_attn.o_proj.log_scale_deltas",
+    "model.layers.20.mlp.gate_proj.log_scale_deltas",
+    "model.layers.20.mlp.up_proj.log_scale_deltas",
+    "model.layers.20.mlp.down_proj.log_scale_deltas",
+    "model.layers.21.self_attn.q_proj.log_scale_deltas",
+    "model.layers.21.self_attn.k_proj.log_scale_deltas",
+    "model.layers.21.self_attn.v_proj.log_scale_deltas",
+    "model.layers.21.self_attn.o_proj.log_scale_deltas",
+    "model.layers.21.mlp.gate_proj.log_scale_deltas",
+    "model.layers.21.mlp.up_proj.log_scale_deltas",
+    "model.layers.21.mlp.down_proj.log_scale_deltas",
+    "model.layers.22.self_attn.q_proj.log_scale_deltas",
+    "model.layers.22.self_attn.k_proj.log_scale_deltas",
+    "model.layers.22.self_attn.v_proj.log_scale_deltas",
+    "model.layers.22.self_attn.o_proj.log_scale_deltas",
+    "model.layers.22.mlp.gate_proj.log_scale_deltas",
+    "model.layers.22.mlp.up_proj.log_scale_deltas",
+    "model.layers.22.mlp.down_proj.log_scale_deltas",
+    "model.layers.23.self_attn.q_proj.log_scale_deltas",
+    "model.layers.23.self_attn.k_proj.log_scale_deltas",
+    "model.layers.23.self_attn.v_proj.log_scale_deltas",
+    "model.layers.23.self_attn.o_proj.log_scale_deltas",
+    "model.layers.23.mlp.gate_proj.log_scale_deltas",
+    "model.layers.23.mlp.up_proj.log_scale_deltas",
+    "model.layers.23.mlp.down_proj.log_scale_deltas"
+  ],
+  "trainable_parameters": 12582912
+}

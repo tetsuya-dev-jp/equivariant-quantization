@@ -1,0 +1,54 @@
+{
+  "condition": "rtn_w4_logit_bias",
+  "created_at": "2026-11-08T05:10:18.614612+00:00",
+  "fit": {
+    "base_count": 384,
+    "by_task_family": {
+      "arithmetic": 256,
+      "boolean": 256,
+      "graph": 256
+    },
+    "by_transform": {
+      "option_permutation": 384,
+      "original": 384
+    },
+    "record_count": 768,
+    "split": "calibration",
+    "transforms": [
+      "original",
+      "option_permutation"
+    ]
+  },
+  "format": "eq_quant_w4_logit_bias_fit_v1",
+  "method": "four_displayed_label_mean_drift_correction",
+  "model_provenance": {
+    "dtype": "bfloat16",
+    "id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "offsets": {
+    "A": -0.1962890625,
+    "B": 0.023274739583333332,
+    "C": 0.5667317708333334,
+    "D": -0.3937174479166667
+  },
+  "sources": {
+    "fp": {
+      "path": "/home/tetsuya/dev/equivariant-quantization/local/study/qwen/diagnostic/evaluation/predictions_fp.jsonl",
+      "rows": 768,
+      "selected_rows": 768
+    },
+    "w4": {
+      "path": "/home/tetsuya/dev/equivariant-quantization/local/study/qwen/diagnostic/evaluation/predictions_w4.jsonl",
+      "rows": 768,
+      "selected_rows": 768
+    }
+  },
+  "state": "completed",
+  "targets": {
+    "uses_development_or_final_outcomes": false,
+    "uses_oracle_labels": false,
+    "uses_prediction_correctness": false
+  },
+  "zero_sum_residual": 1.734723475976807e-17
+}
