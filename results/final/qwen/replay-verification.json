@@ -1,0 +1,58 @@
+{
+  "bootstrap": {
+    "samples": 1000,
+    "seed": 4108
+  },
+  "checks": [
+    "condition_summaries",
+    "grouped_summaries",
+    "per_transform",
+    "primary_comparisons",
+    "secondary_compositions",
+    "bootstrap_metadata"
+  ],
+  "comparisons": 36,
+  "condition_summaries": 21,
+  "conditions": [
+    "augmented_kd_s17",
+    "augmented_kd_s29",
+    "augmented_kd_s43",
+    "constant_display_A",
+    "fp",
+    "kernel_s17",
+    "kernel_s29",
+    "kernel_s43",
+    "original_kd_s17",
+    "original_kd_s29",
+    "original_kd_s43",
+    "paired_s17",
+    "paired_s29",
+    "paired_s43",
+    "random_pair_s17",
+    "random_pair_s29",
+    "random_pair_s43",
+    "rtn_w4_logit_bias",
+    "w3",
+    "w4",
+    "w8"
+  ],
+  "fit_seeds": [
+    17,
+    29,
+    43
+  ],
+  "prediction_rows": 129024,
+  "secondary_comparisons": 36,
+  "source": "results/final/qwen",
+  "splits": [
+    "final",
+    "structural_holdout"
+  ],
+  "status": "ok",
+  "task_families": [
+    "arithmetic",
+    "boolean",
+    "graph"
+  ],
+  "tolerance": 1e-12
+}

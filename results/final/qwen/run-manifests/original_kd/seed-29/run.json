@@ -1,0 +1,40 @@
+{
+  "calibration": {
+    "bits": 4,
+    "codes": "pinned original symmetric signed RTN integer codes",
+    "fit_seed": 29,
+    "group_size": 128,
+    "lambda": null,
+    "objective": "original_kd",
+    "scale_parameterization": "rtn_group_scale_times_exp_delta",
+    "source": "/home/tetsuya/dev/equivariant-quantization/local/study/qwen/fits/original_kd/seed-29"
+  },
+  "condition": "original_kd_s29",
+  "elapsed_seconds": 86.81538227107376,
+  "error": null,
+  "hardware": {
+    "device": "cuda",
+    "device_name": "AMD Radeon RX 9070 XT",
+    "total_memory_bytes": 17095983104
+  },
+  "model": {
+    "dtype": "bfloat16",
+    "id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "resolved_commit_hash": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "peak_memory_bytes": 2159941632,
+  "predictions": 6144,
+  "records": {
+    "count": 6144,
+    "path": "/home/tetsuya/dev/equivariant-quantization/local/study/qwen/data/final_structural/records.jsonl"
+  },
+  "software": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+    "processor": "",
+    "python": "3.12.15",
+    "torch": "2.12.0+rocm7.14.0",
+    "transformers": "4.57.1"
+  },
+  "state": "completed"
+}

@@ -1,0 +1,465 @@
+{
+  "config": {
+    "analysis": {
+      "bootstrap_samples": 1000,
+      "seed": 4108
+    },
+    "calibration": {
+      "bases_per_batch": 4,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "bits": 4,
+      "cpu_threads": 6,
+      "fit_seeds": [
+        17,
+        29,
+        43
+      ],
+      "gradient_checkpointing": true,
+      "gradient_clip_norm": 1.0,
+      "group_size": 128,
+      "lambda_candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "learning_rate": 0.001,
+      "prompts_per_batch": 8,
+      "split": "calibration",
+      "temperature": 1.0,
+      "total_updates": 96,
+      "weight_decay": 0.0
+    },
+    "data": {
+      "families": [
+        "arithmetic",
+        "boolean",
+        "graph"
+      ],
+      "splits": {
+        "calibration": {
+          "count": 128,
+          "seed": 1108
+        },
+        "development": {
+          "count": 128,
+          "seed": 2108
+        },
+        "final": {
+          "count": 256,
+          "seed": 4108
+        },
+        "pilot": {
+          "count": 64,
+          "seed": 3108
+        },
+        "structural_holdout": {
+          "count": 128,
+          "seed": 5108
+        }
+      }
+    },
+    "generation": {
+      "max_new_tokens": 8,
+      "subset_size": 0
+    },
+    "model": {
+      "dtype": "bfloat16",
+      "id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "quantization": {
+      "bits": [
+        8,
+        4,
+        3
+      ],
+      "group_size": 128
+    },
+    "scoring": {
+      "batch_size": 8,
+      "cpu_threads": 6,
+      "max_seq_len": 1024,
+      "option_labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  },
+  "controls": {
+    "augmented_kd": {
+      "condition": "augmented_kd_s17",
+      "evaluation_path": "local/study/qwen/development/augmented_kd/seed-17",
+      "fit_path": "local/study/qwen/fits/augmented_kd/seed-17",
+      "fit_seed": 17,
+      "metrics": {
+        "held_out_accuracy": 0.47265625,
+        "held_out_consistency": 0.8919270833333334,
+        "held_out_jointly_correct_rate": 0.4388020833333333,
+        "n_bases": 384,
+        "overall_accuracy": 0.4791666666666667
+      }
+    },
+    "original_kd": {
+      "condition": "original_kd_s17",
+      "evaluation_path": "local/study/qwen/development/original_kd/seed-17",
+      "fit_path": "local/study/qwen/fits/original_kd/seed-17",
+      "fit_seed": 17,
+      "metrics": {
+        "held_out_accuracy": 0.4544270833333333,
+        "held_out_consistency": 0.8893229166666666,
+        "held_out_jointly_correct_rate": 0.4231770833333333,
+        "n_bases": 384,
+        "overall_accuracy": 0.4548611111111111
+      }
+    }
+  },
+  "created_at": "2026-11-08T04:28:32.351446+00:00",
+  "development_seed": 17,
+  "fit_seeds": [
+    17,
+    29,
+    43
+  ],
+  "format": "eq_quant_study_selection_v1",
+  "lambda_candidates": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "model": {
+    "dtype": "bfloat16",
+    "id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "objectives": {
+    "kernel": {
+      "candidates": [
+        {
+          "condition": "kernel-lam0.1_s17",
+          "evaluation_path": "local/study/qwen/development/kernel-lam0.1/seed-17",
+          "fit_path": "local/study/qwen/fits/kernel-lam0.1/seed-17",
+          "held_out_accuracy": 0.46875,
+          "held_out_consistency": 0.8854166666666666,
+          "held_out_jointly_correct_rate": 0.4361979166666667,
+          "lambda": 0.1,
+          "n_bases": 384,
+          "overall_accuracy": 0.47222222222222227
+        },
+        {
+          "condition": "kernel-lam1_s17",
+          "evaluation_path": "local/study/qwen/development/kernel-lam1/seed-17",
+          "fit_path": "local/study/qwen/fits/kernel-lam1/seed-17",
+          "held_out_accuracy": 0.4635416666666667,
+          "held_out_consistency": 0.8841145833333334,
+          "held_out_jointly_correct_rate": 0.4244791666666667,
+          "lambda": 1.0,
+          "n_bases": 384,
+          "overall_accuracy": 0.46137152777777773
+        },
+        {
+          "condition": "kernel-lam10_s17",
+          "evaluation_path": "local/study/qwen/development/kernel-lam10/seed-17",
+          "fit_path": "local/study/qwen/fits/kernel-lam10/seed-17",
+          "held_out_accuracy": 0.4635416666666667,
+          "held_out_consistency": 0.8854166666666666,
+          "held_out_jointly_correct_rate": 0.4361979166666667,
+          "lambda": 10.0,
+          "n_bases": 384,
+          "overall_accuracy": 0.47026909722222227
+        }
+      ],
+      "condition": "kernel-lam0.1_s17",
+      "evaluation_path": "local/study/qwen/development/kernel-lam0.1/seed-17",
+      "fit_path": "local/study/qwen/fits/kernel-lam0.1/seed-17",
+      "selected": {
+        "condition": "kernel-lam0.1_s17",
+        "evaluation_path": "local/study/qwen/development/kernel-lam0.1/seed-17",
+        "fit_path": "local/study/qwen/fits/kernel-lam0.1/seed-17",
+        "held_out_accuracy": 0.46875,
+        "held_out_consistency": 0.8854166666666666,
+        "held_out_jointly_correct_rate": 0.4361979166666667,
+        "lambda": 0.1,
+        "n_bases": 384,
+        "overall_accuracy": 0.47222222222222227
+      },
+      "selected_lambda": 0.1,
+      "selection": {
+        "accuracy_threshold": 0.4691666666666667,
+        "candidates": [
+          {
+            "condition": "kernel-lam0.1_s17",
+            "evaluation_path": "local/study/qwen/development/kernel-lam0.1/seed-17",
+            "fit_path": "local/study/qwen/fits/kernel-lam0.1/seed-17",
+            "held_out_accuracy": 0.46875,
+            "held_out_consistency": 0.8854166666666666,
+            "held_out_jointly_correct_rate": 0.4361979166666667,
+            "lambda": 0.1,
+            "n_bases": 384,
+            "overall_accuracy": 0.47222222222222227
+          },
+          {
+            "condition": "kernel-lam1_s17",
+            "evaluation_path": "local/study/qwen/development/kernel-lam1/seed-17",
+            "fit_path": "local/study/qwen/fits/kernel-lam1/seed-17",
+            "held_out_accuracy": 0.4635416666666667,
+            "held_out_consistency": 0.8841145833333334,
+            "held_out_jointly_correct_rate": 0.4244791666666667,
+            "lambda": 1.0,
+            "n_bases": 384,
+            "overall_accuracy": 0.46137152777777773
+          },
+          {
+            "condition": "kernel-lam10_s17",
+            "evaluation_path": "local/study/qwen/development/kernel-lam10/seed-17",
+            "fit_path": "local/study/qwen/fits/kernel-lam10/seed-17",
+            "held_out_accuracy": 0.4635416666666667,
+            "held_out_consistency": 0.8854166666666666,
+            "held_out_jointly_correct_rate": 0.4361979166666667,
+            "lambda": 10.0,
+            "n_bases": 384,
+            "overall_accuracy": 0.47026909722222227
+          }
+        ],
+        "mode": "accuracy_constraint",
+        "selected": {
+          "condition": "kernel-lam0.1_s17",
+          "evaluation_path": "local/study/qwen/development/kernel-lam0.1/seed-17",
+          "fit_path": "local/study/qwen/fits/kernel-lam0.1/seed-17",
+          "held_out_accuracy": 0.46875,
+          "held_out_consistency": 0.8854166666666666,
+          "held_out_jointly_correct_rate": 0.4361979166666667,
+          "lambda": 0.1,
+          "n_bases": 384,
+          "overall_accuracy": 0.47222222222222227
+        },
+        "selected_lambda": 0.1
+      }
+    },
+    "paired": {
+      "candidates": [
+        {
+          "condition": "paired-lam0.1_s17",
+          "evaluation_path": "local/study/qwen/development/paired-lam0.1/seed-17",
+          "fit_path": "local/study/qwen/fits/paired-lam0.1/seed-17",
+          "held_out_accuracy": 0.4713541666666667,
+          "held_out_consistency": 0.8893229166666666,
+          "held_out_jointly_correct_rate": 0.4375,
+          "lambda": 0.1,
+          "n_bases": 384,
+          "overall_accuracy": 0.4737413194444444
+        },
+        {
+          "condition": "paired-lam1_s17",
+          "evaluation_path": "local/study/qwen/development/paired-lam1/seed-17",
+          "fit_path": "local/study/qwen/fits/paired-lam1/seed-17",
+          "held_out_accuracy": 0.51171875,
+          "held_out_consistency": 0.890625,
+          "held_out_jointly_correct_rate": 0.4739583333333333,
+          "lambda": 1.0,
+          "n_bases": 384,
+          "overall_accuracy": 0.509982638888889
+        },
+        {
+          "condition": "paired-lam10_s17",
+          "evaluation_path": "local/study/qwen/development/paired-lam10/seed-17",
+          "fit_path": "local/study/qwen/fits/paired-lam10/seed-17",
+          "held_out_accuracy": 0.59375,
+          "held_out_consistency": 0.8567708333333334,
+          "held_out_jointly_correct_rate": 0.5390625,
+          "lambda": 10.0,
+          "n_bases": 384,
+          "overall_accuracy": 0.5894097222222222
+        }
+      ],
+      "condition": "paired-lam10_s17",
+      "evaluation_path": "local/study/qwen/development/paired-lam10/seed-17",
+      "fit_path": "local/study/qwen/fits/paired-lam10/seed-17",
+      "selected": {
+        "condition": "paired-lam10_s17",
+        "evaluation_path": "local/study/qwen/development/paired-lam10/seed-17",
+        "fit_path": "local/study/qwen/fits/paired-lam10/seed-17",
+        "held_out_accuracy": 0.59375,
+        "held_out_consistency": 0.8567708333333334,
+        "held_out_jointly_correct_rate": 0.5390625,
+        "lambda": 10.0,
+        "n_bases": 384,
+        "overall_accuracy": 0.5894097222222222
+      },
+      "selected_lambda": 10.0,
+      "selection": {
+        "accuracy_threshold": 0.4691666666666667,
+        "candidates": [
+          {
+            "condition": "paired-lam0.1_s17",
+            "evaluation_path": "local/study/qwen/development/paired-lam0.1/seed-17",
+            "fit_path": "local/study/qwen/fits/paired-lam0.1/seed-17",
+            "held_out_accuracy": 0.4713541666666667,
+            "held_out_consistency": 0.8893229166666666,
+            "held_out_jointly_correct_rate": 0.4375,
+            "lambda": 0.1,
+            "n_bases": 384,
+            "overall_accuracy": 0.4737413194444444
+          },
+          {
+            "condition": "paired-lam1_s17",
+            "evaluation_path": "local/study/qwen/development/paired-lam1/seed-17",
+            "fit_path": "local/study/qwen/fits/paired-lam1/seed-17",
+            "held_out_accuracy": 0.51171875,
+            "held_out_consistency": 0.890625,
+            "held_out_jointly_correct_rate": 0.4739583333333333,
+            "lambda": 1.0,
+            "n_bases": 384,
+            "overall_accuracy": 0.509982638888889
+          },
+          {
+            "condition": "paired-lam10_s17",
+            "evaluation_path": "local/study/qwen/development/paired-lam10/seed-17",
+            "fit_path": "local/study/qwen/fits/paired-lam10/seed-17",
+            "held_out_accuracy": 0.59375,
+            "held_out_consistency": 0.8567708333333334,
+            "held_out_jointly_correct_rate": 0.5390625,
+            "lambda": 10.0,
+            "n_bases": 384,
+            "overall_accuracy": 0.5894097222222222
+          }
+        ],
+        "mode": "accuracy_constraint",
+        "selected": {
+          "condition": "paired-lam10_s17",
+          "evaluation_path": "local/study/qwen/development/paired-lam10/seed-17",
+          "fit_path": "local/study/qwen/fits/paired-lam10/seed-17",
+          "held_out_accuracy": 0.59375,
+          "held_out_consistency": 0.8567708333333334,
+          "held_out_jointly_correct_rate": 0.5390625,
+          "lambda": 10.0,
+          "n_bases": 384,
+          "overall_accuracy": 0.5894097222222222
+        },
+        "selected_lambda": 10.0
+      }
+    },
+    "random_pair": {
+      "candidates": [
+        {
+          "condition": "random_pair-lam0.1_s17",
+          "evaluation_path": "local/study/qwen/development/random_pair-lam0.1/seed-17",
+          "fit_path": "local/study/qwen/fits/random_pair-lam0.1/seed-17",
+          "held_out_accuracy": 0.4635416666666667,
+          "held_out_consistency": 0.8841145833333334,
+          "held_out_jointly_correct_rate": 0.4244791666666667,
+          "lambda": 0.1,
+          "n_bases": 384,
+          "overall_accuracy": 0.46440972222222227
+        },
+        {
+          "condition": "random_pair-lam1_s17",
+          "evaluation_path": "local/study/qwen/development/random_pair-lam1/seed-17",
+          "fit_path": "local/study/qwen/fits/random_pair-lam1/seed-17",
+          "held_out_accuracy": 0.51171875,
+          "held_out_consistency": 0.8828125,
+          "held_out_jointly_correct_rate": 0.46484375,
+          "lambda": 1.0,
+          "n_bases": 384,
+          "overall_accuracy": 0.5006510416666666
+        },
+        {
+          "condition": "random_pair-lam10_s17",
+          "evaluation_path": "local/study/qwen/development/random_pair-lam10/seed-17",
+          "fit_path": "local/study/qwen/fits/random_pair-lam10/seed-17",
+          "held_out_accuracy": 0.4453125,
+          "held_out_consistency": 0.8776041666666666,
+          "held_out_jointly_correct_rate": 0.4088541666666667,
+          "lambda": 10.0,
+          "n_bases": 384,
+          "overall_accuracy": 0.4407552083333333
+        }
+      ],
+      "condition": "random_pair-lam1_s17",
+      "evaluation_path": "local/study/qwen/development/random_pair-lam1/seed-17",
+      "fit_path": "local/study/qwen/fits/random_pair-lam1/seed-17",
+      "selected": {
+        "condition": "random_pair-lam1_s17",
+        "evaluation_path": "local/study/qwen/development/random_pair-lam1/seed-17",
+        "fit_path": "local/study/qwen/fits/random_pair-lam1/seed-17",
+        "held_out_accuracy": 0.51171875,
+        "held_out_consistency": 0.8828125,
+        "held_out_jointly_correct_rate": 0.46484375,
+        "lambda": 1.0,
+        "n_bases": 384,
+        "overall_accuracy": 0.5006510416666666
+      },
+      "selected_lambda": 1.0,
+      "selection": {
+        "accuracy_threshold": 0.4691666666666667,
+        "candidates": [
+          {
+            "condition": "random_pair-lam0.1_s17",
+            "evaluation_path": "local/study/qwen/development/random_pair-lam0.1/seed-17",
+            "fit_path": "local/study/qwen/fits/random_pair-lam0.1/seed-17",
+            "held_out_accuracy": 0.4635416666666667,
+            "held_out_consistency": 0.8841145833333334,
+            "held_out_jointly_correct_rate": 0.4244791666666667,
+            "lambda": 0.1,
+            "n_bases": 384,
+            "overall_accuracy": 0.46440972222222227
+          },
+          {
+            "condition": "random_pair-lam1_s17",
+            "evaluation_path": "local/study/qwen/development/random_pair-lam1/seed-17",
+            "fit_path": "local/study/qwen/fits/random_pair-lam1/seed-17",
+            "held_out_accuracy": 0.51171875,
+            "held_out_consistency": 0.8828125,
+            "held_out_jointly_correct_rate": 0.46484375,
+            "lambda": 1.0,
+            "n_bases": 384,
+            "overall_accuracy": 0.5006510416666666
+          },
+          {
+            "condition": "random_pair-lam10_s17",
+            "evaluation_path": "local/study/qwen/development/random_pair-lam10/seed-17",
+            "fit_path": "local/study/qwen/fits/random_pair-lam10/seed-17",
+            "held_out_accuracy": 0.4453125,
+            "held_out_consistency": 0.8776041666666666,
+            "held_out_jointly_correct_rate": 0.4088541666666667,
+            "lambda": 10.0,
+            "n_bases": 384,
+            "overall_accuracy": 0.4407552083333333
+          }
+        ],
+        "mode": "accuracy_constraint",
+        "selected": {
+          "condition": "random_pair-lam1_s17",
+          "evaluation_path": "local/study/qwen/development/random_pair-lam1/seed-17",
+          "fit_path": "local/study/qwen/fits/random_pair-lam1/seed-17",
+          "held_out_accuracy": 0.51171875,
+          "held_out_consistency": 0.8828125,
+          "held_out_jointly_correct_rate": 0.46484375,
+          "lambda": 1.0,
+          "n_bases": 384,
+          "overall_accuracy": 0.5006510416666666
+        },
+        "selected_lambda": 1.0
+      }
+    }
+  },
+  "paths": {
+    "calibration_records": "local/study/qwen/data/calibration/records.jsonl",
+    "development": "local/study/qwen/development",
+    "development_records": "local/study/qwen/data/development/records.jsonl",
+    "fits": "local/study/qwen/fits",
+    "root": "local/study/qwen",
+    "teacher_cache": "local/study/qwen/teacher-cache/teacher_cache.pt"
+  },
+  "source": {
+    "dirty_paths": [],
+    "git_revision": "0c3cf721877e17ee00efc5662fd27e8c06a1617b"
+  },
+  "source_dirty_paths": [],
+  "source_revision": "0c3cf721877e17ee00efc5662fd27e8c06a1617b",
+  "state": "frozen"
+}
