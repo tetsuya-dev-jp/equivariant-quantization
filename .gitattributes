@@ -1,0 +1,2 @@
+# Python's CSV writer emits CRLF record endings.
+*.csv whitespace=cr-at-eol
