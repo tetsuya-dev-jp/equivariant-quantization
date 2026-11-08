@@ -129,3 +129,92 @@ GitHub repository has been created yet.
 Calibration implementation review and provenance; matched development fits and
 selection; three-seed calibration; independent final evaluation;
 figures and English manuscript; publication and clean-clone verification.
+
+## Current execution checkpoint (supersedes active entries above)
+
+- Core calibration is committed at `7dc88ce`, teacher row-alignment fix at
+  `e6d9174`, phased runner and endpoint analysis at `0c3cf72`. A direct full
+  test run passed 84 tests before development execution. No final inference yet.
+- Initial real teacher-cache verification found 1,408 tensor rows versus 768
+  selected-pair metadata rows. No optimizer fit used that invalid cache. It was
+  preserved privately as `local/calibration/qwen/teacher-cache-invalid-row-alignment`.
+  DeepSeek pass 13 corrected the shared selected-record order and strict split
+  rejection; 24 direct calibration tests passed. Corrected cache has 768 rows.
+- Qwen seed-17 original/augmented KD fits were run by CLI at source `e6d9174`
+  and reused by the phased runner. All 1,408 serialized calibration records
+  were explicitly compared with regenerated runner inputs and match. Prefit
+  commands/source are in `local/study/qwen/cli-prefits.json`. Both fits completed
+  96 updates; Qwen has 10,235,904 trainable scale deltas.
+- Qwen development completed successfully (handle 14462 closed). Frozen
+  selection `local/study/qwen/selection.json`: paired lambda 10, random-pair 1,
+  kernel 0.1. Augmented KD development overall accuracy 0.479167, held-out
+  joint correctness 0.438802, consistency 0.891927. Selected paired: overall
+  0.589410, held-out joint correctness 0.539062, consistency 0.856771. These
+  are development observations, not final claims. Paired/aug timing ratio for
+  seed 17 was 0.9473; no >10% overhead observed so far.
+- Smol development is live: exec handle 84185, log
+  `local/study-smol-develop.log`, root `local/study/smol`, config
+  `configs/smol-calibration.json`. Do not run another GPU process concurrently.
+- Three-seed replicate phases have NOT been run for either model. Both model
+  selections must be frozen before any final model inference. Final predictions
+  remain unexposed.
+- Added a secondary four-logit mean-drift diagnostic after pilot/Qwen dev and
+  before final. Its role/formula/timing are documented in calibration-plan.md;
+  it must not alter the five matched scale objectives or their selections.
+  DeepSeek module pass 16 completed `eq_quant/bias_control.py` and 12 direct
+  tests passed. API: `fit_offsets(fp_rows,w4_rows,config=...)` and
+  `apply_offsets(w4_rows,payload,source_path=...)`.
+- DeepSeek integration pass 18 is live: handle 77215, events
+  `local/delegation/18-events.jsonl`, owner study.py/tests/test_study.py. It adds
+  a calibration-only `diagnostic` phase, verifies offsets before final, and
+  reports condition `rtn_w4_logit_bias`, objective `mean_logit_drift`, seed None.
+  Review/test/commit before running diagnostic/final. No diagnostic fit yet.
+- Final plot script pass 15/17 completed (handle 73105 then 68493), session
+  `ses_e4698a500ffelfj1U35vPMul8I`. `scripts/plot_final.py` is uncommitted and
+  unrun on actual data because none exists. It expects curated
+  results/final/{qwen,smol}/{summaries.json,comparisons.json,predictions.jsonl.gz}.
+  It includes both constant A and mean-drift controls. Review on actual inputs.
+- English `paper/draft.tex` is an UNFINISHED manuscript with complete methods,
+  pilot observations, references and final-results placeholders. Initial build
+  succeeds with latexmk; temporary PDF under local/paper-build. Replace the
+  abstract, independent-results placeholder and selected-setting placeholders
+  after final analysis. Add final figures, rebuild and inspect before delivery.
+  The author/affiliation fields remain to be supplied; do not invent them.
+- Reused the user's preceding project's MIT license. No public GitHub repo
+  exists yet. Curated pilot artifacts are committed; no weights/caches/logs
+  should be published. No arXiv submission or compute purchase is authorized.
+
+## Evaluation freeze checkpoint, 05:09 UTC
+
+Both developments and all selected three-seed fits completed. Smol selection:
+paired lambda 10, random-pair 0.1, kernel 10; 12,582,912 trainable scales.
+Qwen paired/aug timing ratios for seeds 17/29/43: 0.9473/0.9516/1.0032;
+Smol: 1.0072/1.0067/1.0042. No >10% timing trigger is observed.
+The CLI and shared Qwen teacher caches were compared directly: logits,
+hidden vectors and token counts are exactly equal. Calibration/development
+records are also identical across the two models.
+
+A managed frozen worktree at
+`/home/tetsuya/.codex/worktrees/quantization-frozen-runs/equivariant-quantization`
+executed the replicate phases at clean source `0c3cf72`. Both handles 64720
+and 15236 completed. Archive this worktree after all frozen runs finish.
+The two additional original-KD CLI fits (seeds 29 and 43, handles 73266/34122)
+completed and were reused, not duplicated.
+
+DeepSeek diagnostics integration and composition-report changes completed
+(passes 18/20). The current full direct suite passes 104 tests. The independent
+composition contrasts are separate from the unchanged primary comparison.
+Renaming/order were exposed to development selection; only compositions are
+withheld from both gradient fitting and selection. Do not claim unseen
+primitive-family generalization.
+
+Final plotting code (15/17/21) is complete but awaits actual final data.
+Standalone replay code (19) is implemented; pass 22 (handle 38320, session
+`ses_e468ac618ffelu03S31oi2KdMn`) adds verification of secondary composition
+contrasts. Its files are scripts/replay_final.py and tests/test_replay_final.py.
+Do not stage these while that worker is writing.
+
+Next: commit the frozen study/diagnostic implementation, update the clean
+managed worktree to that commit, execute diagnostic for both models, then
+final and report sequentially on the GPU. Use absolute output roots so the
+stored path checks remain consistent. No final model inference has run yet.

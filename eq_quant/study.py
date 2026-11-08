@@ -5,10 +5,12 @@ APIs. It does not reimplement training, scoring, or aggregation. The CLI is
 
     python -m eq_quant.study --config CONFIG --root ROOT --phase PHASE
 
-where PHASE is one of ``develop``, ``replicate``, ``final``, or ``report``.
+where PHASE is one of ``develop``, ``replicate``, ``diagnostic``, ``final``,
+or ``report``.
 """
 
 import argparse
+import copy
 import json
 import subprocess
 import sys
@@ -17,13 +19,15 @@ from pathlib import Path
 from typing import Any
 
 from .analyze.stats import load_predictions
+from .bias_control import apply_offsets, fit_offsets
 from .calibrate.evaluate import (
     MANIFEST_FILENAME as EVALUATION_MANIFEST,
     PREDICTIONS_FILENAME,
     run_calibrated_evaluation,
 )
+from .calibrate.records import select_calibration_pairs
 from .data.oracles import canonical_answer
-from .data.schema import OPTION_LABELS
+from .data.schema import COMPOSED_TRANSFORMS, OPTION_LABELS
 from .calibrate.io_helpers import write_json, write_jsonl
 from .calibrate.teacher import (
     CACHE_FILENAME,
@@ -48,7 +52,7 @@ from .study_metrics import (
     summarize_conditions,
 )
 
-PHASES = ("develop", "replicate", "final", "report")
+PHASES = ("develop", "replicate", "diagnostic", "final", "report")
 DEVELOPMENT_SEED = 17
 CONTROL_OBJECTIVES = ("original_kd", "augmented_kd")
 REGULARIZED_OBJECTIVES = ("paired", "random_pair", "kernel")
@@ -58,6 +62,17 @@ METADATA_FORMAT = "eq_quant_study_artifact_v1"
 CONSTANT_DISPLAY_A_CONDITION = "constant_display_A"
 UNTRAINED_RULE_FORMAT = "eq_quant_study_untrained_rule_v1"
 UNTRAINED_RULE_MANIFEST = "untrained_rule.json"
+DIAGNOSTIC_FORMAT = "eq_quant_study_diagnostic_v1"
+DIAGNOSTIC_RECORDS_FILENAME = "calibration_inputs.jsonl"
+DIAGNOSTIC_METADATA_FILENAME = "study_diagnostic.json"
+DIAGNOSTIC_OFFSETS_FILENAME = "logit_bias_offsets.json"
+DIAGNOSTIC_EVALUATION_DIR = "evaluation"
+DIAGNOSTIC_RECORD_COUNT = 768
+DIAGNOSTIC_BITS = (4,)
+RTN_BIAS_CONDITION = "rtn_w4_logit_bias"
+RTN_BIAS_OBJECTIVE = "mean_logit_drift"
+POSTPROCESSING_FORMAT = "eq_quant_study_secondary_postprocessing_v1"
+POSTPROCESSING_MANIFEST = "postprocessing_manifest.json"
 
 
 def _now() -> str:
@@ -71,6 +86,21 @@ def _log(phase: str, message: str) -> None:
 def _read_json(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def _write_json_no_overwrite(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("x", encoding="utf-8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+
+
+def _write_jsonl_no_overwrite(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("x", encoding="utf-8") as handle:
+        for row in rows:
+            handle.write(json.dumps(row, ensure_ascii=False, sort_keys=True))
+            handle.write("\n")
 
 
 def _append_journal(root: Path, entry: dict[str, Any]) -> None:
@@ -492,6 +522,30 @@ def _ensure_baseline_evaluation(
     return manifest
 
 
+def _diagnostic_dir(root: Path) -> Path:
+    return root / "diagnostic"
+
+
+def _diagnostic_records_path(root: Path) -> Path:
+    return _diagnostic_dir(root) / DIAGNOSTIC_RECORDS_FILENAME
+
+
+def _diagnostic_metadata_path(root: Path) -> Path:
+    return _diagnostic_dir(root) / DIAGNOSTIC_METADATA_FILENAME
+
+
+def _diagnostic_offsets_path(root: Path) -> Path:
+    return _diagnostic_dir(root) / DIAGNOSTIC_OFFSETS_FILENAME
+
+
+def _diagnostic_evaluation_dir(root: Path) -> Path:
+    return _diagnostic_dir(root) / DIAGNOSTIC_EVALUATION_DIR
+
+
+def _rtn_bias_dir(root: Path) -> Path:
+    return root / "results" / "final" / RTN_BIAS_CONDITION
+
+
 def _constant_display_a_dir(root: Path) -> Path:
     return root / "results" / "final" / "constant_display_A"
 
@@ -637,6 +691,136 @@ def _ensure_constant_display_a_control(
         config, records_path, len(rows), provenance
     )
     write_json(evaluation_dir / UNTRAINED_RULE_MANIFEST, manifest)
+    return manifest
+
+
+def _load_rtn_bias_control(
+    config: dict[str, Any],
+    evaluation_dir: Path,
+    records_path: Path,
+    offsets_path: Path,
+    offsets_payload: dict[str, Any],
+) -> dict[str, Any]:
+    _require_files(
+        evaluation_dir,
+        [PREDICTIONS_FILENAME, POSTPROCESSING_MANIFEST],
+        "RTN W4 logit-bias control",
+    )
+    manifest = _read_json(evaluation_dir / POSTPROCESSING_MANIFEST)
+    if manifest.get("format") != POSTPROCESSING_FORMAT:
+        raise ValueError(
+            f"unsupported postprocessing manifest format: {evaluation_dir}"
+        )
+    _check_config(config, manifest.get("config"), "RTN W4 logit-bias control")
+    _check_model(config, manifest.get("model"), "RTN W4 logit-bias control")
+    if manifest.get("state") != "completed":
+        raise RuntimeError(
+            f"RTN W4 logit-bias control is not completed: "
+            f"state={manifest.get('state')!r}"
+        )
+    if manifest.get("condition") != RTN_BIAS_CONDITION:
+        raise ValueError(
+            f"RTN W4 logit-bias control condition mismatch at {evaluation_dir}"
+        )
+    if manifest.get("objective") != RTN_BIAS_OBJECTIVE:
+        raise ValueError(
+            f"RTN W4 logit-bias control objective mismatch at {evaluation_dir}"
+        )
+    if manifest.get("fit_seed") is not None:
+        raise ValueError(
+            f"RTN W4 logit-bias control must not use a fit seed: {evaluation_dir}"
+        )
+    if manifest.get("secondary_postprocessing") is not True:
+        raise ValueError(
+            f"RTN W4 logit-bias control must be secondary: {evaluation_dir}"
+        )
+    if manifest.get("replaces_paired_vs_augmented") is not False:
+        raise ValueError(
+            f"RTN W4 logit-bias control must not replace the primary comparison: "
+            f"{evaluation_dir}"
+        )
+    if str(manifest.get("records_path")) != str(records_path):
+        raise ValueError(
+            f"RTN W4 logit-bias control records mismatch at {evaluation_dir}"
+        )
+    if str(manifest.get("offsets_path")) != str(offsets_path):
+        raise ValueError(
+            f"RTN W4 logit-bias control offsets mismatch at {evaluation_dir}"
+        )
+    if manifest.get("offsets") != offsets_payload.get("offsets"):
+        raise ValueError(
+            f"RTN W4 logit-bias control offsets differ from the diagnostic: "
+            f"{evaluation_dir}"
+        )
+    return manifest
+
+
+def _ensure_rtn_bias_control(
+    config: dict[str, Any],
+    records_path: Path,
+    baseline_dir: Path,
+    evaluation_dir: Path,
+    offsets_path: Path,
+    offsets_payload: dict[str, Any],
+    diagnostic_metadata_path: Path,
+    provenance: dict[str, Any],
+    phase: str,
+) -> dict[str, Any]:
+    if evaluation_dir.exists():
+        if not (evaluation_dir / POSTPROCESSING_MANIFEST).is_file():
+            raise RuntimeError(
+                "RTN W4 logit-bias control directory exists without a "
+                f"postprocessing manifest; refusing to overwrite: {evaluation_dir}"
+            )
+        _log(phase, f"reuse RTN W4 logit-bias control {evaluation_dir}")
+        return _load_rtn_bias_control(
+            config,
+            evaluation_dir,
+            records_path,
+            offsets_path,
+            offsets_payload,
+        )
+
+    w4_path = baseline_dir / "predictions_w4.jsonl"
+    if not w4_path.is_file():
+        raise FileNotFoundError(
+            f"baseline W4 predictions are missing: {w4_path}"
+        )
+    w4_rows = load_predictions(w4_path)
+    if not w4_rows:
+        raise ValueError("no baseline W4 rows for the logit-bias control")
+
+    _log(
+        phase,
+        f"apply fixed W4 logit offsets rows={len(w4_rows)} -> {evaluation_dir}",
+    )
+    rows = apply_offsets(w4_rows, offsets_payload, source_path=w4_path)
+    evaluation_dir.mkdir(parents=True, exist_ok=True)
+    write_jsonl(evaluation_dir / PREDICTIONS_FILENAME, rows)
+    manifest = {
+        "format": POSTPROCESSING_FORMAT,
+        "kind": "secondary_mean_logit_drift",
+        "state": "completed",
+        "condition": RTN_BIAS_CONDITION,
+        "objective": RTN_BIAS_OBJECTIVE,
+        "fit_seed": None,
+        "secondary_postprocessing": True,
+        "replaces_paired_vs_augmented": False,
+        "uses_oracle_labels": False,
+        "uses_development_or_final_outcomes": False,
+        "parameters": len(OPTION_LABELS),
+        "config": config,
+        "model": config["model"],
+        "records_path": str(records_path),
+        "offsets_path": str(offsets_path),
+        "offsets": offsets_payload["offsets"],
+        "source_predictions": str(w4_path),
+        "record_count": len(rows),
+        "diagnostic_metadata": str(diagnostic_metadata_path),
+        "source": provenance,
+        "created_at": _now(),
+    }
+    write_json(evaluation_dir / POSTPROCESSING_MANIFEST, manifest)
     return manifest
 
 
@@ -793,6 +977,273 @@ def _optimization_time_check(
         "measured_seeds": measured_seeds,
         "compute_matched_augmented_control_required": required,
         "note": note,
+    }
+
+
+def _diagnostic_calibration_rows(
+    records: list[dict[str, Any]],
+) -> tuple[list[Any], list[dict[str, Any]]]:
+    """Select ordered original/option-permutation calibration rows only."""
+    pairs = select_calibration_pairs(records)
+    ordered = [record for pair in pairs for record in pair.ordered_records()]
+    return pairs, ordered
+
+
+def _validate_diagnostic_offsets(
+    payload: dict[str, Any],
+    metadata: dict[str, Any],
+    config: dict[str, Any],
+    offsets_path: Path,
+) -> None:
+    if metadata.get("format") != DIAGNOSTIC_FORMAT:
+        raise ValueError("diagnostic metadata format is unsupported")
+    if metadata.get("state") != "completed":
+        raise RuntimeError(
+            f"diagnostic is not completed: state={metadata.get('state')!r}"
+        )
+    _check_config(config, metadata.get("config"), "diagnostic")
+    _check_model(config, metadata.get("model"), "diagnostic")
+    if metadata.get("objective") != RTN_BIAS_OBJECTIVE:
+        raise ValueError("diagnostic objective mismatch")
+    if metadata.get("fit_seed") is not None:
+        raise ValueError("diagnostic must be one deterministic rule without a seed")
+    if metadata.get("calibration_split") != "calibration":
+        raise ValueError("diagnostic offsets must be fitted on calibration only")
+    if list(metadata.get("bits", [])) != list(DIAGNOSTIC_BITS):
+        raise ValueError("diagnostic must use only the fixed W4 bit width")
+    if int(metadata.get("record_count", -1)) != DIAGNOSTIC_RECORD_COUNT:
+        raise ValueError(
+            "diagnostic record count must be "
+            f"{DIAGNOSTIC_RECORD_COUNT}, got {metadata.get('record_count')!r}"
+        )
+    if str(metadata.get("offsets_path")) != str(offsets_path):
+        raise ValueError("diagnostic offsets path mismatch")
+
+    apply_offsets([], payload)
+
+    if payload.get("condition") != RTN_BIAS_CONDITION:
+        raise ValueError("diagnostic offsets condition mismatch")
+    fit = payload.get("fit")
+    if not isinstance(fit, dict):
+        raise ValueError("diagnostic offsets lack fit metadata")
+    if fit.get("split") != "calibration":
+        raise ValueError("diagnostic offsets were not fitted on calibration")
+    if list(fit.get("transforms", [])) != ["original", "option_permutation"]:
+        raise ValueError("diagnostic offsets used unexpected transforms")
+    if int(fit.get("record_count", -1)) != DIAGNOSTIC_RECORD_COUNT:
+        raise ValueError("diagnostic offsets were fitted on a different record count")
+    if metadata.get("offsets") != payload.get("offsets"):
+        raise ValueError("diagnostic metadata offsets do not match the fit")
+
+
+def _load_diagnostic_offsets(
+    config: dict[str, Any],
+    root: Path,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    metadata_path = _diagnostic_metadata_path(root)
+    offsets_path = _diagnostic_offsets_path(root)
+    if not metadata_path.is_file() or not offsets_path.is_file():
+        raise FileNotFoundError(
+            "completed diagnostic offsets are missing; run the diagnostic phase first"
+        )
+    metadata = _read_json(metadata_path)
+    payload = _read_json(offsets_path)
+    _validate_diagnostic_offsets(payload, metadata, config, offsets_path)
+    return payload, metadata
+
+
+def _load_completed_diagnostic(
+    config: dict[str, Any],
+    root: Path,
+    calibration_records_path: Path,
+    expected_rows: list[dict[str, Any]],
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    diagnostic_dir = _diagnostic_dir(root)
+    evaluation_dir = _diagnostic_evaluation_dir(root)
+    _require_files(
+        diagnostic_dir,
+        [
+            DIAGNOSTIC_RECORDS_FILENAME,
+            DIAGNOSTIC_METADATA_FILENAME,
+            DIAGNOSTIC_OFFSETS_FILENAME,
+        ],
+        "diagnostic",
+    )
+    _require_files(
+        evaluation_dir,
+        ["run.json", "predictions_fp.jsonl", "predictions_w4.jsonl"],
+        "diagnostic evaluation",
+    )
+
+    payload, metadata = _load_diagnostic_offsets(config, root)
+    evaluation_manifest = _read_json(evaluation_dir / "run.json")
+    _check_model(config, evaluation_manifest.get("model"), "diagnostic evaluation")
+    if evaluation_manifest.get("state") != "completed":
+        raise RuntimeError(
+            "diagnostic evaluation is not completed: "
+            f"state={evaluation_manifest.get('state')!r}"
+        )
+    bits = [
+        int(value)
+        for value in evaluation_manifest.get("quantization", {}).get("bits", [])
+    ]
+    if bits != list(DIAGNOSTIC_BITS):
+        raise ValueError("diagnostic evaluation used different quantization bits")
+    if sorted(evaluation_manifest.get("completed_conditions", [])) != ["fp", "w4"]:
+        raise ValueError("diagnostic evaluation did not complete only FP and W4")
+    if str(metadata.get("source_calibration_records")) != str(
+        calibration_records_path
+    ):
+        raise ValueError("diagnostic was built from different calibration records")
+
+    saved_rows = load_records(_diagnostic_records_path(root))
+    if saved_rows != expected_rows:
+        raise ValueError(
+            "diagnostic inputs do not match the current calibration originals/"
+            "option permutations"
+        )
+    return payload, metadata
+
+
+def run_diagnostic(
+    config: dict[str, Any],
+    root: Path,
+    provenance: dict[str, Any],
+) -> dict[str, Any]:
+    calibration_dir = root / "data" / "calibration"
+    _require_files(
+        calibration_dir,
+        ["records.jsonl", "manifest.json", "study_data.json"],
+        "calibration dataset",
+    )
+    calibration_metadata = _read_json(calibration_dir / "study_data.json")
+    if calibration_metadata.get("format") != METADATA_FORMAT:
+        raise ValueError(
+            f"calibration dataset metadata format is unsupported: {calibration_dir}"
+        )
+    _check_config(config, calibration_metadata.get("config"), "calibration dataset")
+    calibration_records_path = calibration_dir / "records.jsonl"
+
+    all_records = load_records(calibration_records_path)
+    pairs, ordered_rows = _diagnostic_calibration_rows(all_records)
+    if (
+        len(ordered_rows) != DIAGNOSTIC_RECORD_COUNT
+        or len(pairs) * 2 != DIAGNOSTIC_RECORD_COUNT
+    ):
+        raise ValueError(
+            "diagnostic requires exactly "
+            f"{DIAGNOSTIC_RECORD_COUNT} calibration original/option rows; "
+            f"found {len(ordered_rows)} rows from {len(pairs)} bases"
+        )
+
+    diagnostic_dir = _diagnostic_dir(root)
+    records_path = _diagnostic_records_path(root)
+    evaluation_dir = _diagnostic_evaluation_dir(root)
+    offsets_path = _diagnostic_offsets_path(root)
+    metadata_path = _diagnostic_metadata_path(root)
+
+    if diagnostic_dir.exists():
+        _log("diagnostic", f"reuse completed diagnostic {diagnostic_dir}")
+        payload, metadata = _load_completed_diagnostic(
+            config, root, calibration_records_path, ordered_rows
+        )
+        return {
+            "inputs": str(records_path),
+            "evaluation": str(evaluation_dir),
+            "offsets": str(offsets_path),
+            "metadata": str(metadata_path),
+            "record_count": int(metadata["record_count"]),
+            "calibration_bases": int(metadata["calibration_bases"]),
+        }
+
+    _log(
+        "diagnostic",
+        f"save {len(ordered_rows)} calibration original/option rows -> {records_path}",
+    )
+    diagnostic_dir.mkdir(parents=True)
+    _write_jsonl_no_overwrite(records_path, ordered_rows)
+
+    diagnostic_config = copy.deepcopy(config)
+    diagnostic_config["quantization"]["bits"] = list(DIAGNOSTIC_BITS)
+    _log(
+        "diagnostic",
+        f"evaluate FP/W4 calibration rows -> {evaluation_dir}",
+    )
+    evaluation_manifest = run_evaluation(
+        config=diagnostic_config,
+        records_path=records_path,
+        output_dir=evaluation_dir,
+        generation_subset=0,
+        overwrite=False,
+    )
+    if evaluation_manifest.get("state") != "completed":
+        raise RuntimeError(
+            "diagnostic evaluation did not complete: "
+            f"state={evaluation_manifest.get('state')!r}"
+        )
+
+    fp_path = evaluation_dir / "predictions_fp.jsonl"
+    w4_path = evaluation_dir / "predictions_w4.jsonl"
+    fp_rows = load_predictions(fp_path)
+    w4_rows = load_predictions(w4_path)
+    if (
+        len(fp_rows) != DIAGNOSTIC_RECORD_COUNT
+        or len(w4_rows) != DIAGNOSTIC_RECORD_COUNT
+    ):
+        raise ValueError(
+            "diagnostic evaluation returned an unexpected prediction count"
+        )
+
+    _log("diagnostic", "fit fixed four-label offsets from calibration only")
+    payload = fit_offsets(
+        fp_rows,
+        w4_rows,
+        config=config,
+        fp_path=fp_path,
+        w4_path=w4_path,
+    )
+    fit = payload.get("fit", {})
+    if int(fit.get("record_count", -1)) != DIAGNOSTIC_RECORD_COUNT:
+        raise ValueError("diagnostic offset fit used an unexpected record count")
+    _write_json_no_overwrite(offsets_path, payload)
+
+    metadata = {
+        "format": DIAGNOSTIC_FORMAT,
+        "kind": "diagnostic",
+        "state": "completed",
+        "phase": "diagnostic",
+        "objective": RTN_BIAS_OBJECTIVE,
+        "condition": RTN_BIAS_CONDITION,
+        "fit_seed": None,
+        "secondary": True,
+        "config": config,
+        "model": config["model"],
+        "diagnostic_config": diagnostic_config,
+        "bits": list(DIAGNOSTIC_BITS),
+        "calibration_split": "calibration",
+        "calibration_bases": len(pairs),
+        "record_count": len(ordered_rows),
+        "records_path": str(records_path),
+        "source_calibration_records": str(calibration_records_path),
+        "evaluation_path": str(evaluation_dir),
+        "offsets_path": str(offsets_path),
+        "offsets": payload["offsets"],
+        "targets": {
+            "uses_oracle_labels": False,
+            "uses_development_or_final_outcomes": False,
+        },
+        "source": provenance,
+        "created_at": _now(),
+    }
+    _write_json_no_overwrite(metadata_path, metadata)
+    _log("diagnostic", f"wrote diagnostic offsets {offsets_path}")
+    return {
+        "inputs": str(records_path),
+        "evaluation": str(evaluation_dir),
+        "offsets": str(offsets_path),
+        "metadata": str(metadata_path),
+        "record_count": len(ordered_rows),
+        "calibration_bases": len(pairs),
     }
 
 
@@ -1026,6 +1477,8 @@ def run_final(
     selection = _load_selection(root, config)
     selected_fits = _require_selected_fits(config, root, selection, seeds)
     _log("final", f"verified {len(selected_fits)} completed selected fits")
+    offsets_payload, _ = _load_diagnostic_offsets(config, root)
+    _log("final", "verified completed diagnostic offsets before final inference")
 
     records_path = _ensure_dataset(
         config,
@@ -1037,6 +1490,18 @@ def run_final(
     baseline_dir = root / "results" / "final" / "baseline"
     _ensure_baseline_evaluation(
         config, records_path, baseline_dir, provenance, "final"
+    )
+    rtn_bias_dir = _rtn_bias_dir(root)
+    _ensure_rtn_bias_control(
+        config,
+        records_path,
+        baseline_dir,
+        rtn_bias_dir,
+        _diagnostic_offsets_path(root),
+        offsets_payload,
+        _diagnostic_metadata_path(root),
+        provenance,
+        "final",
     )
 
     evaluations: list[str] = []
@@ -1076,12 +1541,18 @@ def run_final(
         "records": str(records_path),
         "baseline": str(baseline_dir),
         "evaluations": evaluations,
+        "rtn_w4_logit_bias": str(rtn_bias_dir),
         "constant_display_a": str(constant_control_dir),
     }
 
 
 def _held_out_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     transforms = {ORIGINAL_TRANSFORM, *HELD_OUT_TRANSFORMS}
+    return [row for row in rows if str(row.get("transform")) in transforms]
+
+
+def _composition_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    transforms = {ORIGINAL_TRANSFORM, *COMPOSED_TRANSFORMS}
     return [row for row in rows if str(row.get("transform")) in transforms]
 
 
@@ -1189,6 +1660,17 @@ def _group_summaries(
     }
 
 
+def _comparison_rows(
+    rows: list[dict[str, Any]],
+    evidence: str,
+) -> list[dict[str, Any]]:
+    if evidence == "held_out_singles":
+        return _held_out_rows(rows)
+    if evidence == "compositions":
+        return _composition_rows(rows)
+    raise ValueError(f"unknown comparison evidence {evidence!r}")
+
+
 def _primary_comparisons(
     rows: list[dict[str, Any]],
     seeds: list[int],
@@ -1196,6 +1678,7 @@ def _primary_comparisons(
     families: list[str],
     n_boot: int,
     bootstrap_seed: int,
+    evidence: str = "held_out_singles",
 ) -> list[dict[str, Any]]:
     comparisons: list[dict[str, Any]] = []
     scopes: list[tuple[str | None, str | None]] = [(None, None)]
@@ -1204,16 +1687,21 @@ def _primary_comparisons(
     scopes.extend(
         (split, family) for split in splits for family in families
     )
-    held_out = _held_out_rows(rows)
+    compared_rows = _comparison_rows(rows, evidence)
     for seed in seeds:
         condition = _final_condition("paired", seed)
         baseline = _final_condition("augmented_kd", seed)
         for split, family in scopes:
             selected = _filter_rows(
-                held_out, split=split, task_family=family
+                compared_rows, split=split, task_family=family
             )
             available = {row["condition"] for row in selected}
             if condition not in available or baseline not in available:
+                continue
+            if evidence == "compositions" and not any(
+                str(row.get("transform")) in COMPOSED_TRANSFORMS
+                for row in selected
+            ):
                 continue
             comparison = compare_conditions(
                 selected,
@@ -1230,7 +1718,7 @@ def _primary_comparisons(
                     "task_family": family or "all",
                     "condition": condition,
                     "baseline": baseline,
-                    "evidence": "held_out_singles",
+                    "evidence": evidence,
                     "comparison": comparison,
                 }
             )
@@ -1289,6 +1777,27 @@ def _require_final_rows(
             "path": str(evaluation_dir),
         }
         rows.extend(load_predictions(evaluation_dir))
+
+    offsets_payload, _ = _load_diagnostic_offsets(config, root)
+    rtn_bias_dir = _rtn_bias_dir(root)
+    _load_rtn_bias_control(
+        config,
+        rtn_bias_dir,
+        records_path,
+        _diagnostic_offsets_path(root),
+        offsets_payload,
+    )
+    if RTN_BIAS_CONDITION in condition_index:
+        raise ValueError(f"duplicate final condition: {RTN_BIAS_CONDITION}")
+    condition_index[RTN_BIAS_CONDITION] = {
+        "objective": RTN_BIAS_OBJECTIVE,
+        "lambda": None,
+        "fit_seed": None,
+        "path": str(rtn_bias_dir),
+        "secondary_postprocessing": True,
+        "manifest": str(rtn_bias_dir / POSTPROCESSING_MANIFEST),
+    }
+    rows.extend(load_predictions(rtn_bias_dir))
 
     constant_control_dir = _constant_display_a_dir(root)
     _load_constant_display_a_control(config, constant_control_dir, records_path)
@@ -1389,11 +1898,25 @@ def run_report(
     comparisons = _primary_comparisons(
         rows, seeds, splits, families, n_boot, bootstrap_seed
     )
+    secondary_compositions = _primary_comparisons(
+        rows,
+        seeds,
+        splits,
+        families,
+        n_boot,
+        bootstrap_seed,
+        evidence="compositions",
+    )
     per_transform = _per_transform_evidence(rows, conditions)
     untrained_rule_conditions = [
         condition
         for condition, entry in condition_index.items()
         if entry.get("untrained_rule")
+    ]
+    secondary_postprocessing_conditions = [
+        condition
+        for condition, entry in condition_index.items()
+        if entry.get("secondary_postprocessing")
     ]
     timing = _optimization_time_check(root, selection, seeds)
 
@@ -1414,9 +1937,11 @@ def run_report(
             for condition, entry in condition_index.items()
             if entry["objective"]
             in {"baseline", "original_kd", "random_pair", "kernel"}
+            or entry["objective"] == RTN_BIAS_OBJECTIVE
             or entry.get("untrained_rule")
         ],
         "untrained_rule_conditions": untrained_rule_conditions,
+        "secondary_postprocessing_conditions": secondary_postprocessing_conditions,
         "optimization_time": timing,
         "paths": {
             "prediction_rows": str(report_dir / "final_predictions.jsonl"),
@@ -1438,7 +1963,33 @@ def run_report(
             "samples": n_boot,
             "seed": bootstrap_seed,
         },
+        "endpoint_descriptions": {
+            "primary": {
+                "key": "comparisons",
+                "evidence": "held_out_singles",
+                "transforms": [ORIGINAL_TRANSFORM, *HELD_OUT_TRANSFORMS],
+                "description": (
+                    "Original plus entity-rename/order single transformations. "
+                    "Entity rename and order were excluded from gradients but "
+                    "used in lambda selection; these contrasts are not free of "
+                    "development selection exposure."
+                ),
+            },
+            "secondary_compositions": {
+                "key": "secondary_compositions",
+                "evidence": "compositions",
+                "transforms": [ORIGINAL_TRANSFORM, *COMPOSED_TRANSFORMS],
+                "description": (
+                    "Original plus option+rename and option+rename+order "
+                    "compositions. Compositions are withheld from both "
+                    "calibration and development, so these contrasts add "
+                    "validation-free composition evidence; they remain "
+                    "secondary to the primary held-out comparison."
+                ),
+            },
+        },
         "comparisons": comparisons,
+        "secondary_compositions": secondary_compositions,
         "optimization_time": timing,
     }
 
@@ -1486,6 +2037,8 @@ def run_phase(
             result = run_develop(config, root, provenance)
         elif phase == "replicate":
             result = run_replicate(config, root, provenance)
+        elif phase == "diagnostic":
+            result = run_diagnostic(config, root, provenance)
         elif phase == "final":
             result = run_final(config, root, provenance)
         else:

@@ -68,11 +68,31 @@ add an augmented-KD run with extra updates matching its measured time.
 
 ## Final data and scope
 
+Information-boundary clarification before final inference: entity renaming and
+fact order are held out of gradient updates, but their development outcomes
+select lambda. They are not unseen to the complete selection procedure.
+Compositions are absent from both calibration and development and provide the
+fully withheld transformation-composition test. Report paired-versus-augmented
+composition contrasts separately with the same base-bootstrap estimator;
+do not describe the single-transform result as unseen-primitive-family transfer.
+The original primary comparison and all frozen settings remain unchanged.
+
 Before final evaluation, add a fixed displayed-A negative control. The Smol
 W3 pilot selected displayed A on all 704 records, so this control distinguishes
 transformation agreement achievable by a constant letter from task correctness.
 It is a descriptive, untrained control and does not replace the paired versus
 augmented-KD comparison or select any final setting.
+
+A further secondary diagnostic was added after the pilot and Qwen development,
+before any final inference: a four-logit mean-drift correction on fixed RTN W4.
+Using only the 768 calibration originals/option permutations, estimate for each
+displayed label the mean FP-minus-W4 logit difference after subtracting the
+within-row four-label mean. Add these four fixed offsets to W4 option logits
+at evaluation. No oracle labels, development selection, encoder updates or
+final outcomes fit this rule. This cheap postprocessing control tests whether
+a global letter preference can explain an apparent calibration benefit.
+It has a different parameter/compute budget and is explicitly secondary;
+the five matched scale objectives and their primary comparison are unchanged.
 
 Add option+rename and, where available, option+rename+order compositions only
 to final and structural holdout. Reuse each component's exact saved map;

@@ -1,0 +1,321 @@
+{
+  "candidate_counts": {
+    "development": {
+      "arithmetic": {
+        "accepted": 128,
+        "rejected": 2,
+        "rejection_reasons": {
+          "duplicate_semantic_key": 2
+        },
+        "requested": 128,
+        "tried": 130
+      },
+      "boolean": {
+        "accepted": 128,
+        "rejected": 32,
+        "rejection_reasons": {
+          "duplicate_semantic_key": 32
+        },
+        "requested": 128,
+        "tried": 160
+      },
+      "graph": {
+        "accepted": 128,
+        "rejected": 0,
+        "rejection_reasons": {
+          "duplicate_semantic_key": 0
+        },
+        "requested": 128,
+        "tried": 128
+      }
+    }
+  },
+  "collision_rejections": {
+    "development": {
+      "arithmetic": 2,
+      "boolean": 32,
+      "graph": 0
+    }
+  },
+  "composed_splits": [
+    "final",
+    "structural_holdout"
+  ],
+  "composed_transform_availability": {
+    "arithmetic": [
+      "option_permutation+entity_rename"
+    ],
+    "boolean": [
+      "option_permutation+entity_rename",
+      "option_permutation+entity_rename+order_permutation"
+    ],
+    "graph": [
+      "option_permutation+entity_rename",
+      "option_permutation+entity_rename+order_permutation"
+    ]
+  },
+  "counts": {
+    "bases": 384,
+    "per_split": {
+      "development": {
+        "bases": 384,
+        "records": 1408
+      }
+    },
+    "records": 1408
+  },
+  "families": [
+    "arithmetic",
+    "boolean",
+    "graph"
+  ],
+  "full_generation": {
+    "candidate_counts": {
+      "calibration": {
+        "arithmetic": {
+          "accepted": 128,
+          "rejected": 0,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 0
+          },
+          "requested": 128,
+          "tried": 128
+        },
+        "boolean": {
+          "accepted": 128,
+          "rejected": 8,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 8
+          },
+          "requested": 128,
+          "tried": 136
+        },
+        "graph": {
+          "accepted": 128,
+          "rejected": 0,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 0
+          },
+          "requested": 128,
+          "tried": 128
+        }
+      },
+      "development": {
+        "arithmetic": {
+          "accepted": 128,
+          "rejected": 2,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 2
+          },
+          "requested": 128,
+          "tried": 130
+        },
+        "boolean": {
+          "accepted": 128,
+          "rejected": 32,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 32
+          },
+          "requested": 128,
+          "tried": 160
+        },
+        "graph": {
+          "accepted": 128,
+          "rejected": 0,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 0
+          },
+          "requested": 128,
+          "tried": 128
+        }
+      },
+      "final": {
+        "arithmetic": {
+          "accepted": 256,
+          "rejected": 4,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 4
+          },
+          "requested": 256,
+          "tried": 260
+        },
+        "boolean": {
+          "accepted": 256,
+          "rejected": 207,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 207
+          },
+          "requested": 256,
+          "tried": 463
+        },
+        "graph": {
+          "accepted": 256,
+          "rejected": 0,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 0
+          },
+          "requested": 256,
+          "tried": 256
+        }
+      },
+      "pilot": {
+        "arithmetic": {
+          "accepted": 64,
+          "rejected": 0,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 0
+          },
+          "requested": 64,
+          "tried": 64
+        },
+        "boolean": {
+          "accepted": 64,
+          "rejected": 34,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 34
+          },
+          "requested": 64,
+          "tried": 98
+        },
+        "graph": {
+          "accepted": 64,
+          "rejected": 1,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 1
+          },
+          "requested": 64,
+          "tried": 65
+        }
+      },
+      "structural_holdout": {
+        "arithmetic": {
+          "accepted": 128,
+          "rejected": 0,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 0
+          },
+          "requested": 128,
+          "tried": 128
+        },
+        "boolean": {
+          "accepted": 128,
+          "rejected": 4,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 4
+          },
+          "requested": 128,
+          "tried": 132
+        },
+        "graph": {
+          "accepted": 128,
+          "rejected": 0,
+          "rejection_reasons": {
+            "duplicate_semantic_key": 0
+          },
+          "requested": 128,
+          "tried": 128
+        }
+      }
+    },
+    "collision_rejections": {
+      "calibration": {
+        "arithmetic": 0,
+        "boolean": 8,
+        "graph": 0
+      },
+      "development": {
+        "arithmetic": 2,
+        "boolean": 32,
+        "graph": 0
+      },
+      "final": {
+        "arithmetic": 4,
+        "boolean": 207,
+        "graph": 0
+      },
+      "pilot": {
+        "arithmetic": 0,
+        "boolean": 34,
+        "graph": 1
+      },
+      "structural_holdout": {
+        "arithmetic": 0,
+        "boolean": 4,
+        "graph": 0
+      }
+    },
+    "counts": {
+      "bases": 2112,
+      "per_split": {
+        "calibration": {
+          "bases": 384,
+          "records": 1408
+        },
+        "development": {
+          "bases": 384,
+          "records": 1408
+        },
+        "final": {
+          "bases": 768,
+          "records": 4096
+        },
+        "pilot": {
+          "bases": 192,
+          "records": 704
+        },
+        "structural_holdout": {
+          "bases": 384,
+          "records": 2048
+        }
+      },
+      "records": 9664
+    },
+    "order": [
+      "calibration",
+      "development",
+      "pilot",
+      "final",
+      "structural_holdout"
+    ]
+  },
+  "selected_splits": [
+    "development"
+  ],
+  "split_specs": {
+    "development": {
+      "count": 128,
+      "seed": 2108
+    }
+  },
+  "structural_holdout": {
+    "arithmetic_operation_count": [
+      5,
+      6
+    ],
+    "boolean_variable_count": 5,
+    "graph_node_count": [
+      8,
+      9,
+      10
+    ]
+  },
+  "transform_availability": {
+    "arithmetic": [
+      "original",
+      "option_permutation",
+      "entity_rename"
+    ],
+    "boolean": [
+      "original",
+      "option_permutation",
+      "entity_rename",
+      "order_permutation"
+    ],
+    "graph": [
+      "original",
+      "option_permutation",
+      "entity_rename",
+      "order_permutation"
+    ]
+  }
+}

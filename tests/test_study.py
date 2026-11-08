@@ -5,6 +5,7 @@ from pathlib import Path
 from unittest import mock
 
 from eq_quant import study
+from eq_quant.bias_control import FIT_FORMAT
 from eq_quant.config import load_config
 
 
@@ -117,6 +118,99 @@ def prediction_row(
         "correct_option_index": record["correct_option_index"],
         "correct": canonical_prediction == 0,
         "token_count": 1,
+    }
+
+
+ZERO_OFFSETS = {"A": 0.0, "B": 0.0, "C": 0.0, "D": 0.0}
+
+
+def write_completed_diagnostic(
+    root: Path,
+    config: dict,
+    offsets: dict[str, float] | None = None,
+    record_count: int = study.DIAGNOSTIC_RECORD_COUNT,
+) -> None:
+    diagnostic_dir = study._diagnostic_dir(root)
+    diagnostic_dir.mkdir(parents=True, exist_ok=True)
+    values = dict(ZERO_OFFSETS if offsets is None else offsets)
+    payload = {
+        "format": FIT_FORMAT,
+        "condition": study.RTN_BIAS_CONDITION,
+        "method": "test",
+        "offsets": values,
+        "fit": {
+            "split": "calibration",
+            "transforms": ["original", "option_permutation"],
+            "record_count": record_count,
+        },
+    }
+    study._write_json_no_overwrite(study._diagnostic_offsets_path(root), payload)
+    metadata = {
+        "format": study.DIAGNOSTIC_FORMAT,
+        "state": "completed",
+        "objective": study.RTN_BIAS_OBJECTIVE,
+        "condition": study.RTN_BIAS_CONDITION,
+        "fit_seed": None,
+        "config": config,
+        "model": config["model"],
+        "calibration_split": "calibration",
+        "bits": list(study.DIAGNOSTIC_BITS),
+        "calibration_bases": record_count // 2,
+        "record_count": record_count,
+        "source_calibration_records": str(
+            root / "data" / "calibration" / "records.jsonl"
+        ),
+        "offsets_path": str(study._diagnostic_offsets_path(root)),
+        "offsets": values,
+    }
+    study._write_json_no_overwrite(study._diagnostic_metadata_path(root), metadata)
+
+
+def calibration_records(count: int = 384) -> list[dict]:
+    records: list[dict] = []
+    for index in range(count):
+        base_id = f"base-{index:04d}"
+        for transform, option_order in (
+            ("original", [0, 1, 2, 3]),
+            ("option_permutation", [1, 0, 3, 2]),
+            ("entity_rename", [2, 0, 3, 1]),
+        ):
+            record_id = f"{base_id}-{transform}"
+            records.append(
+                {
+                    "record_id": record_id,
+                    "base_id": base_id,
+                    "split": "calibration",
+                    "task_family": "arithmetic",
+                    "transform": transform,
+                    "semantic": ARITHMETIC_SEMANTIC,
+                    "prompt": f"prompt {record_id}",
+                    "option_order": list(option_order),
+                    "correct_option_index": list(option_order).index(0),
+                    "rename": None,
+                    "order": None,
+                }
+            )
+    return records
+
+
+def diagnostic_prediction_row(
+    record: dict,
+    condition: str,
+    logits: list[float],
+) -> dict:
+    return {
+        "record_id": record["record_id"],
+        "base_id": record["base_id"],
+        "split": record["split"],
+        "task_family": record["task_family"],
+        "transform": record["transform"],
+        "condition": condition,
+        "semantic": record["semantic"],
+        "option_order": list(record["option_order"]),
+        "labels": ["A", "B", "C", "D"],
+        "option_logits": list(logits),
+        "correct_option_index": record["correct_option_index"],
     }
 
 
@@ -249,6 +343,131 @@ class DevelopPhaseTests(unittest.TestCase):
                 self.assertEqual(len(block["candidates"]), 3)
 
 
+class DiagnosticPhaseTests(unittest.TestCase):
+    def test_diagnostic_uses_only_calibration_originals_and_permutations(self) -> None:
+        config = calibration_config()
+        provenance = {"git_revision": "test", "dirty_paths": []}
+        bias = {"A": -2.5, "B": 0.5, "C": 1.0, "D": 1.0}
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            calibration_dir = root / "data" / "calibration"
+            calibration_dir.mkdir(parents=True)
+            records = calibration_records()
+            write_records(calibration_dir / "records.jsonl", records)
+            study.write_json(calibration_dir / "manifest.json", {})
+            study.write_json(
+                calibration_dir / "study_data.json",
+                {"format": study.METADATA_FORMAT, "config": config},
+            )
+
+            evaluation_calls: list[dict] = []
+
+            def fake_evaluation(config, records_path, output_dir, **kwargs):
+                saved = study.load_records(records_path)
+                self.assertEqual(len(saved), study.DIAGNOSTIC_RECORD_COUNT)
+                self.assertEqual(
+                    {row["transform"] for row in saved},
+                    {"original", "option_permutation"},
+                )
+                self.assertEqual(config["quantization"]["bits"], [4])
+                evaluation_calls.append(
+                    {"records_path": records_path, "output_dir": output_dir}
+                )
+                fp_rows = []
+                w4_rows = []
+                for index, record in enumerate(saved):
+                    fp_logits = [0.0, 0.0, 0.0, 0.0]
+                    row_shift = 0.25 * index
+                    w4_logits = [
+                        fp_logit - bias[label] + row_shift
+                        for label, fp_logit in zip(
+                            "ABCD", fp_logits, strict=True
+                        )
+                    ]
+                    fp_rows.append(
+                        diagnostic_prediction_row(record, "fp", fp_logits)
+                    )
+                    w4_rows.append(
+                        diagnostic_prediction_row(record, "w4", w4_logits)
+                    )
+                output_dir.mkdir(parents=True, exist_ok=True)
+                study.write_jsonl(output_dir / "predictions_fp.jsonl", fp_rows)
+                study.write_jsonl(output_dir / "predictions_w4.jsonl", w4_rows)
+                study.write_json(
+                    output_dir / "run.json",
+                    {
+                        "state": "completed",
+                        "model": config["model"],
+                        "quantization": {
+                            "bits": config["quantization"]["bits"]
+                        },
+                        "completed_conditions": ["fp", "w4"],
+                    },
+                )
+                return {"state": "completed"}
+
+            with mock.patch.object(
+                study, "run_evaluation", side_effect=fake_evaluation
+            ):
+                result = study.run_diagnostic(config, root, provenance)
+
+            self.assertEqual(len(evaluation_calls), 1)
+            self.assertEqual(result["record_count"], 768)
+            self.assertEqual(result["calibration_bases"], 384)
+            metadata = json.loads(
+                study._diagnostic_metadata_path(root).read_text(encoding="utf-8")
+            )
+            self.assertEqual(metadata["record_count"], 768)
+            self.assertEqual(metadata["fit_seed"], None)
+            self.assertFalse(
+                metadata["targets"]["uses_development_or_final_outcomes"]
+            )
+            offsets = json.loads(
+                study._diagnostic_offsets_path(root).read_text(encoding="utf-8")
+            )["offsets"]
+            for label, expected in bias.items():
+                self.assertAlmostEqual(offsets[label], expected, places=9)
+
+            before = study._diagnostic_offsets_path(root).read_text(
+                encoding="utf-8"
+            )
+            with mock.patch.object(
+                study,
+                "run_evaluation",
+                side_effect=AssertionError("compatible diagnostic must be reused"),
+            ):
+                study.run_diagnostic(config, root, provenance)
+            self.assertEqual(
+                study._diagnostic_offsets_path(root).read_text(encoding="utf-8"),
+                before,
+            )
+
+    def test_diagnostic_requires_fixed_calibration_count(self) -> None:
+        config = calibration_config()
+        provenance = {"git_revision": "test", "dirty_paths": []}
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            calibration_dir = root / "data" / "calibration"
+            calibration_dir.mkdir(parents=True)
+            write_records(
+                calibration_dir / "records.jsonl", calibration_records(count=1)
+            )
+            study.write_json(calibration_dir / "manifest.json", {})
+            study.write_json(
+                calibration_dir / "study_data.json",
+                {"format": study.METADATA_FORMAT, "config": config},
+            )
+
+            with mock.patch.object(
+                study,
+                "run_evaluation",
+                side_effect=AssertionError("count check must run before evaluation"),
+            ):
+                with self.assertRaisesRegex(ValueError, "exactly 768"):
+                    study.run_diagnostic(config, root, provenance)
+
+
 class FinalPhaseTests(unittest.TestCase):
     def test_final_refuses_missing_selection(self) -> None:
         config = calibration_config()
@@ -301,6 +520,91 @@ class FinalPhaseTests(unittest.TestCase):
                 side_effect=AssertionError("final evaluation must not start"),
             ) as final_evaluation:
                 with self.assertRaises(RuntimeError):
+                    study.run_final(
+                        config,
+                        root,
+                        {"git_revision": "test", "dirty_paths": []},
+                    )
+            dataset.assert_not_called()
+            final_evaluation.assert_not_called()
+
+    def test_final_refuses_missing_diagnostic_offsets_before_inference(self) -> None:
+        config = calibration_config()
+        selection = frozen_selection(config)
+        seeds = [int(value) for value in config["calibration"]["fit_seeds"]]
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "selection.json").write_text(
+                json.dumps(selection), encoding="utf-8"
+            )
+            for entry in study._selected_entries(selection):
+                for seed in seeds:
+                    write_completed_fit(
+                        root,
+                        config,
+                        entry["objective"],
+                        entry["lambda"],
+                        seed,
+                    )
+
+            with mock.patch.object(
+                study,
+                "_ensure_dataset",
+                side_effect=AssertionError(
+                    "final dataset must not load without diagnostic offsets"
+                ),
+            ) as dataset, mock.patch.object(
+                study,
+                "run_evaluation",
+                side_effect=AssertionError(
+                    "final inference must not start without diagnostic offsets"
+                ),
+            ) as final_evaluation:
+                with self.assertRaises(FileNotFoundError):
+                    study.run_final(
+                        config,
+                        root,
+                        {"git_revision": "test", "dirty_paths": []},
+                    )
+            dataset.assert_not_called()
+            final_evaluation.assert_not_called()
+
+    def test_final_refuses_mismatched_diagnostic_offsets_before_inference(self) -> None:
+        config = calibration_config()
+        selection = frozen_selection(config)
+        seeds = [int(value) for value in config["calibration"]["fit_seeds"]]
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "selection.json").write_text(
+                json.dumps(selection), encoding="utf-8"
+            )
+            for entry in study._selected_entries(selection):
+                for seed in seeds:
+                    write_completed_fit(
+                        root,
+                        config,
+                        entry["objective"],
+                        entry["lambda"],
+                        seed,
+                    )
+            write_completed_diagnostic(root, config, record_count=766)
+
+            with mock.patch.object(
+                study,
+                "_ensure_dataset",
+                side_effect=AssertionError(
+                    "final dataset must not load with mismatched offsets"
+                ),
+            ) as dataset, mock.patch.object(
+                study,
+                "run_evaluation",
+                side_effect=AssertionError(
+                    "final inference must not start with mismatched offsets"
+                ),
+            ) as final_evaluation:
+                with self.assertRaises(ValueError):
                     study.run_final(
                         config,
                         root,
@@ -391,6 +695,7 @@ class ConstantDisplayAControlTests(unittest.TestCase):
                     entry["lambda"],
                     seed,
                 )
+            write_completed_diagnostic(root, config)
 
             records = [
                 final_record("r1", "b1", "original", [0, 1, 2, 3]),
@@ -404,6 +709,8 @@ class ConstantDisplayAControlTests(unittest.TestCase):
                 study, "_ensure_baseline_evaluation", return_value={}
             ), mock.patch.object(
                 study, "_ensure_calibrated_evaluation", return_value={}
+            ), mock.patch.object(
+                study, "_ensure_rtn_bias_control", return_value={}
             ), mock.patch.object(
                 study,
                 "run_evaluation",
@@ -461,6 +768,8 @@ class ConstantDisplayAControlTests(unittest.TestCase):
                 study, "_ensure_baseline_evaluation", return_value={}
             ), mock.patch.object(
                 study, "_ensure_calibrated_evaluation", return_value={}
+            ), mock.patch.object(
+                study, "_ensure_rtn_bias_control", return_value={}
             ):
                 study.run_final(
                     config,
@@ -551,6 +860,8 @@ class ReportConstantControlTests(unittest.TestCase):
                         entry["lambda"],
                         seed,
                     )
+            known_offsets = {"A": -2.5, "B": 0.5, "C": 1.0, "D": 1.0}
+            write_completed_diagnostic(root, config, offsets=known_offsets)
 
             records = [
                 final_record("r1", "b1", "original", [0, 1, 2, 3]),
@@ -581,6 +892,13 @@ class ReportConstantControlTests(unittest.TestCase):
                 baseline_dir / "predictions.jsonl",
                 [
                     prediction_row(record, "fp", 0)
+                    for record in records
+                ],
+            )
+            write_jsonl(
+                baseline_dir / "predictions_w4.jsonl",
+                [
+                    prediction_row(record, "w4", 0)
                     for record in records
                 ],
             )
@@ -645,6 +963,18 @@ class ReportConstantControlTests(unittest.TestCase):
                         },
                     )
 
+            offsets_payload, _ = study._load_diagnostic_offsets(config, root)
+            study._ensure_rtn_bias_control(
+                config,
+                records_path,
+                baseline_dir,
+                study._rtn_bias_dir(root),
+                study._diagnostic_offsets_path(root),
+                offsets_payload,
+                study._diagnostic_metadata_path(root),
+                provenance,
+                "final",
+            )
             study._ensure_constant_display_a_control(
                 config,
                 records_path,
@@ -681,6 +1011,146 @@ class ReportConstantControlTests(unittest.TestCase):
                 ],
                 1,
             )
+
+            bias = study.RTN_BIAS_CONDITION
+            self.assertIn(bias, summaries["conditions"])
+            self.assertIn(bias, summaries["summaries"])
+            self.assertIn(bias, summaries["condition_index"])
+            self.assertEqual(
+                summaries["condition_index"][bias]["objective"],
+                study.RTN_BIAS_OBJECTIVE,
+            )
+            self.assertIsNone(
+                summaries["condition_index"][bias]["fit_seed"]
+            )
+            self.assertTrue(
+                summaries["condition_index"][bias]["secondary_postprocessing"]
+            )
+            self.assertEqual(
+                summaries["secondary_postprocessing_conditions"], [bias]
+            )
+            self.assertNotIn(bias, summaries["untrained_rule_conditions"])
+            self.assertIn(bias, summaries["descriptive_control_conditions"])
+            self.assertIn(bias, summaries["per_transform"])
+            self.assertEqual(
+                summaries["per_transform"][bias]["original"]["accuracy"], 0.0
+            )
+            self.assertEqual(
+                summaries["per_transform"][bias]["entity_rename"]["n_records"],
+                1,
+            )
+            bias_rows = [
+                json.loads(line)
+                for line in (root / "report" / "final_predictions.jsonl")
+                .read_text(encoding="utf-8")
+                .splitlines()
+                if json.loads(line)["condition"] == bias
+            ]
+            self.assertEqual(len(bias_rows), 2)
+            for row in bias_rows:
+                self.assertEqual(
+                    row["option_logits"], [-2.5, 0.5, 1.0, 1.0]
+                )
+                self.assertEqual(row["prediction_display"], 2)
+
+            comparisons_payload = json.loads(
+                (root / "report" / "comparisons.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(
+                comparisons_payload["evidence"], "held_out_singles"
+            )
+            self.assertIn("comparisons", comparisons_payload)
+            self.assertIn("secondary_compositions", comparisons_payload)
+            self.assertEqual(
+                comparisons_payload["endpoint_descriptions"]["primary"][
+                    "key"
+                ],
+                "comparisons",
+            )
+            self.assertEqual(
+                comparisons_payload["endpoint_descriptions"][
+                    "secondary_compositions"
+                ]["key"],
+                "secondary_compositions",
+            )
+
+
+class SecondaryCompositionComparisonTests(unittest.TestCase):
+    def test_composition_contrast_is_available_without_changing_primary(self) -> None:
+        composition = "option_permutation+entity_rename"
+
+        def row(
+            base_id: str,
+            condition: str,
+            transform: str,
+            correct: bool,
+        ) -> dict:
+            canonical_prediction = 0 if correct else 1
+            return {
+                "record_id": f"{base_id}-{condition}-{transform}",
+                "base_id": base_id,
+                "condition": condition,
+                "split": "final",
+                "task_family": "arithmetic",
+                "transform": transform,
+                "semantic": ARITHMETIC_SEMANTIC,
+                "option_order": [0, 1, 2, 3],
+                "correct_option_index": 0,
+                "canonical_prediction": canonical_prediction,
+                "correct": correct,
+            }
+
+        rows: list[dict] = []
+        for base_id in ("b1", "b2"):
+            for condition in ("fp", "paired_s17", "augmented_kd_s17"):
+                rows.append(row(base_id, condition, "original", True))
+                rows.append(row(base_id, condition, "entity_rename", True))
+                rows.append(
+                    row(
+                        base_id,
+                        condition,
+                        composition,
+                        condition != "augmented_kd_s17",
+                    )
+                )
+
+        primary = study._primary_comparisons(
+            rows, [17], ["final"], ["arithmetic"], 200, 7
+        )
+        primary_explicit = study._primary_comparisons(
+            rows,
+            [17],
+            ["final"],
+            ["arithmetic"],
+            200,
+            7,
+            evidence="held_out_singles",
+        )
+        secondary = study._primary_comparisons(
+            rows,
+            [17],
+            ["final"],
+            ["arithmetic"],
+            200,
+            7,
+            evidence="compositions",
+        )
+
+        self.assertEqual(primary, primary_explicit)
+        self.assertEqual(primary[0]["evidence"], "held_out_singles")
+        self.assertEqual(secondary[0]["evidence"], "compositions")
+        primary_metrics = primary[0]["comparison"]["metrics"]
+        secondary_metrics = secondary[0]["comparison"]["metrics"]
+        self.assertIsNone(primary_metrics["composition_accuracy"]["delta"])
+        self.assertEqual(primary_metrics["accuracy"]["delta"], 0.0)
+
+        composition_metric = secondary_metrics["composition_accuracy"]
+        self.assertEqual(composition_metric["delta"], 1.0)
+        self.assertIsNotNone(composition_metric["ci_low"])
+        self.assertIsNotNone(composition_metric["ci_high"])
+        self.assertEqual(composition_metric["n_bases"], 2)
 
 
 if __name__ == "__main__":
