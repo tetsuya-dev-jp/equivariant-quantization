@@ -22,6 +22,8 @@ that no overlapping work exists. No empirical novelty or benefit is established.
    evaluates option-distribution and decision-boundary preservation. Targeting
    behavior beyond average accuracy is already established. Our question is
    relational preservation under exact transformations, with matched exposure.
+   Publication update verified in this run: Findings of EMNLP 2026,
+   pages 14073-14093, https://aclanthology.org/2026.findings-emnlp.670/ .
 
 3. **OSTQuant: Refining Large Language Model Quantization with Orthogonal and
    Scaling Transformations for Better Distribution Fitting**, Hu et al.,
@@ -58,9 +60,31 @@ that no overlapping work exists. No empirical novelty or benefit is established.
 7. **Does Quantization Change What Agreement Means? A Paired Audit of
    Homogeneous LLM Panels**, Bala, UncertaiNLP 2026.
    https://aclanthology.org/2026.uncertainlp-main.37/
-   Abstract retrieved in search; full methods not yet inspected. The reported
+   Official record and abstract read; full methods not yet inspected. The reported
    setting compares stochastic panels on identical prompts, rather than exact
    canonicalized input transformations. Keep this distinction provisional.
+
+8. **KernelQuant: Post-Training Quantization via Representation Kernel
+   Preservation**, Park, Kwon, Kim and Lee, EMNLP 2026, pages 19833-19850.
+   https://aclanthology.org/2026.emnlp-main.856/
+   Official abstract and PDF section 3 (pages 2-4) read in the later
+   adversarial pass. It selects
+   quantization scales to preserve pairwise cosine kernels among calibration
+   inputs, with error compensation, rotation and activation clipping. Therefore
+   preserving relations across inputs during PTQ is also prior work; the claim
+   cannot be that relational quantization is new. The proposed distinction is
+   explicit known semantic transformations, option-identity transport and
+   held-out transformation transfer. Its layerwise scale search and Hessian
+   compensation differ from an end-to-end paired-answer calibration objective;
+   a controlled kernel-preservation comparison is included prospectively.
+
+9. **Semantic Invariance in Agentic AI**, arXiv:2603.13173v2.
+   https://arxiv.org/html/2603.13173v2
+   Exa retrieved its abstract and formal transformation definitions. It evaluates
+   semantic-preserving prompt changes across agents; the retrieved text does
+   not describe a PTQ calibration objective. Metamorphic reasoning evaluation
+   itself is established, so exact-transform evaluation alone is not claimed
+   as a new general methodology here.
 
 ## Searches and candidate claim
 
@@ -81,3 +105,7 @@ an independent failure mechanism proved merely by a consistency score.
 No direct same-objective/same-evaluation match was found in the retrieved
 sources. This supports investigating the question, not claiming priority or
 superiority. Recheck related work before public manuscript finalization.
+
+The additional KernelQuant result narrows the claim further: combine exact
+semantic correspondence with a matched calibration/evaluation contract, rather
+than claiming either relation preservation or metamorphic testing in isolation.

@@ -28,10 +28,30 @@ Flash for implementation. Preserve the full goal across sessions.
 Freeze protocol, delegate offline dataset/oracle plus model-scoring and RTN
 implementation, review meaningful tests, then run the pilot. No results yet.
 
-DeepSeek implementation is running in OpenCode session
-`ses_e46df35a1ffeXRWuz0zIqZY72D` (exec handle 92657). Task and events are
-under ignored `local/delegation/`. Model download exec handle: 33747.
+DeepSeek implementation uses OpenCode session `ses_e46df35a1ffeXRWuz0zIqZY72D`.
+The initial high-reasoning CLI (handle 92657) was intentionally interrupted
+after files and 20 tests were written, to redirect it to confirmed review
+findings. Its process exited 130. Correction pass 2 is live (exec handle 83995)
+using the same DeepSeek V4.1 Flash with low reasoning. Task/events/session
+exports are private under `local/delegation/` and must not be published.
+The SmolLM2-1.7B download (handle 33747) completed successfully at revision
+`31b70e2e869a7173562077fd711b654946d38674`.
 Check live handles/current files before resuming; do not blindly restart.
+
+## Review evidence before research endpoints
+
+- Initial 20 offline tests pass in the isolated environment, but they do not
+  prove correctness: the left-padding test duplicated an erroneous index.
+- Independent counterexample: last-token indices yielded [2,9] instead of
+  [4,9] for unequal-length left-padded sequences. Must be corrected.
+- Full-default data generation initially failed on duplicate Boolean bases.
+  Prospective amendment 1 records the deterministic uniqueness fix; final
+  structural keys must also exclude distractors and preserve subset generation.
+- Review also identified ambiguous graph-distance wording, a permissive
+  generation parser, unequal base weighting, and blank CSV fields. Findings
+  are batched in `local/delegation/01-review.txt` for the correction pass.
+- No pilot or final model predictions have been collected. Final holdout
+  outcomes remain unexposed.
 
 ## Remaining
 

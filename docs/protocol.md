@@ -122,3 +122,16 @@ The identity boundary is exact normalized problem structure, not arbitrary
 Boolean logical equivalence or graph isomorphism. Generating a split alone
 must reproduce its instances from full generation. Counts, seeds, task support
 and scoring are unchanged. This amendment precedes all research endpoints.
+
+## Prospective amendment 2: relational prior-work control
+
+The later prior-work pass found KernelQuant (EMNLP 2026), whose section 3
+preserves cosine kernels among calibration representations. Relational PTQ
+alone is not a novelty claim. If the pilot triggers calibration, include a
+representation-kernel preservation control alongside canonical answer-pair
+preservation, using matched data and optimization resources. Label a controlled
+kernel-loss adaptation as such; do not call it a full KernelQuant reproduction
+unless its scale search, error compensation and declared components are run.
+The candidate contribution is exact known semantic input correspondences and
+their held-out transfer, beyond generic relation or teacher-output matching.
+This addition precedes all pilot and final model evaluations.
