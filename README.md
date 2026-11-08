@@ -43,15 +43,35 @@ transformations.
 
 The dequantized weights are used for BF16/FP16 arithmetic. This is a numerical
 weight-only simulation of quantization error. It makes no packed-integer
-storage, deployment-parity, or inference-speed claim.
+storage, deployment-parity, or inference-speed claim. The kernel-loss condition
+is a controlled representation-kernel adaptation, not a reproduction of full
+KernelQuant or KPQ. Standard AWQ/GPTQ packages are absent from this ROCm
+runtime, so this is not a full stronger-PTQ benchmark and RTN is not claimed as
+state of the art.
 
-No quantization calibration or training is implemented.
+Calibration keeps the original RTN integer codes, biases, embeddings, output
+head, and all pretrained parameters frozen. It learns one positive scale per
+output row and input group, parameterized by its natural logarithm and
+initialized to the RTN scale. Forward passes reconstruct BF16 weights from the
+frozen codes; zero RTN groups stay exactly zero. Five objectives are available:
+original-only KD, augmented KD, paired canonical-option JS, a random-pair JS
+control with a within-batch nonidentity shift, and a representation-kernel
+control using cosine Gram matrices of the final normalized hidden vectors.
 
 ## Configuration
 
 `configs/pilot.json` pins `Qwen/Qwen2.5-1.5B-Instruct` to an immutable revision
 and defines split seeds, split sizes, group size, bit widths, scoring limits,
 and bootstrap settings. A non-empty model revision is required.
+
+`configs/calibration.json` combines those pinned pilot fields with the frozen
+calibration defaults: W4, group size 128, AdamW with learning rate 0.001,
+betas (0.9, 0.999), zero weight decay, gradient clipping 1.0, four bases
+(eight prompts) per update, 96 updates over the 384 calibration bases, and
+temperature 1. The frozen fit seeds are 17, 29, and 43. The frozen
+regularization candidates are 0.1, 1, and 10, but the weight is never selected
+implicitly: pass the explicit `--lambda` value for `paired`, `random_pair`, and
+`kernel`.
 
 ## Commands
 
@@ -107,6 +127,68 @@ python -m eq_quant analyze \
   --output local/results/pilot/analysis
 ```
 
+### Calibration
+
+Build the calibration-only records used by the fit:
+
+```bash
+python -m eq_quant data build \
+  --config configs/calibration.json \
+  --output local/data/calibration \
+  --split calibration
+```
+
+Cache the complete final next-token teacher logits and final normalized hidden
+vectors over calibration `original` and `option_permutation` records only. A
+mixed-split records file is filtered to calibration records; the `calibrate`
+command itself refuses any non-calibration record. The cache records the model
+id/revision/dtype, the scoring limits, and the exact ordered record metadata
+(record id, base id, task family, transform, prompt, and option order).
+
+```bash
+python -m eq_quant cache-teacher \
+  --config configs/calibration.json \
+  --records local/data/all/records.jsonl \
+  --output local/calibration/teacher-cache
+```
+
+Run one objective for one explicit lambda and one fit seed. Regularized
+objectives require `--lambda`; the two KD controls refuse it. The command
+refuses records outside the calibration split (including a configured split
+other than `calibration`) and refuses a cache whose ordered record metadata,
+model revision/dtype, or scoring limits do not match.
+
+```bash
+python -m eq_quant calibrate \
+  --config configs/calibration.json \
+  --records local/data/calibration/records.jsonl \
+  --teacher-cache local/calibration/teacher-cache \
+  --output local/calibration/fits/paired-w4-s17 \
+  --objective paired \
+  --lambda 1.0 \
+  --seed 17
+```
+
+Available objectives are `original_kd`, `augmented_kd`, `paired`,
+`random_pair`, and `kernel`. Run the lambda search and seed replication as
+separate commands; no hyperparameter or checkpoint is selected inside a fit.
+
+Score arbitrary supplied records with exported scales applied to the pinned
+original RTN integer codes. The shared scorer and condition name are explicit.
+
+```bash
+python -m eq_quant evaluate-calibrated \
+  --config configs/calibration.json \
+  --records local/data/development/records.jsonl \
+  --scales local/calibration/fits/paired-w4-s17 \
+  --output local/results/development-paired-w4-s17 \
+  --condition paired_w4_s17
+```
+
+Both `calibrate` and `evaluate-calibrated` refuse to overwrite existing output
+unless `--overwrite` is passed. Calibration fits do not read final outcomes and
+do not make selection decisions.
+
 ## Data record fields
 
 Each record includes:
@@ -134,12 +216,31 @@ Each record includes:
   union-bound diagnostics, transition counts, and base-cluster bootstrap
   intervals. Unavailable family/transform combinations are emitted explicitly
   with `available=false`.
+- `teacher_cache.pt` and `cache_manifest.json`: complete last-token vocabulary
+  logits and final normalized hidden vectors, keyed by model revision and
+  ordered record metadata (record id, base, prompt, option order), plus scoring
+  limits, token counts, and runtime provenance.
+- `calibration.json` and `scales.pt`: fit state (`completed` or `failed`),
+  complete effective config, objective, explicit lambda, seed, model revision,
+  quantization description, optimizer and schedule, trainable parameter count,
+  per-update KD/regularizer losses and gradient norms, exact nonpadding and
+  padded token counts, batch order, timing, peak memory, and detached FP32 CPU
+  relative log scale deltas. The effective scale is the fixed FP32 RTN scale
+  times `exp(delta)`, so delta zero reproduces the RTN BF16 weights exactly.
+- Calibrated evaluation `run.json` and `predictions.jsonl`: explicit condition
+  name, scale source and fit metadata, model provenance, timing, peak memory,
+  and the shared scorer's per-record predictions.
 
 ## Tests
 
 Standard library `unittest`. Data-layer tests use only the standard library;
-quantizer and scoring tests use tiny CPU tensors and a fake model. No model
-downloads or GPU runs are needed.
+quantizer, scoring, and calibration tests use tiny CPU tensors and fake models.
+No model downloads or GPU runs are needed. Calibration tests cover exact RTN
+initialization and zero/tail groups, exported-delta reproduction on real tiny
+Qwen2 and Llama layers, exercised non-reentrant gradient checkpointing with
+early/late scale gradients, the shared scorer, objective semantics including
+finite JS gradients for degenerate distributions, record-metadata cache
+refusal, split refusal, and overwrite protection.
 
 ```bash
 python -m unittest discover -s tests -v
