@@ -106,6 +106,20 @@ def mixed_family_predictions() -> list[dict]:
     return predictions
 
 
+def reference_predictions() -> list[dict]:
+    base = arithmetic_base()
+    predictions = []
+    for condition, values in (
+        ("augmented_s17", (0, 0, 0)),
+        ("paired_s17", (0, 1, 1)),
+    ):
+        for transform, value in zip(base["transforms"], values, strict=True):
+            predictions.append(
+                make_prediction(base, transform, condition, value)
+            )
+    return predictions
+
+
 def write_predictions(predictions: list[dict], path: Path) -> None:
     with path.open("w", encoding="utf-8") as handle:
         for entry in predictions:
@@ -284,6 +298,50 @@ class AnalyzeTests(unittest.TestCase):
             )
             self.assertEqual(comparison["broken_consistent_pairs"], 1)
             self.assertEqual(comparison["consistent_but_wrong_pairs"], 1)
+
+    def test_custom_reference_comparison_and_bootstrap(self) -> None:
+        predictions = reference_predictions()
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            predictions_path = temp_path / "predictions.jsonl"
+            write_predictions(predictions, predictions_path)
+
+            result = analyze_predictions(
+                predictions_path,
+                temp_path / "analysis",
+                n_boot=20,
+                seed=13,
+                conditions=["augmented_s17", "paired_s17"],
+                reference="augmented_s17",
+            )
+
+            comparison = next(
+                row
+                for row in result["comparisons"]
+                if row["split"] == "all"
+                and row["task_family"] == "all"
+                and row["condition"] == "paired_s17"
+                and row["transform"] == "all"
+            )
+            self.assertEqual(comparison["reference"], "augmented_s17")
+            self.assertAlmostEqual(comparison["delta_accuracy_macro"], -2 / 3)
+            self.assertAlmostEqual(comparison["delta_consistency_macro"], -1.0)
+            self.assertEqual(comparison["broken_consistent_pairs"], 2)
+
+            bootstrap = next(
+                row
+                for row in result["bootstrap_intervals"]
+                if row["split"] == "all"
+                and row["task_family"] == "all"
+                and row["condition"] == "paired_s17"
+                and row["transform"] == "all"
+                and row["metric"] == "delta_accuracy_macro"
+            )
+            self.assertEqual(bootstrap["reference"], "augmented_s17")
+            self.assertEqual(bootstrap["n_boot"], 20)
+            self.assertAlmostEqual(bootstrap["estimate"], -2 / 3)
+            self.assertAlmostEqual(bootstrap["ci_low"], -2 / 3)
+            self.assertAlmostEqual(bootstrap["ci_high"], -2 / 3)
 
     def test_bootstrap_is_deterministic(self) -> None:
         predictions = synthetic_predictions()

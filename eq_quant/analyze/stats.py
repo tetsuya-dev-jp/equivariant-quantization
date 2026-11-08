@@ -154,11 +154,11 @@ def _base_metrics(entries: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def _base_transitions(
-    fp_metrics: dict[str, Any],
+    reference_metrics: dict[str, Any],
     condition_metrics: dict[str, Any],
     transform: str,
 ) -> dict[str, int]:
-    fp_transforms = fp_metrics["transforms"]
+    reference_transforms = reference_metrics["transforms"]
     condition_transforms = condition_metrics["transforms"]
     broken = 0
     repaired = 0
@@ -168,11 +168,13 @@ def _base_transitions(
     union_bound_sum = 0
 
     if transform == "all":
-        shared = sorted(set(fp_transforms).intersection(condition_transforms))
+        shared = sorted(
+            set(reference_transforms).intersection(condition_transforms)
+        )
         n_records_compared = len(shared)
         record_flips = sum(
             int(
-                fp_transforms[name]["prediction"]
+                reference_transforms[name]["prediction"]
                 != condition_transforms[name]["prediction"]
             )
             for name in shared
@@ -180,64 +182,70 @@ def _base_transitions(
         for name in shared:
             if name == "original":
                 continue
-            fp_pair = fp_transforms[name]
+            reference_pair = reference_transforms[name]
             condition_pair = condition_transforms[name]
-            if fp_pair["consistent"] is None or condition_pair["consistent"] is None:
+            if (
+                reference_pair["consistent"] is None
+                or condition_pair["consistent"] is None
+            ):
                 continue
             n_pairs += 1
-            if fp_pair["consistent"] and not condition_pair["consistent"]:
+            if reference_pair["consistent"] and not condition_pair["consistent"]:
                 broken += 1
-            if not fp_pair["consistent"] and condition_pair["consistent"]:
+            if not reference_pair["consistent"] and condition_pair["consistent"]:
                 repaired += 1
             flip_original = int(
-                fp_transforms["original"]["prediction"]
+                reference_transforms["original"]["prediction"]
                 != condition_transforms["original"]["prediction"]
             )
             flip_variant = int(
-                fp_pair["prediction"] != condition_pair["prediction"]
+                reference_pair["prediction"] != condition_pair["prediction"]
             )
             union_bound = flip_original + flip_variant
             correspondence_change = abs(
                 int(condition_pair["consistent"])
-                - int(fp_pair["consistent"])
+                - int(reference_pair["consistent"])
             )
             if correspondence_change > union_bound:
                 raise ValueError("union-bound diagnostic violated for one pair")
             union_bound_sum += union_bound
     elif transform == "original":
-        if "original" in fp_transforms and "original" in condition_transforms:
+        if (
+            "original" in reference_transforms
+            and "original" in condition_transforms
+        ):
             n_records_compared = 1
             record_flips = int(
-                fp_transforms["original"]["prediction"]
+                reference_transforms["original"]["prediction"]
                 != condition_transforms["original"]["prediction"]
             )
     else:
         if (
-            transform in fp_transforms
+            transform in reference_transforms
             and transform in condition_transforms
-            and "original" in fp_transforms
+            and "original" in reference_transforms
             and "original" in condition_transforms
         ):
-            fp_pair = fp_transforms[transform]
+            reference_pair = reference_transforms[transform]
             condition_pair = condition_transforms[transform]
             n_pairs = 1
             n_records_compared = 2
-            if fp_pair["consistent"] and not condition_pair["consistent"]:
+            if reference_pair["consistent"] and not condition_pair["consistent"]:
                 broken = 1
-            if not fp_pair["consistent"] and condition_pair["consistent"]:
+            if not reference_pair["consistent"] and condition_pair["consistent"]:
                 repaired = 1
             flip_original = int(
-                fp_transforms["original"]["prediction"]
+                reference_transforms["original"]["prediction"]
                 != condition_transforms["original"]["prediction"]
             )
             flip_variant = int(
-                fp_pair["prediction"] != condition_pair["prediction"]
+                reference_pair["prediction"] != condition_pair["prediction"]
             )
             record_flips = flip_original + flip_variant
             union_bound_sum = record_flips
             correspondence_change = abs(
                 int(condition_pair["consistent"])
-                - int(fp_pair["consistent"])
+                - int(reference_pair["consistent"])
             )
             if correspondence_change > union_bound_sum:
                 raise ValueError("union-bound diagnostic violated for one pair")
@@ -252,20 +260,24 @@ def _base_transitions(
     }
 
 
-def _base_summary(base: dict[str, Any], conditions: list[str]) -> dict[str, Any]:
+def _base_summary(
+    base: dict[str, Any],
+    conditions: list[str],
+    reference: str,
+) -> dict[str, Any]:
     metrics = {
         condition: _base_metrics(base["conditions"][condition])
         for condition in conditions
         if condition in base["conditions"]
     }
     transitions: dict[str, dict[str, dict[str, int]]] = {}
-    if "fp" in metrics:
+    if reference in metrics:
         for condition in conditions:
-            if condition == "fp" or condition not in metrics:
+            if condition == reference or condition not in metrics:
                 continue
             transitions[condition] = {
                 transform: _base_transitions(
-                    metrics["fp"], metrics[condition], transform
+                    metrics[reference], metrics[condition], transform
                 )
                 for transform in TRANSFORM_GROUPS
             }
@@ -373,6 +385,7 @@ def _aggregate_comparison(
     base_summaries: list[dict[str, Any]],
     condition: str,
     transform: str,
+    reference: str,
 ) -> dict[str, Any]:
     delta_accuracies: list[float] = []
     delta_consistencies: list[float] = []
@@ -386,17 +399,19 @@ def _aggregate_comparison(
     n_bases = 0
 
     for summary in base_summaries:
-        fp_metrics = summary["metrics"].get("fp")
+        reference_metrics = summary["metrics"].get(reference)
         condition_metrics = summary["metrics"].get(condition)
-        if fp_metrics is None or condition_metrics is None:
+        if reference_metrics is None or condition_metrics is None:
             continue
         if transform == "all":
-            fp_accuracy = fp_metrics["accuracy"]
+            reference_accuracy = reference_metrics["accuracy"]
             condition_accuracy = condition_metrics["accuracy"]
-            fp_consistency = fp_metrics["consistency"]
+            reference_consistency = reference_metrics["consistency"]
             condition_consistency = condition_metrics["consistency"]
-            fp_consistency_value = (
-                float(fp_consistency) if fp_consistency is not None else None
+            reference_consistency_value = (
+                float(reference_consistency)
+                if reference_consistency is not None
+                else None
             )
             condition_consistency_value = (
                 float(condition_consistency)
@@ -404,16 +419,18 @@ def _aggregate_comparison(
                 else None
             )
         else:
-            fp_transform = fp_metrics["transforms"].get(transform)
+            reference_transform = reference_metrics["transforms"].get(transform)
             condition_transform = condition_metrics["transforms"].get(transform)
-            if fp_transform is None or condition_transform is None:
+            if reference_transform is None or condition_transform is None:
                 continue
-            fp_accuracy = fp_transform["accuracy"]
+            reference_accuracy = reference_transform["accuracy"]
             condition_accuracy = condition_transform["accuracy"]
-            fp_consistency = fp_transform["consistent"]
+            reference_consistency = reference_transform["consistent"]
             condition_consistency = condition_transform["consistent"]
-            fp_consistency_value = (
-                None if fp_consistency is None else float(bool(fp_consistency))
+            reference_consistency_value = (
+                None
+                if reference_consistency is None
+                else float(bool(reference_consistency))
             )
             condition_consistency_value = (
                 None
@@ -422,13 +439,15 @@ def _aggregate_comparison(
             )
 
         n_bases += 1
-        delta_accuracies.append(float(condition_accuracy) - float(fp_accuracy))
+        delta_accuracies.append(
+            float(condition_accuracy) - float(reference_accuracy)
+        )
         if (
-            fp_consistency_value is not None
+            reference_consistency_value is not None
             and condition_consistency_value is not None
         ):
             delta_consistencies.append(
-                condition_consistency_value - fp_consistency_value
+                condition_consistency_value - reference_consistency_value
             )
 
         transition = summary["transitions"][condition][transform]
@@ -512,9 +531,10 @@ def _empty_comparison() -> dict[str, Any]:
 def _group_summaries(
     bases: dict[str, dict[str, Any]],
     conditions: list[str],
+    reference: str,
 ) -> list[tuple[tuple[str, str], list[dict[str, Any]]]]:
     summaries = [
-        _base_summary(base, conditions) for base in bases.values()
+        _base_summary(base, conditions, reference) for base in bases.values()
     ]
     groups: dict[tuple[str, str], list[dict[str, Any]]] = {}
     groups[("all", "all")] = summaries
@@ -552,9 +572,16 @@ def _bootstrap(
     transforms: list[str],
     n_boot: int,
     seed: int,
+    reference: str,
 ) -> dict[tuple[str, str], dict[str, list[float]]]:
-    compared_conditions = [condition for condition in conditions if condition != "fp"]
-    if "fp" not in conditions or not compared_conditions or not base_summaries:
+    compared_conditions = [
+        condition for condition in conditions if condition != reference
+    ]
+    if (
+        reference not in conditions
+        or not compared_conditions
+        or not base_summaries
+    ):
         return {}
 
     rng = np.random.default_rng(seed)
@@ -569,7 +596,9 @@ def _bootstrap(
         resampled = [base_summaries[index] for index in indices]
         for condition in compared_conditions:
             for transform in transforms:
-                values = _aggregate_comparison(resampled, condition, transform)
+                values = _aggregate_comparison(
+                    resampled, condition, transform, reference
+                )
                 for metric in BOOTSTRAP_METRICS:
                     value = values[metric]
                     if value is None:
@@ -603,6 +632,7 @@ def analyze_predictions(
     conditions: list[str] | None = None,
     bootstrap_seed: int | None = None,
     bootstrap_samples: int | None = None,
+    reference: str = "fp",
 ) -> dict[str, Any]:
     predictions = load_predictions(predictions_path)
     if not predictions:
@@ -620,10 +650,12 @@ def analyze_predictions(
         ]
     if not selected_conditions:
         raise ValueError("no selected conditions are present in the predictions")
-    if "fp" not in selected_conditions:
-        raise ValueError("analysis requires the fp condition")
+    if reference not in selected_conditions:
+        raise ValueError(f"analysis requires the {reference} condition")
 
-    grouped = _group_summaries(prepared["bases"], selected_conditions)
+    grouped = _group_summaries(
+        prepared["bases"], selected_conditions, reference
+    )
     summary_rows: list[dict[str, Any]] = []
     comparison_rows: list[dict[str, Any]] = []
     bootstrap_rows: list[dict[str, Any]] = []
@@ -656,12 +688,14 @@ def analyze_predictions(
                 )
 
         for condition in selected_conditions:
-            if condition == "fp":
+            if condition == reference:
                 continue
             for transform in TRANSFORM_GROUPS:
                 available = transform in available_transforms
                 comparison = (
-                    _aggregate_comparison(base_summaries, condition, transform)
+                    _aggregate_comparison(
+                        base_summaries, condition, transform, reference
+                    )
                     if available
                     else _empty_comparison()
                 )
@@ -671,7 +705,7 @@ def analyze_predictions(
                         "task_family": family,
                         "condition": condition,
                         "transform": transform,
-                        "reference": "fp",
+                        "reference": reference,
                         "available": available,
                         **comparison,
                     }
@@ -683,10 +717,11 @@ def analyze_predictions(
             available_transforms,
             n_boot=n_boot,
             seed=seed,
+            reference=reference,
         )
         for (condition, transform), metrics in bootstrap.items():
             point = _aggregate_comparison(
-                base_summaries, condition, transform
+                base_summaries, condition, transform, reference
             )
             for metric, values in metrics.items():
                 if not values:
@@ -698,7 +733,7 @@ def analyze_predictions(
                         "task_family": family,
                         "condition": condition,
                         "transform": transform,
-                        "reference": "fp",
+                        "reference": reference,
                         "metric": metric,
                         "estimate": point.get(metric),
                         "ci_low": interval["ci_low"],

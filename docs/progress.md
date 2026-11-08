@@ -25,15 +25,15 @@ Flash for implementation. Preserve the full goal across sessions.
 
 ## Current milestone
 
-Run the pilot after the final numerical-scoring correction. No research model
-predictions have been collected yet.
+Calibration development after both completed pilots. Final outcomes remain
+unexposed. The frozen next-stage specification is `docs/calibration-plan.md`.
 
 DeepSeek implementation uses OpenCode session `ses_e46df35a1ffeXRWuz0zIqZY72D`.
 The initial high-reasoning CLI (handle 92657) was intentionally interrupted
 after files and 20 tests were written, to redirect it to confirmed review
 findings. Its process exited 130. Correction pass 2 (handle 83995) was also
 interrupted after its corrected files passed 28 direct offline tests. A fresh
-DeepSeek session `ses_e46c0ce95ffejrZgGvrq1LwjMC` (handle 56417) is applying
+DeepSeek session `ses_e46c0ce95ffejrZgGvrq1LwjMC` (handle 56417) completed
 the independently found BF16 probability-rounding correction. Task/events/session
 exports are private under `local/delegation/` and must not be published.
 The SmolLM2-1.7B download (handle 33747) completed successfully at revision
@@ -52,8 +52,8 @@ Check live handles/current files before resuming; do not blindly restart.
 - Review also identified ambiguous graph-distance wording, a permissive
   generation parser, unequal base weighting, and blank CSV fields. Findings
   are batched in `local/delegation/01-review.txt` for the correction pass.
-- No pilot or final model predictions have been collected. Final holdout
-  outcomes remain unexposed.
+- These checks preceded all pilot predictions. Final holdout outcomes remain
+  unexposed.
 - Corrected default generation, subset invariance, canonical option transport,
   base-macro aggregation, output persistence, and independent padding tests
   passed in a direct 28-test run. The pilot dataset has 192 bases / 704 records.
@@ -65,8 +65,40 @@ Check live handles/current files before resuming; do not blindly restart.
   changing an argmax from index 1 to index 0. The final correction requires
   FP32 probabilities and predictions from logits, plus a regression test.
 
+## Completed pilot evidence
+
+Source revision `431723b`; all 30 tests passed directly before execution.
+Each model evaluated 192 bases / 704 records / 512 original-variant pairs.
+Raw predictions and run metadata are private under `local/results/qwen-pilot`
+and `local/results/smol-pilot` until the curated public results are assembled.
+Qwen execution handle 83240 and Smol handle 51647 completed successfully.
+Both models use BF16 arithmetic and dequantized RTN weights, not packed kernels.
+
+- Qwen accuracy (base macro), FP/W8/W4/W3: 0.506076, 0.501302,
+  0.482639, 0.243490; consistency: 0.668403, 0.681424, 0.664931, 0.473958.
+- Qwen W4 broke 64 and repaired 63 pairs. Its consistency difference was
+  -0.003472 (base-bootstrap 95% interval [-0.053841, 0.045139]). W3 difference
+  was -0.194444 ([-0.255273, -0.134505]). This triggers calibration by the
+  predefined broken-pair count; it does not show a net W4 consistency decline.
+- Smol accuracy FP/W8/W4/W3: 0.400174, 0.398003, 0.265191, 0.229601;
+  consistency: 0.603299, 0.591146, 0.689236, 0.704861. W4 broke 54 and
+  repaired 103 pairs. Increased agreement coexists with lower correctness.
+- Bootstrap: 1000 resamples of base problems, seed 4108; raw counts and
+  all task/transform outcomes are retained. Pilot findings are exploratory.
+
+## Active bounded implementation
+
+- Calibration API/CLI: DeepSeek session `ses_e46bbfb84ffe7EN1UyGBhV9tt7`,
+  exec handle 9266, events `local/delegation/04-events.jsonl`.
+- Final-only exact compositions: session `ses_e46bbf6c4ffexx242Sxy0GFstE`,
+  handle 29166, events `05-events.jsonl`.
+- Explicit analysis reference: session `ses_e46bbbf00ffeFRaamtsPYoKZTN`,
+  handle 10293, completed; five direct analysis tests passed. Changes reviewed,
+  not committed yet. Events `06-events.jsonl`.
+Independent workers have disjoint file ownership; check state before resuming.
+
 ## Remaining
 
-Novelty evidence ledger; implementation and provenance; actual pilot; trigger
-decision; calibrated or negative-result path; independent final evaluation;
+Calibration implementation review and provenance; matched development fits and
+selection; three-seed calibration; independent final evaluation;
 figures and English manuscript; publication and clean-clone verification.

@@ -56,6 +56,8 @@ that no overlapping work exists. No empirical novelty or benefit is established.
    preservation losses to transformation-based PTQ. Behavior-aware calibration
    losses and accuracy-versus-behavior dissociation are therefore not new.
    It targets rationale/evidence relations rather than exact input orbits.
+   Publication independently verified: EMNLP 2026, pages 41629-41651,
+   https://aclanthology.org/2026.emnlp-main.1828/ .
 
 7. **Does Quantization Change What Agreement Means? A Paired Audit of
    Homogeneous LLM Panels**, Bala, UncertaiNLP 2026.
@@ -86,6 +88,15 @@ that no overlapping work exists. No empirical novelty or benefit is established.
    itself is established, so exact-transform evaluation alone is not claimed
    as a new general methodology here.
 
+10. **RoleQ: Role-Aligned Scales for Converting Language Models to Ternary**,
+    Knittel, Helbling and Pfister, arXiv:2610.21808v1 (15 October 2026).
+    https://arxiv.org/html/2610.21808
+    Official record and section 3.4 read. Its scale distillation uses positive
+    log scales, frozen codes, cached teacher states and next-token KL; it also
+    trains norm gains. These implementation ingredients are established and
+    must not be presented as our method's novelty. Our controlled comparison
+    instead isolates canonical semantic-pair regularization and transfer.
+
 ## Searches and candidate claim
 
 Web searches covered quantization + semantic equivariance, paired consistency,
@@ -93,6 +104,10 @@ metamorphic tests, paraphrase/calibration objectives and prompt robustness.
 The preceding topic-selection turn additionally used alphaXiv and Exa for
 direct counterexamples. This run checked newer fidelity/uncertainty and
 explanation-preserving objectives to avoid an overly broad novelty claim.
+An additional Exa search explicitly sought semantic-pair JS calibration with
+frozen quantizer scales, recovering RoleQ and the published EAQuant record.
+Both were checked against their original pages; neither retrieved method
+describes our exact semantic-input-pair calibration/evaluation combination.
 
 Candidate contribution: an oracle-verified, split-controlled assessment of
 quantization-induced changes in canonical answer correspondence, followed

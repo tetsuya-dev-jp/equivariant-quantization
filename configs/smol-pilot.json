@@ -1,0 +1,63 @@
+{
+  "model": {
+    "id": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "revision": "31b70e2e869a7173562077fd711b654946d38674",
+    "dtype": "bfloat16"
+  },
+  "data": {
+    "families": [
+      "arithmetic",
+      "boolean",
+      "graph"
+    ],
+    "splits": {
+      "calibration": {
+        "count": 128,
+        "seed": 1108
+      },
+      "development": {
+        "count": 128,
+        "seed": 2108
+      },
+      "pilot": {
+        "count": 64,
+        "seed": 3108
+      },
+      "final": {
+        "count": 256,
+        "seed": 4108
+      },
+      "structural_holdout": {
+        "count": 128,
+        "seed": 5108
+      }
+    }
+  },
+  "quantization": {
+    "group_size": 128,
+    "bits": [
+      8,
+      4,
+      3
+    ]
+  },
+  "scoring": {
+    "batch_size": 8,
+    "max_seq_len": 1024,
+    "cpu_threads": 6,
+    "option_labels": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "analysis": {
+    "bootstrap_samples": 1000,
+    "seed": 4108
+  },
+  "generation": {
+    "subset_size": 0,
+    "max_new_tokens": 8
+  }
+}
