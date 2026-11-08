@@ -218,6 +218,39 @@ class ReplayFinalTest(unittest.TestCase):
             )
             self.assertNotIn("bases", written["summaries"]["paired_s17"])
 
+    def test_condition_lists_compare_membership_only(self) -> None:
+        comparisons = {"comparisons": [], "secondary_compositions": []}
+        released_summaries = {
+            "descriptive_control_conditions": ["fp", "constant_display_A"],
+            "untrained_rule_conditions": ["constant_display_A"],
+            "secondary_postprocessing_conditions": ["rtn_bias"],
+        }
+        regenerated_summaries = {
+            "descriptive_control_conditions": ["constant_display_A", "fp"],
+            "untrained_rule_conditions": ["constant_display_A"],
+            "secondary_postprocessing_conditions": ["rtn_bias"],
+        }
+        replay.verify_report(
+            released_summaries,
+            comparisons,
+            regenerated_summaries,
+            comparisons,
+        )
+
+        missing = copy.deepcopy(regenerated_summaries)
+        missing["descriptive_control_conditions"] = ["constant_display_A"]
+        duplicate = copy.deepcopy(regenerated_summaries)
+        duplicate["descriptive_control_conditions"].append("fp")
+        for label, mutated in (("missing", missing), ("duplicate", duplicate)):
+            with self.subTest(label=label):
+                with self.assertRaises(replay.ReplayMismatch):
+                    replay.verify_report(
+                        released_summaries,
+                        comparisons,
+                        mutated,
+                        comparisons,
+                    )
+
     def test_tampered_secondary_composition_metric_fails(self) -> None:
         predictions = composition_predictions()
         recomputed = replay.recompute(

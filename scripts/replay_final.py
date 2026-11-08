@@ -39,6 +39,14 @@ RELEASED_SUMMARIES = "summaries.json"
 RELEASED_COMPARISONS = "comparisons.json"
 OPTIONAL_SELECTION = "selection.json"
 
+ORDER_INSENSITIVE_LIST_KEYS = frozenset(
+    {
+        "descriptive_control_conditions",
+        "untrained_rule_conditions",
+        "secondary_postprocessing_conditions",
+    }
+)
+
 EXCLUDED_KEYS = frozenset(
     {
         "bases",
@@ -609,6 +617,18 @@ def _compare_comparisons(
         )
 
 
+def _normalized_condition_lists(
+    summaries: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Sort membership-only condition lists so their order is not compared."""
+    normalized = dict(summaries)
+    for key in ORDER_INSENSITIVE_LIST_KEYS:
+        value = normalized.get(key)
+        if isinstance(value, list):
+            normalized[key] = sorted(value, key=repr)
+    return normalized
+
+
 def verify_report(
     released_summaries: Mapping[str, Any],
     released_comparisons: Mapping[str, Any],
@@ -619,8 +639,8 @@ def verify_report(
     """Raise ``ReplayMismatch`` when released analytical fields differ."""
     mismatches: list[str] = []
     _compare_value(
-        released_summaries,
-        regenerated_summaries,
+        _normalized_condition_lists(released_summaries),
+        _normalized_condition_lists(regenerated_summaries),
         "summaries",
         mismatches,
         tolerance,
