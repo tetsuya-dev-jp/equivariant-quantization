@@ -25,14 +25,16 @@ Flash for implementation. Preserve the full goal across sessions.
 
 ## Current milestone
 
-Freeze protocol, delegate offline dataset/oracle plus model-scoring and RTN
-implementation, review meaningful tests, then run the pilot. No results yet.
+Run the pilot after the final numerical-scoring correction. No research model
+predictions have been collected yet.
 
 DeepSeek implementation uses OpenCode session `ses_e46df35a1ffeXRWuz0zIqZY72D`.
 The initial high-reasoning CLI (handle 92657) was intentionally interrupted
 after files and 20 tests were written, to redirect it to confirmed review
-findings. Its process exited 130. Correction pass 2 is live (exec handle 83995)
-using the same DeepSeek V4.1 Flash with low reasoning. Task/events/session
+findings. Its process exited 130. Correction pass 2 (handle 83995) was also
+interrupted after its corrected files passed 28 direct offline tests. A fresh
+DeepSeek session `ses_e46c0ce95ffejrZgGvrq1LwjMC` (handle 56417) is applying
+the independently found BF16 probability-rounding correction. Task/events/session
 exports are private under `local/delegation/` and must not be published.
 The SmolLM2-1.7B download (handle 33747) completed successfully at revision
 `31b70e2e869a7173562077fd711b654946d38674`.
@@ -52,6 +54,16 @@ Check live handles/current files before resuming; do not blindly restart.
   are batched in `local/delegation/01-review.txt` for the correction pass.
 - No pilot or final model predictions have been collected. Final holdout
   outcomes remain unexposed.
+- Corrected default generation, subset invariance, canonical option transport,
+  base-macro aggregation, output persistence, and independent padding tests
+  passed in a direct 28-test run. The pilot dataset has 192 bases / 704 records.
+- A native tiny random Qwen model with the actual tokenizer gave matching
+  predictions when unequal-length prompts were scored in a batch or alone;
+  the maximum option-logit difference was 1.49e-8. This is an infrastructure
+  check, not a pretrained-model research endpoint.
+- BF16 logits [0, 0.001, 0, 0] yield four equal BF16 softmax probabilities,
+  changing an argmax from index 1 to index 0. The final correction requires
+  FP32 probabilities and predictions from logits, plus a regression test.
 
 ## Remaining
 
