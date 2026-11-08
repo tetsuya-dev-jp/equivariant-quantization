@@ -3,7 +3,7 @@
 The experimental implementation was delegated through OpenCode using
 opencode-go/deepseek-v4.1-flash. Codex specified the study, reviewed the
 implementation, executed the experiments, checked evidence, and drafted the
-research documents. The requested model identity was checked in assistant
+research documents. The model identity was checked in assistant
 message metadata for both implementation and correction sessions; those
 checks returned provider opencode-go and model deepseek-v4.1-flash.
 
@@ -26,6 +26,11 @@ final model outcomes. The original and augmented Qwen CLI prefits used the
 same committed calibration implementation; regenerated input records and
 shared teacher logits, hidden vectors and token counts were explicitly
 checked for equality before reuse.
+
+Post-inference changes corrected replay comparison of membership-only condition
+lists and wrapped figure labels. Released-data replay verified the numerical
+summaries and intervals; direct comparisons verified that the layout change
+altered only display labels in plot metadata and left both CSV tables intact.
 
 [environment.json](../environment.json) records the observed package/hardware
 versions. [The experiment record](progress.md) and

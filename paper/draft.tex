@@ -14,14 +14,19 @@ A Controlled Study with Exact Input Transformations}
 Weight quantization can change how a language model answers equivalent
 presentations of the same problem. We study this behavior with executable
 answer oracles and explicit transport of displayed options to canonical
-answer identities. A two-model pilot already illustrates why agreement alone
-is insufficient: four-bit SmolLM2 becomes more consistent while losing
-accuracy, and its three-bit version selects the same displayed letter on
-every pilot input. We compare scale-only teacher distillation with a paired
-invariance objective, holding input exposure and optimization updates fixed,
-and reserving entity renaming, fact order, compositions, and larger structures
-for evaluation. Independent final evaluation is reserved until development
-selection is complete; no benefit of the paired objective is asserted here.
+answer identities. A two-model pilot illustrates why agreement alone is
+insufficient: four-bit SmolLM2 becomes more consistent while losing accuracy.
+We compare scale-only teacher distillation with a paired invariance objective,
+holding input exposure and optimization updates fixed, with three fit seeds
+and 1,152 independent evaluation bases per model. Paired calibration reduces
+consistency on held-out single transformations for both models. Qwen's joint
+correctness improves by 2.04--11.50 percentage points, while Smol's changes
+range from $-15.62$ to $+4.25$ points. On compositions withheld from both
+fitting and development selection, Qwen's consistency rises by
+14.71--20.62 points, but Smol's changes range from $-5.25$ to $+9.11$.
+The effects depend on model and fit seed; they do not support a general
+preservation benefit. The released numerical RTN study separates useful
+agreement, wrong agreement, and fidelity to the full-precision teacher.
 \end{abstract}
 
 \section{Introduction}
@@ -60,6 +65,13 @@ calibration, data augmentation, or a trivial option preference may account
 for an apparent invariance gain.
 
 \section{Related work and scope of novelty}
+Consistency regularization across augmented inputs is established in both
+language and vision \cite{uda}. AugMix explicitly uses Jensen--Shannon
+divergence across original and augmented predictions \cite{augmix}.
+Neither the divergence nor invariance training is introduced here.
+Our comparison applies these ingredients to frozen-code quantization scales
+with exact option transport and a controlled information boundary.
+
 Output matching and scale optimization are prior methods rather than
 contributions of this study. OSTQuant uses learned transformations and
 teacher supervision \cite{ostquant}; RoleQ includes next-token distillation
@@ -70,7 +82,11 @@ Prompt-sensitivity changes under quantization are also known
 \cite{deceptive}. A separate audit studies agreement in stochastic model
 panels \cite{panels}; our relation compares explicitly mapped presentations
 of one base problem. Exact transformation testing is not introduced here as
-a new general testing methodology.
+a new general testing methodology. Correctness Agreement also measures the
+intersection of correct decisions between full-precision and quantized models
+on identical inputs \cite{illusion}. Joint correctness and the observation
+that equal accuracy can hide different decisions are established; our pairs
+instead compare distinct mapped presentations under the same model.
 
 KernelQuant is an especially relevant alternative: its calibration preserves
 cosine kernels among representations \cite{kernelquant}. Our kernel-loss
@@ -237,6 +253,8 @@ comparisons are paired versus augmented KD on held-out single transformations,
 within each model and fit seed. Percentile 95\% intervals use 1,000 paired
 resamples of whole bases, seed 4108, carrying all variants together.
 Fit seeds are separate fits, not extra independent evaluation problems.
+Intervals are conditional on each fitted model and are not adjusted for
+the multiple reported endpoints and subgroup comparisons.
 The report includes all task, split, and transformation outcomes.
 A fixed displayed-A rule is an untrained descriptive negative control.
 Optimization time is also compared; an overhead exceeding 10\% requires
@@ -270,11 +288,127 @@ weights are dequantized for BF16 arithmetic.}
 \end{figure}
 
 \section{Independent final results}
-The matched calibration comparison is in development; final evaluation is reserved.
-This section will report the frozen final and structural-holdout outcomes,
-including negative findings. No final outcome is used for model, loss,
-checkpoint, or hyperparameter selection.
+The independent evaluation contains 768 final bases and 384 structural-holdout
+bases, rendered into 6,144 inputs per condition. Each model has 21 conditions:
+BF16 and three RTN precisions, fifteen selected scale fits, the displayed-A
+rule, and the calibration-only four-logit correction. No final outcome is
+used for model, loss, checkpoint, or hyperparameter selection. Unless a split
+is named, the following differences pool the 1,152 independent bases with
+equal base weight. Reported seed ranges describe three individual fits;
+they are not confidence intervals over training randomness.
+Table~\ref{tab:final-contrasts} lists the pooled point estimates; the
+released comparison files retain the corresponding base-bootstrap intervals
+for the pooled data, each split, and each task family.
 
+\begin{table}[t]
+\centering\small
+\caption{Paired-minus-augmented differences in percentage points over 1,152
+bases per model. Singles denote held-out entity renaming/fact order;
+compositions were withheld from fitting and selection. C is consistency,
+J joint correctness, and W consistently wrong agreement. Seeds are distinct
+fits evaluated on the same bases.}
+\label{tab:final-contrasts}
+\begin{tabular}{llrrrrr}
+\toprule
+ & & \multicolumn{3}{c}{Singles} & \multicolumn{2}{c}{Compositions}\\
+Model & Seed & $\Delta C$ & $\Delta J$ & $\Delta W$ & $\Delta C$ & $\Delta J$\\
+\midrule
+Qwen & 17 & $-1.87$ & $+11.50$ & $-13.37$ & $+16.02$ & $+16.19$\\
+Qwen & 29 & $-1.87$ & $+3.47$ & $-5.34$ & $+14.71$ & $+10.63$\\
+Qwen & 43 & $-4.51$ & $+2.04$ & $-6.55$ & $+20.62$ & $+11.20$\\
+Smol & 17 & $-8.77$ & $+4.25$ & $-13.02$ & $+9.11$ & $+9.81$\\
+Smol & 29 & $-31.94$ & $-15.62$ & $-16.32$ & $-5.25$ & $-5.64$\\
+Smol & 43 & $-13.06$ & $-1.65$ & $-11.41$ & $+8.16$ & $+4.56$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Qwen: correctness gains without primary consistency gains}
+On held-out single transformations, paired calibration changes consistency
+by $-1.87$, $-1.87$, and $-4.51$ percentage points versus same-seed augmented
+KD (seeds 17, 29, and 43). The corresponding joint-correctness differences
+are $+11.50$, $+3.47$, and $+2.04$ points, with base-bootstrap 95\% intervals
+$[8.55,14.37]$, $[0.82,6.08]$, and $[-0.52,4.77]$.
+Consistently wrong agreement falls by 5.34--13.37 points. Thus the primary
+consistency outcome does not improve: more useful agreement partly replaces
+wrong agreement, while total agreement is lower.
+
+Compositions are a distinct secondary endpoint withheld from both updates
+and development selection. Here consistency rises by 14.71--20.62 points
+and joint correctness by 10.63--16.19 points. Every corresponding
+per-fit interval lies above zero. However, consistently wrong composition
+agreement also rises by 4.08 and 9.42 points at seeds 29 and 43; seed 17
+changes it by $-0.17$ points with an interval spanning zero.
+This is transfer of an invariance objective with a mixed error profile.
+It is not uniformly beneficial consistency preservation.
+
+The fidelity endpoint makes the distinction sharper. Relative to augmented
+KD, paired calibration reduces held-out-single agreement with BF16 by
+6.42--13.11 points, and composition agreement with BF16 by 3.39--12.63
+points. The method can improve oracle correctness while moving away from
+the full-precision teacher. These outcomes contradict an unqualified claim
+that the paired loss preserves the teacher's behavior.
+
+\subsection{Smol: the Qwen pattern does not transfer reliably}
+Smol's held-out-single consistency falls by 8.77--31.94 points under paired
+calibration. Joint correctness changes by $+4.25$, $-15.62$, and $-1.65$
+points at seeds 17, 29, and 43. Consistently wrong agreement falls by
+11.41--16.32 points, but this reduction does not ensure useful replacement:
+at seed 29, correct agreement also falls substantially.
+Composition consistency changes by $+9.11$, $-5.25$, and $+8.16$ points;
+composition joint correctness changes by $+9.81$, $-5.64$, and $+4.56$.
+Thus Qwen's positive composition result does not establish a benefit across
+the two models and three fits. All fits completed the fixed 96 updates with
+finite losses; no final outcome was used to replace the selected strength.
+Across the three fits, held-out-single teacher fidelity falls by
+12.72--33.20 points relative to augmented KD, and composition teacher
+fidelity falls by 17.71--38.15 points. The loss is therefore not a reliable
+teacher-preservation objective in either model.
+
+The uncalibrated three-bit Smol model selects displayed A on 6,139 of 6,144
+independent evaluation inputs (99.92\%), extending the pilot's all-A behavior
+without claiming exact identity with a constant rule on the final data.
+Figures~\ref{fig:final-primary}--\ref{fig:final-outcomes} show the 768-base
+final split separately; the pooled contrasts above also include the 384
+structural-holdout bases, whose results remain separately available.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/final/final_paired_vs_augmented_heldout.pdf}
+\caption{Primary paired-minus-augmented contrasts on held-out single
+transformations in the final split (768 bases per model). Each row is one
+fit seed; horizontal intervals are percentile 95\% intervals from 1,000
+paired base resamples. The three panels distinguish total agreement,
+joint correctness, and consistently wrong agreement. Lower is better only
+for the last panel. Intervals are conditional on each fit and unadjusted.}
+\label{fig:final-primary}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/final/final_paired_vs_augmented_compositions.pdf}
+\caption{Secondary contrasts on final-split compositions withheld from both
+gradient updates and development selection (768 bases per model).
+Conventions match Figure~\ref{fig:final-primary}. A consistency gain may
+contain both more jointly correct and more consistently wrong pairs;
+these components are shown separately.}
+\label{fig:final-compositions}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/final/final_heldout_outcomes.pdf}
+\caption{Absolute held-out-single outcomes on the final split. Each base
+receives equal weight; learned conditions are descriptive means over seeds
+17, 29, and 43, while untrained conditions have one result. Solid segments
+are jointly correct, hatched segments consistently wrong, and dotted segments
+disagree. The kernel condition is the matched cosine-Gram adaptation;
+RTN+bias is the separate calibration-only four-logit rule. The constant-A
+rule demonstrates that perfect consistency need not imply useful answers.}
+\label{fig:final-outcomes}
+\end{figure}
+
+\clearpage
 \section{Limitations and reproducibility}
 This is a controlled study of two small instruction models on English
 procedural multiple-choice problems. It does not establish performance on
@@ -290,9 +424,15 @@ benchmark against deployed AWQ/GPTQ pipelines. Their absence limits claims
 about competitive quantization quality. The kernel adaptation is an
 objective control, not a substitute for those complete systems.
 The three-strength search does not equalize regularizer magnitudes, and an
+individual seed's development results select the strength for all three fits.
+This design measures repeatability of that selected recipe rather than
+robustness under a multiseed selection procedure. An
 unquantized scale-optimization control is absent. We therefore cannot attribute
 an observed calibration benefit uniquely to compression or exclude generic
 invariance fine-tuning as an explanation.
+The four-logit diagnostic tests one fixed mean-drift correction, not every
+possible position-bias explanation. Even an improvement over random pairing
+does not establish a particular internal reasoning mechanism.
 Equivalent Boolean functions or isomorphic graphs can cross the declared
 exact-structure split boundary. The confidence intervals describe variation
 across generated bases conditional on the fitted models and the fixed
@@ -308,11 +448,16 @@ the independently reserved final split.
 
 \section{Executed settings}
 Table~\ref{tab:settings} records the common design. Model-specific strengths
-were fixed from development before final inference. Final measurements will
-be filled from completed run manifests.
+were fixed from development before final inference. Both models completed
+all 21 final conditions. Saved predictions reproduce all condition and
+subgroup summaries and paired intervals in CPU replay; the offline suite
+passes 106 tests.
 
-The pinned revisions are \texttt{989aa7980e4cf806f80c7fef2b1adb7bc71aa306}
-for Qwen and \texttt{31b70e2e869a7173562077fd711b654946d38674} for Smol.
+The pinned model revisions are:
+\begin{quote}\small
+Qwen: \texttt{989aa7980e4cf806f80c7fef2b1adb7bc71aa306}\\
+Smol: \texttt{31b70e2e869a7173562077fd711b654946d38674}
+\end{quote}
 
 \begin{table}[h]
 \centering\small
@@ -358,12 +503,28 @@ Hardware/runtime & Radeon RX 9070 XT; ROCm PyTorch
 \end{tabular}
 \end{table}
 
+\clearpage
 \section*{Tool-use disclosure}
 DeepSeek V4.1 Flash implemented the experimental code under Codex supervision.
 Codex assisted with design, literature checking, execution, tests, and drafting.
 The manuscript is a research draft rather than a record of peer review.
 
-\begin{thebibliography}{10}
+\begin{thebibliography}{11}
+\bibitem{uda}
+Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le.
+Unsupervised Data Augmentation for Consistency Training. NeurIPS, 2020.
+\url{https://arxiv.org/abs/1904.12848}
+
+\bibitem{augmix}
+Dan Hendrycks et al. AugMix: A Simple Data Processing Method to Improve
+Robustness and Uncertainty. arXiv:1912.02781v2, 2020.
+\url{https://arxiv.org/html/1912.02781v2}
+
+\bibitem{illusion}
+Baha Rababah et al. The Illusion of Equivalency: Statistical Characterization
+of Quantization Effects in LLMs. arXiv:2607.08734v2, 2026.
+\url{https://arxiv.org/html/2607.08734v2}
+
 \bibitem{fidelityq}
 Chen et al. FidelityQ: Preserving Predictive Fidelity in Ultra-Low-Bit
 Language Model Quantization. arXiv:2610.14934, 2026.

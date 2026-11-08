@@ -86,10 +86,26 @@ are a budget diagnostic, not an inference-speed benchmark.
 
 The evaluation source is frozen at f67baba. Both model selections and
 calibration-only diagnostic offsets were complete before final model
-inference. Final and structural-holdout predictions are being collected.
-No final outcome selects a setting or checkpoint.
+inference. Both models completed all 21 final conditions: four BF16/RTN
+conditions, fifteen selected scale fits, and two secondary controls.
+Each condition evaluated the same 1,152 bases and 6,144 inputs; the two
+models reuse these problems. There are 129,024 prediction rows per model,
+258,048 in total. Rows are not independent evaluation problems.
+No final outcome selected a setting or checkpoint.
 
-The release will link final measurements and figures here after execution.
+The [final report](final-results.md) retains positive and negative results.
+Paired calibration lowered held-out-single consistency for every fit in
+both models. Qwen gained joint correctness and composition consistency;
+Smol's correctness and composition effects changed sign across seeds.
+Both moved away from BF16 predictions. The result does not support a
+general advantage for the paired scale recipe.
+
+CPU replay of released predictions reproduced all 21 condition summaries,
+36 primary comparisons and 36 secondary composition comparisons per model,
+including saved intervals, at absolute tolerance 1e-12. The final offline
+suite passed 106 tests. A replay ordering bug affected only descriptive
+condition-list order and was fixed without changing numerical evaluation.
+
 The [reproduction guide](reproduce.md) distinguishes model reruns from CPU
 replay of saved predictions. Upstream weights and full-vocabulary teacher
 caches are not part of the released data.

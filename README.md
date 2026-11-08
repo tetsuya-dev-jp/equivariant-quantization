@@ -10,7 +10,8 @@ jointly correct pairs and consistently wrong agreement are reported alongside
 canonical consistency. Entity renaming and fact order are held out of gradient
 updates but used in development selection; compositions are withheld from both.
 
-- [Manuscript source](paper/draft.tex)
+- [Manuscript PDF](paper/draft.pdf) and [source](paper/draft.tex)
+- [Independent results and interpretation](docs/final-results.md)
 - [Reproduction and CPU replay](docs/reproduce.md)
 - [Prospective protocol](docs/protocol.md) and [calibration plan](docs/calibration-plan.md)
 - [Prior-work and novelty audit](docs/related-work.md)
@@ -20,6 +21,28 @@ updates but used in development selection; compositions are withheld from both.
 The release is a numerical RTN study with a controlled kernel-loss adaptation.
 It does not benchmark deployed AWQ/GPTQ pipelines or establish inference-speed
 benefits. The scope and comparison limits are explicit in the manuscript.
+
+## Findings
+
+The paired objective does not provide a reliable consistency advantage.
+Qwen gains joint correctness and composition consistency, while Smol's
+correctness effects change sign across fit seeds. Both models lose consistency
+on held-out single transformations. Agreement alone can also be misleading:
+uncalibrated Smol W3 chooses displayed A on 6,139 of 6,144 independent inputs.
+
+Table 1. Paired minus same-seed augmented KD, percentage-point ranges across
+seeds 17/29/43; 1,152 equally weighted final and structural-holdout bases
+per model. These ranges are not confidence intervals.
+
+| Model | Single-transform consistency | Single-transform joint correctness | Composition consistency |
+|:--|--:|--:|--:|
+| Qwen2.5-1.5B | -4.51 to -1.87 | +2.04 to +11.50 | +14.71 to +20.62 |
+| SmolLM2-1.7B | -31.94 to -8.77 | -15.62 to +4.25 | -5.25 to +9.11 |
+
+The [result report](docs/final-results.md) retains seed-specific intervals and
+controls. Released predictions support a CPU replay without model weights;
+the figures separately show the 768-base final split. The study supports
+model-dependent tradeoffs, not a general preservation or reasoning benefit.
 
 ## Implemented
 

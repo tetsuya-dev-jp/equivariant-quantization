@@ -71,7 +71,7 @@ wrong pairs increased from 162 under BF16 to 265 under W4 and 285 under W3.
 Under W3, constrained scoring selected displayed A for all 704 prompts.
 Such a constant letter agrees under entity/fact-order transformations even
 though its task accuracy is near chance; option permutation exposes some of
-the mismatch. The final descriptive comparison will include a fixed displayed-A
+the mismatch. The final descriptive comparison includes a fixed displayed-A
 control, selected before observing final model outcomes.
 
 ![Descriptive pilot pair outcomes](../figures/pilot/pilot_pair_outcomes.png)

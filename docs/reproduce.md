@@ -32,6 +32,14 @@ hardware/library combinations have not been validated as equivalent.
 
 ## Replay released predictions without model weights
 
+Each model directory contains 21 final conditions and 129,024 prediction
+rows over the same 1,152 bases (6,144 rendered inputs per condition).
+The two models share the underlying problems; the total 258,048 rows are
+not independent samples. Compact summaries omit per-base expansions, which
+are recoverable from the predictions; the original full summaries are also
+available as gzip JSON. Absolute paths in saved manifests describe the
+original run and are not dependencies of replay.
+
 Recompute the frozen summaries and paired base-bootstrap intervals directly:
 
 ~~~bash

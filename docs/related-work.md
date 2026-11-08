@@ -1,7 +1,9 @@
 # Prior-work and novelty audit
 
 Searched on 8 November 2026. This is a bounded literature search, not proof
-that no overlapping work exists. No empirical novelty or benefit is established.
+that no overlapping work exists. Literature search alone establishes neither
+priority nor empirical benefit; measurements are reported separately in the
+[independent evaluation](final-results.md).
 
 ## Closest verified sources
 

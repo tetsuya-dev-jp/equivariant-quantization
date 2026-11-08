@@ -65,19 +65,19 @@ CONSTANT_CONDITION = "constant_display_A"
 RTN_BIAS_CONDITION = "rtn_w4_logit_bias"
 RTN_BIAS_OBJECTIVE = "mean_logit_drift"
 FIGURE1_METRICS = (
-    ("held_out_consistency", "Held-out consistency"),
-    ("held_out_jointly_correct_rate", "Held-out jointly correct"),
+    ("held_out_consistency", "Consistency\n(held-out)"),
+    ("held_out_jointly_correct_rate", "Jointly correct\n(held-out)"),
     (
         "held_out_consistent_wrong_rate",
-        "Held-out consistently wrong (lower is better)",
+        "Consistently wrong\n(held-out, lower is better)",
     ),
 )
 COMPOSITION_METRICS = (
-    ("composition_consistency", "Composition consistency"),
-    ("composition_jointly_correct_rate", "Composition jointly correct"),
+    ("composition_consistency", "Consistency\n(composition)"),
+    ("composition_jointly_correct_rate", "Jointly correct\n(composition)"),
     (
         "composition_consistent_wrong_rate",
-        "Composition consistently wrong (lower is better)",
+        "Consistently wrong\n(composition, lower is better)",
     ),
 )
 FIGURE2_CONDITIONS = (
@@ -799,9 +799,12 @@ def plot_effects(
             )
         ax.axvline(0.0, color="#333333", linewidth=1.0, zorder=1)
         ax.axhline(2.5, color="#D9D9D9", linewidth=0.7, zorder=1)
-        ax.set_xlabel("Paired − augmented KD (percentage points)")
         ax.set_title(label, fontsize=8, fontweight="bold", color="#222222")
         style_axes(ax)
+
+    fig.supxlabel(
+        "Paired − augmented KD (percentage points)", fontsize=9, y=0.035
+    )
 
     lower = min(all_limits) - 2.0
     upper = max(all_limits) + 2.0

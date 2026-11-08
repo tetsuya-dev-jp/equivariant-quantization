@@ -1,8 +1,9 @@
 # Independent evaluation
 
-Paired calibration improves some correctness and composition outcomes while
-reducing agreement with the full-precision teacher. It should not be described
-as uniform behavior preservation. The comparison is against augmented KD with
+Paired calibration reduces held-out-single consistency for both models.
+Qwen gains joint correctness and composition consistency, but Smol's effects
+change sign across fit seeds. Both models move away from the full-precision
+teacher. The comparison is against augmented KD with
 the same input rows, order, trainable scales and 96 optimizer updates.
 
 ## Evaluation boundary
@@ -57,9 +58,82 @@ augmented KD and 54.41% for paired calibration. The corresponding random-pair
 and kernel-control means are both 47.48%. These are descriptive control
 comparisons; their magnitudes are not paired-bootstrap intervals.
 
+## SmolLM2-1.7B
+
+The Qwen result does not transfer reliably. Table 2 uses the same pooled
+support and estimator as Table 1. Every consistency interval lies below zero.
+Joint correctness improves at seed 17, declines at seed 29, and has an
+interval spanning zero at seed 43. All selected fits completed the fixed
+96 updates with finite losses; final outcomes did not change the selected
+strength or checkpoint.
+
+Table 2. Smol contrasts on held-out single transformations, 1,152 bases
+
+| Fit seed | Delta C | Delta J [95% interval] | Delta W | Delta teacher fidelity |
+|--:|--:|--:|--:|--:|
+| 17 | -8.77 | +4.25 [1.30, 7.12] | -13.02 | -25.95 |
+| 29 | -31.94 | -15.62 [-18.36, -12.93] | -16.32 | -33.20 |
+| 43 | -13.06 | -1.65 [-4.21, 0.74] | -11.41 | -12.72 |
+
+For fully withheld compositions, consistency changes by +9.11, -5.25, and
++8.16 points at seeds 17/29/43. Joint correctness changes by +9.81
+[7.20, 12.11], -5.64 [-8.12, -3.43], and +4.56 [2.30, 6.68] points.
+The seed-29 effect is negative on both metrics, so a consistent transfer
+benefit across fits is unsupported. Composition teacher fidelity falls by
+17.71–38.15 points. Wrong composition agreement increases at seed 43 by
+3.60 points [1.30, 6.03].
+
+Uncalibrated W3 selects displayed A on 6,139/6,144 independent inputs
+(99.92%). It is close to, but not identical with, the fixed displayed-A
+control. The pilot's all-A observation applies to its separate 704 inputs.
+On the 768-base final split, the four-logit correction raises W4 joint
+correctness from 20.18% to 23.11%. Three-fit means are 30.51% for augmented
+KD, 25.67% for paired calibration, 29.75% for random pairing and 29.77% for
+the kernel control. Paired calibration therefore also trails these matched
+controls on this descriptive final-split average. This comparison does not
+have an additional pooled-across-seeds confidence interval.
+
+## Figures and evidence
+
+Figures 1–3 use only the 768-base final split, whereas Tables 1–2 above pool
+the final and 384-base structural splits. The distinction is intentional;
+all subgroup estimates remain in the saved reports.
+
+![Primary same-seed contrasts](../figures/final/final_paired_vs_augmented_heldout.png)
+
+Figure 1. Paired-minus-augmented effects on held-out single transformations.
+Points are distinct fitted seeds; bars are conditional 95% paired-base
+bootstrap intervals. Lower is better only for consistently wrong agreement.
+
+![Fully withheld composition contrasts](../figures/final/final_paired_vs_augmented_compositions.png)
+
+Figure 2. Secondary effects on compositions withheld from fitting and selection.
+The estimator and interval conventions match Figure 1.
+
+![Absolute held-out outcomes](../figures/final/final_heldout_outcomes.png)
+
+Figure 3. Correct, wrong, and inconsistent outcomes. Rates average within
+each base before averaging bases. Learned bars are descriptive three-fit
+means; the untrained controls have one result. Hatching and dots distinguish
+wrong agreement and disagreement from jointly correct answers.
+
+The full numeric tables include original/transformed accuracy, consistency,
+joint correctness, wrong agreement, composition outcomes and teacher fidelity:
+[final split](../figures/final/table-final.csv) and
+[structural holdout](../figures/final/table-structural.csv).
+[Qwen](../results/final/qwen/) and [Smol](../results/final/smol/) include
+raw compressed predictions, summaries, comparisons and inference manifests.
+The scripts replay the saved predictions without loading model weights.
+
+The results support measuring the tradeoffs separately. They do not support
+adopting this paired scale recipe as a generally superior quantizer. Generic
+consistency training remains a possible explanation for Qwen's improvements:
+an unquantized scale-training control and stronger deployed PTQ comparisons
+are absent. The four-logit diagnostic tests only that specific correction.
+
 ## Executed settings
 
-Table 2. Common settings and evidence
+Table 3. Common settings and evidence
 
 | Item | Executed value | Evidence |
 |:--|:--|:--|
