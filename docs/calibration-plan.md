@@ -107,6 +107,6 @@ deployment format. Standard AWQ/GPTQ packages are absent from this ROCm runtime;
 the kernel-loss control is not a substitute for a full stronger PTQ benchmark.
 Record this comparison limitation explicitly rather than calling RTN SOTA.
 
-Implementation is delegated to DeepSeek V4.1 Flash. The supervisor reviews
-tests and executes the actual model runs. No implementation worker may inspect
-final model outcomes or make selection decisions from them.
+Implementation verification includes independent counterexamples, exact-oracle
+tests, and native tiny-model gradient and export checks. Final model outcomes
+are excluded from every setting and checkpoint selection decision.

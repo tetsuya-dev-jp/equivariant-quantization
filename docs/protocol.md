@@ -1,6 +1,7 @@
 # Protocol: transformation-preserving language-model quantization
 
-Status: prospective protocol, 8 November 2026. No empirical benefit established.
+Status: prospective protocol frozen on 8 November 2026 before pilot inference.
+No empirical benefit was established at the time of this freeze.
 
 ## Question and scope
 
@@ -8,8 +9,8 @@ Does weight quantization alter the correspondence between answers to exact
 semantics-preserving input transformations? Can paired calibration preserve
 that correspondence beyond adding the same transformed examples individually?
 This study concerns controlled multiple-choice reasoning, not general reasoning
-or inference acceleration. Implementation is delegated to DeepSeek V4.1 Flash;
-Codex designs, reviews, executes, and verifies the study.
+or inference acceleration. Implementation and verification provenance are
+recorded separately from the statistical protocol.
 
 ## Data and information boundaries
 
@@ -106,8 +107,8 @@ Deliver executable oracle/quantizer/alignment tests, pinned configurations,
 raw predictions, environment and timing records, reproducible summaries and
 figures, an evidence-grounded English manuscript draft, limitations and
 third-party attribution, and a public GitHub repository. Do not redistribute
-upstream weights or secrets. Publication is authorized by the user; arXiv
-submission, paid compute purchases, and claims of positive results are not.
+upstream weights or private service credentials. The manuscript is an
+evidence-grounded research draft; positive findings require measured support.
 
 ## Prospective amendment 1: unique candidate generation
 

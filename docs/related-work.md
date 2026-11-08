@@ -101,8 +101,8 @@ that no overlapping work exists. No empirical novelty or benefit is established.
 
 Web searches covered quantization + semantic equivariance, paired consistency,
 metamorphic tests, paraphrase/calibration objectives and prompt robustness.
-The preceding topic-selection turn additionally used alphaXiv and Exa for
-direct counterexamples. This run checked newer fidelity/uncertainty and
+The initial topic-selection search used alphaXiv and Exa for
+direct counterexamples. Later passes checked newer fidelity/uncertainty and
 explanation-preserving objectives to avoid an overly broad novelty claim.
 An additional Exa search explicitly sought semantic-pair JS calibration with
 frozen quantizer scales, recovering RoleQ and the published EAQuant record.

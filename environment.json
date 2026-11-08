@@ -1,0 +1,19 @@
+{
+  "python": "3.12.15",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+  "packages": {
+    "torch": "2.12.0+rocm7.14.0",
+    "numpy": "2.5.4",
+    "transformers": "4.57.1",
+    "matplotlib": "3.11.2",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.22.2",
+    "huggingface-hub": "0.36.2"
+  },
+  "hardware": {
+    "device": "cuda",
+    "device_name": "AMD Radeon RX 9070 XT",
+    "total_memory_bytes": 17095983104
+  },
+  "scope": "Observed runtime for the reported numerical experiments; the Torch build is hardware specific."
+}

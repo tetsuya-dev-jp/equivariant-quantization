@@ -1,8 +1,25 @@
-# eq_quant
+# Answer correspondence under quantization
 
-Pilot code for a controlled study of whether weight quantization changes the
+Code and evidence for a controlled study of whether weight quantization changes the
 correspondence between answers to exact semantics-preserving input
 transformations.
+
+The comparison uses Qwen2.5-1.5B and SmolLM2-1.7B, exact answer oracles,
+three calibration seeds, and equal-input/equal-update controls. Accuracy,
+jointly correct pairs and consistently wrong agreement are reported alongside
+canonical consistency. Entity renaming and fact order are held out of gradient
+updates but used in development selection; compositions are withheld from both.
+
+- [Manuscript source](paper/draft.tex)
+- [Reproduction and CPU replay](docs/reproduce.md)
+- [Prospective protocol](docs/protocol.md) and [calibration plan](docs/calibration-plan.md)
+- [Prior-work and novelty audit](docs/related-work.md)
+- [Experiment record](docs/progress.md) and [pilot findings](docs/pilot-results.md)
+- [Implementation provenance](docs/implementation-provenance.md) and [observed runtime](environment.json)
+
+The release is a numerical RTN study with a controlled kernel-loss adaptation.
+It does not benchmark deployed AWQ/GPTQ pipelines or establish inference-speed
+benefits. The scope and comparison limits are explicit in the manuscript.
 
 ## Implemented
 
@@ -19,6 +36,7 @@ transformations.
   - seeded nonidentity `option_permutation`
   - `entity_rename` where meaningful
   - `order_permutation` over independent variable facts or graph edges
+  - final-only option+rename and option+rename+order compositions where supported
 - Unsupported family/transform pairs are absent rather than represented as
   identity transforms.
 - Deterministic candidate rejection until the requested number of unique base
@@ -51,8 +69,9 @@ state of the art.
 
 Calibration keeps the original RTN integer codes, biases, embeddings, output
 head, and all pretrained parameters frozen. It learns one positive scale per
-output row and input group, parameterized by its natural logarithm and
-initialized to the RTN scale. Forward passes reconstruct BF16 weights from the
+output row and input group, using the relative log parameterization
+`scale = RTN_scale * exp(delta)` with `delta = 0` initially.
+Forward passes reconstruct BF16 weights from the
 frozen codes; zero RTN groups stay exactly zero. Five objectives are available:
 original-only KD, augmented KD, paired canonical-option JS, a random-pair JS
 control with a within-batch nonidentity shift, and a representation-kernel
